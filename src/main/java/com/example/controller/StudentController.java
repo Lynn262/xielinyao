@@ -1,0 +1,37 @@
+package com.example.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.example.pojo.Student;
+
+import com.example.service.StudentService;
+
+@Controller
+@RequestMapping("/course")
+public class StudentController {
+
+	@Autowired
+	private StudentService studentService = null;
+
+
+	
+	@RequestMapping("/querystudent")//查询课程
+	@ResponseBody
+	public Student getStu(String Sno) {//spring帮助获取参数
+		Student student = new Student();
+		student =studentService.getStu( Sno);
+		return student;
+	}
+	
+	
+}
