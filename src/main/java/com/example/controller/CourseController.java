@@ -22,8 +22,6 @@ public class CourseController {
 
 	@Autowired
 	private CourseService courseService = null;
-
-
 	
 	@RequestMapping("/querycourse")//查询课程
 	@ResponseBody
@@ -33,5 +31,5 @@ public class CourseController {
 		return course;
 	}
 	
-	
+	//这是一个github push测试
 }
