@@ -31,5 +31,5 @@ public class CourseController {
 		return course;
 	}
 	
-	
+	//这是一个github push测试
 }
