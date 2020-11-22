@@ -22,8 +22,6 @@ public class CourseController {
 
 	@Autowired
 	private CourseService courseService = null;
-
-
 	
 	@RequestMapping("/querycourse")//查询课程
 	@ResponseBody
