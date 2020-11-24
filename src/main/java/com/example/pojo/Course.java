@@ -1,12 +1,15 @@
 package com.example.pojo;
+import org.apache.ibatis.type.Alias;
+import java.io.Serializable;
 
+@Alias("course")
 //课程类
 public class Course {
-    private  String Cno;   //课程编号
-    private String Cname;       //课程名称
-    private int Cterm;          //课程学期
-    private int Ccredit;        //课程学分
-    private String Cdept;       //课程所属院系
+    private  String cno;   //课程编号
+    private String cname;       //课程名称
+    private int cterm;          //课程学期
+    private int ccredit;        //课程学分
+    private String cdept;       //课程所属院系
 
     //课程构造函数
   //  public Course(String no, String name, int term, int credit, String dept){
@@ -18,51 +21,51 @@ public class Course {
    // }
     public void setCno(String c)
     {
-    	Cno=c;
+    	cno=c;
     }
 
     //设置课程名
     public void setCname(String n){
-        Cname = n;
+        cname = n;
     }
 
     //设置课程开设学期
     public void setCterm(int t){
-        Cterm = t;
+        cterm = t;
     }
 
     //设置课程学分
     public void setCcredit(int c){
-        Ccredit = c;
+        ccredit = c;
     }
 
     //设置课程所属院系
     public void setCdept(String d){
-        Cdept = d;
+        cdept = d;
     }
 
     //返回课程编号
     public String getCno(){
-        return Cno;
+        return cno;
     }
 
     //返回课程名称
     public String getCname() {
-        return Cname;
+        return cname;
     }
 
     //返回课程开设学期
     public int getCterm() {
-        return Cterm;
+        return cterm;
     }
 
     //返回课程学分
     public int getCcredit() {
-        return Ccredit;
+        return ccredit;
     }
 
     //返回课程所属院系
     public String getCdept() {
-        return Cdept;
+        return cdept;
     }
 }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html  dir="ltr">
+	<!--可以将语言进行改变-->
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Animated Login Form</title>
+		<link rel="stylesheet" href="css/postreview.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="css/star.css" />
+		<link
+		  href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cerulean/bootstrap.min.css"
+		  rel="stylesheet"
+		  integrity="sha384-LV/SIoc08vbV9CCeAwiz7RJZMI5YntsH8rGov0Y2nysmepqMWVvJqds6y0RaxIXT"
+		  crossorigin="anonymous"
+		/>
+	</head>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript">
+	
+	function submit(){
+		
+	var sno="1181002036";
+	var personality= document.getElementById("personality").innerText;
+	var difficulty =  document.getElementById("difficulty").innerText;
+	var quality=document.getElementById("quality").innerText;
+	var pname=document.getElementById("pname").value;
+	var cname=document.getElementById("cname").value;	
+	var comment=document.getElementById("comment");	
+	var param ={
+			'pno' : pname,
+			'cno' : cname,
+			'sno'  : sno,
+			'quality':quality,
+			'difficulty':difficulty,
+			'comment':comment.value,
+			'state':1,
+			'upvote':0,
+			'downvote':0		
+	}
+	var url="review/saveRev";
+	 $.ajax({
+			 type: "post",
+			 url : url,
+			 // 此处需要告知传递参数类型为JSON，不能缺少
+			 contentType : "application/json",
+			 // 将JSON转化为字符串传递
+			 data : JSON.stringify(param),
+			 async: false, // 同步
+			 // 成功后的方法
+			 success : function(result) {
+  			 if (result !=1) {
+	  			 alert("评价失败");
+  			 }
+			 }
+		 });
+	
+	}
+	
+	</script>
+	<body style="background-color: #808e9b;">
+		<form  class="box" action="javascript:submit();" >
+			<h1>发布评价</h1>
+			<div style="float: left; margin-left: 100px;" ><input type="text" name="" id="pname" placeholder="请输入您想要评价的教师姓名"></div>
+			<div style="float: left;margin-left: 150px;"><input type="password" name="" id="cname" placeholder="请输入教师所授课程"></div>
+			<textarea class="box1" placeholder="请填写评价" id="comment"></textarea>
+			<input type="submit" name="" value="提交该评价" >
+		<div class="box2">
+			<div class="container mt-5">
+			  <div class="form-group">
+			    <select id="produce-select" class="form-control custom-select">
+			      <option value="0" disabled selected>选择项目</option>
+			      <option value="vue">教师素养</option>
+			      <option value="node">课程难度</option>
+			      <option value="jquery">受益程度</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <input
+			      type="number"
+			      id="rating-control"
+			      class="form-control"
+			      step="0.1"
+			      max="5"
+			      placeholder="评分0-5"
+			      disabled
+			    />
+			  </div>
+			  <table class="table table-striped" bordercolor="#3498db" style="color: white;">
+			    <thead>
+			      <th>类别</th>
+			      <th>评分</th>
+			    </thead>
+			    <tbody>
+			      <tr class="vue" bordercolor="#3498db">
+			        <td >教师素养</td>
+			        <td>
+			          <div class="stars-outer">
+			            <div class="stars-inner"></div>
+			          </div>
+			          <span class="number-rating" id="personality"></span>
+			        </td>
+			      </tr>
+			      <tr class="node" >
+			        <td>课程难度</td>
+			        <td>
+			          <div class="stars-outer">
+			            <div class="stars-inner"></div>
+			          </div>
+			          <span class="number-rating" id="difficulty"></span>
+			        </td>
+			      </tr>
+			      <tr class="jquery">
+			        <td>受益程度</td>
+			        <td>
+			          <div class="stars-outer">
+			            <div class="stars-inner"></div>
+			          </div>
+			          <span class="number-rating" id="quality"></span>
+			        </td>
+					</tr>
+			    </tbody>
+			  </table>
+			</div>
+			<script src="js/star.js"></script>
+		</div>
+		</form>
+	</body>
+</html>

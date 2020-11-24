@@ -1,0 +1,148 @@
+@font-face{
+    font-family: QI;
+    src: url("../fonts/智勇手书体.ttf")
+}
+
+* {
+    font-family: QI;
+    margin: 0;
+    padding: 0;
+}
+
+.outer{
+    margin: 0 auto;
+    width: 50%;
+    height: 50px;
+    position: relative;
+    background-color: #c7ecee;
+}
+
+ul {
+    display: flex;
+    justify-content:space-between;
+    list-style-type: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* ul::after,
+u1::before {
+    content: "";
+    display: block;
+    clear: both;
+} */
+
+li {
+    width: 30%;
+    height: 100%;
+    line-height: 50px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+}
+
+.btm {
+    width: 30%;
+    height: 5px;
+    position: absolute;
+    left: 0px;
+    background-color: #1abc9c;
+    transition: 0.5s;
+}
+
+.side_div {
+    padding:15px 10px;
+    border-radius: 10px;
+    position: relative;
+    /* top: 25%;
+    left: 0%; */
+    color: rgb(134, 125, 125);
+    background-color: #c7ecee;
+    font-size: 30px;
+    width: 15%;
+    height: 500px;
+}
+
+.side_div1 {
+    padding:15px 10px;
+    border-radius: 10px;
+    position: relative;
+    /* top: 25%;
+    left: 77%; */
+    color: rgb(134, 125, 125);
+    background-color: #c7ecee;
+    font-size: 30px;
+    width: 15%;
+    height: 500px;
+}
+
+.giant-div{
+    position: absolute;
+    top:25%;
+    width: 100%;
+}
+
+.middle_div {
+    border-radius: 10px;
+    position: absolute;
+    margin-left: -25%;
+    top: 0%;
+    left: 50%;
+    color: rgb(134, 125, 125);
+    background-color: #c7ecee;
+    padding:15px 10px;
+    font-size: 30px;
+    width: 50%;
+    height: 800px;
+}
+
+.middle_T {
+    padding: 10px 10px;
+    border-style: none;
+    border-color: #535c68;
+    border-width: 1px;
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+    color: #191919;
+}
+
+.side_T {
+    color: #34626c;
+    padding: 10px 10px;
+    border-style: none;
+    border-color: #535c68;
+    border-width: 1px;
+    width: 100%;
+    height: 40px;
+    /* padding: center; */
+}
+.big-div{
+    position: relative;
+    width:100%;
+    display: flex;
+    justify-content: space-between
+}
+@media screen and (max-width: 900px){
+    .outer{
+        width: 70%;
+    }
+    .middle_div{
+        position: relative;
+        width: 80%;
+        margin-left: -40%;
+    }
+    .big-div{
+        margin-top: 50px;
+        width:80%;
+        left: 50%;
+        margin-left: -40%;
+    }
+    .side_div{
+        width:40%;
+    }
+    .side_div1{
+        width:40%;
+    }
+}
+/* <!--白恩昊--> */

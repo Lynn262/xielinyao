@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><!--规则 格式-->
-<mapper namespace="com.study.example.StudentDao">
+<mapper namespace="com.example.dao.StudentDao">
 
-  <select id="getStu" parameterType="String" resultType="Student">
-         SELECT * FROM Student where ( Sno=#{Sno}) 
+  <select id="getStu" parameterType="String" resultType="student">
+         SELECT * FROM student where ( Sno=#{Sno}) 
     </select>
   
     

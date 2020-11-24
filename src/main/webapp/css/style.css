@@ -1,0 +1,78 @@
+body{
+	margin:0;
+	padding: 0;
+	background-color: #7ed6df;
+}
+/* font-size可以更改图标的大小 */
+.search-box{
+	position: absolute;
+	top:100px;
+	left:50%;
+	transform:translate(-50%,-50%);
+	background: #20B2AA;
+	height: 40px;
+	border-radius: 40px;
+	padding: 10px;
+}
+.search-box:hover > .search-txt{
+	width:600px;
+	padding: 0 6px;
+}
+.search-box:hover > .search-btn{
+	background: white;
+}
+.search-btn{
+	color: #411F1A;
+	float: right;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #20B2AA;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	transition: 0.4s;
+}
+.search-txt{
+	border: none;
+	background: none;
+	outline: none;
+	float: left;
+	padding: 0;
+	color: white;
+	font-size: 16px;
+	transition:0.4s;
+	line-height: 40px;
+	width: 0px;
+}
+.pic{
+  font-size:20px;
+  margin-top: 50px;
+  margin-right:20px;
+  float:right;
+  }
+  .pic:hover{
+	  color: #ec524b;
+  }
+ /* 没有起作用
+ table{
+    border-collapse:separate;
+          border-spacing: 0px 10px;
+    width="200";
+    border-style: none;
+   } */
+   .teacher{
+	   background-color: #16a596;
+	   height: 50px;
+	   text-align: center;
+   }
+   .course{
+   	   background-color: #16a596;
+   	   height: 50px;
+   	   text-align: center;
+   }
+   .review{
+   	   background-color: #16a596;
+   	   height: 50px;
+   	   text-align: center;
+   }

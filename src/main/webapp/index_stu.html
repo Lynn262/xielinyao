@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<title>Document</title>
+		<style>
+			*{
+				margin: 0;
+				padding:0;
+			}
+			.outer{
+				margin: 0 auto;
+				width :600px;
+				height:50px;
+				position:relative;
+				background-color:#c7ecee;
+			}
+			ul{
+				list-style-type: none;
+				width:100%;
+				height:100%;
+			}
+			ul::after,u1::before{
+				content:"";
+				display:block;
+				clear:both;
+			}
+			li{
+				width:180px;
+				height:100%;
+				line-height: 50px;
+				cursor:pointer;
+				float:left;
+				text-align: center;
+			}
+			.btm{
+				width:180px;
+				height: 5px;
+				position:absolute;
+				left: 0px;
+				background-color:#1abc9c;
+				transition: 0.5s;
+			}
+			.side_div {
+				position: absolute;
+				top:25%;
+				left:0%;
+			        color: #F7F7F7;
+			        background-color: #c7ecee;
+			        font-size:30px;
+			  width: 300px;
+			  height: 500px;
+			  }
+			  .side_div1 {
+			  	position: absolute;
+			  	top:25%;
+			  	left:77%;
+			    color: #F7F7F7;
+			    background-color: #c7ecee;
+			    
+			    font-size:30px;
+			    width: 300px;
+			    height: 500px;
+			    }
+			 .middle_div{
+				 position: absolute;
+				 top:25%;
+				 left:22%;
+			  color: #F7F7F7;
+			        background-color: #c7ecee;
+			  /* padding:15px 10px; */
+			        font-size:30px;
+			  width:700px;
+			  height: 800px; 
+			  }
+			 .middle_T{ 
+				 padding: 10px 10px;
+			  border-style: none;
+			  border-color: #535c68;
+			  border-width: 1px;
+			  width: 500px;
+			  height:60px;
+			  font-size: 20px;
+			  color: #191919;
+			  }
+			 .side_T{
+				 color: #34626c;
+			 padding: 10px 10px;
+			  border-style: none;
+			  border-color: #535c68;
+			  border-width: 1px;
+			  width: 300px;
+			  height:40px; 
+			  /* padding: center; */
+			  }
+			  <!--白恩昊-->
+		</style>
+			
+	</head>
+	<body>
+		<div class="box">
+			<div class="outer">
+				<ul>
+					<li>注销</li>
+					<li>个人主页</li>
+					<li>发布评价</li>
+				</ul>
+				<div class="btm"></div>
+			</div>
+		</div>
+		<script>
+			
+			var lis=document.getElementsByTagName("li");
+			var btm=document.getElementsByClassName("btm")[0];
+			//这个for循环是为每一个li添加一个index当作索引，为了方便下面地循环获取到是第几个li
+			for(var i=0;i<lis.length;i++){
+				lis[i].index=i;
+			}
+			//这里的for循环是为了给每个li添加一个mouseenter(鼠标进入事件)和onmouseleave(鼠标离开事件)
+			for(var i=0;i<lis.length;i++){
+				lis[i].onmouseenter=function(){
+					//当鼠标进入的时候，改变class为btm的div元素位置
+					btm.style.left=180*this.index+"px";
+				}
+				lis[i].onmouseleave=function(){
+					//当鼠标离开的时候，div元素位置恢复到0，下面的placeholder是占位符
+					btm.style.left="0px";
+				}
+			}
+		</script>
+		<div class="search-box">
+			<input class="search-txt" type="text" name="" placeholder="请输入教师/课程名称查询">
+			<a class="search-btn" herf="#">
+				<i class="fa fa-search"></i>
+			</a>
+		</div>
+	 <!--白恩昊上届-->
+	<div class="side_div" style="float: left;">
+	<div class="teacher">
+		教师风采
+	</div>
+	 <table width="200" class="side_T">
+	  <tbody>
+	    <tr>
+	      <td style="border-bottom: solid; border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	    </tr>
+	    <tr>
+	      <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	    </tr>
+	    <tr>
+	      <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	    </tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+		</tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+		</tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+		</tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+		</tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+		</tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+		</tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+		</tr>
+	  </tbody>
+	</table>
+	 </div>
+	<div class="middle_div" style="float: left;margin-left: 30px;" >
+		<div class="review">
+			最新评价
+		</div>
+	 <table style="width:700px" class="middle_T">
+	  <tbody>
+	    <tr>
+	      <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">
+			  <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+					  <!-- 点赞，踩，举报所有的图标 -->
+		  </td>
+	    </tr>
+	    <tr>
+	      <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">
+			  张海山老师
+			  <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+			  					  <!-- 点赞，踩，举报所有的图标 -->
+		  </td>
+	    </tr>
+	    <tr>
+	      <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">
+			  <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+			  					  <!-- 点赞，踩，举报所有的图标 -->
+		  </td>
+	    </tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">
+			  <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+					  <!-- 点赞，踩，举报所有的图标 -->
+		  </td>
+		</tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">
+			  <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+					  <!-- 点赞，踩，举报所有的图标 -->
+		  </td>
+		</tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">
+			  <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+					  <!-- 点赞，踩，举报所有的图标 -->
+		  </td>
+		</tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">
+			  <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+					  <!-- 点赞，踩，举报所有的图标 -->
+		  </td>
+		</tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">
+			  <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+					  <!-- 点赞，踩，举报所有的图标 -->
+		  </td>
+		</tr>
+		<tr>
+		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">
+			  <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+					  <!-- 点赞，踩，举报所有的图标 -->
+		  </td>
+		</tr>
+		
+	  </tbody>
+	</table>
+	 </div>
+	
+	<div class="side_div1" style="float: right;">
+	  <div class="course">
+	  	课堂风采
+	  </div>
+	  <table width="200" class="side_T">
+	  <tbody>
+	    <tr>
+	   	      <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	   	    </tr>
+	   	    <tr>
+	   	      <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	   	    </tr>
+	   	    <tr>
+	   	      <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	   	    </tr>
+	   		<tr>
+	   		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	   		</tr>
+	   		<tr>
+	   		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	   		</tr>
+	   		<tr>
+	   		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	   		</tr>
+	   		<tr>
+	   		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	   		</tr>
+	   		<tr>
+	   		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	   		</tr>
+	   		<tr>
+	   		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	   		</tr>
+	   		<tr>
+	   		  <td style="border-bottom: solid;border-width: 1px;border-color: #686d76;">&nbsp;</td>
+	   		</tr>
+	  </tbody>
+	</table>
+	 </div>
+	 <!--白恩昊下界-->
+	</body>
+</html>

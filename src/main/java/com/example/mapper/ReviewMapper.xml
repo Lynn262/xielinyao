@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><!--规则 格式-->
+<mapper namespace="com.example.dao.ReviewDao">
+
+  <select id="queryall"   resultType="review">
+         SELECT * FROM review
+    </select>
+  
+  <insert id="saveRev" parameterType="review" >
+  		INSERT INTO review (Cno,Pno,Sno,Revt,Comment,difficulty,quality,state,upvote,downvote)VALUES (#{cno},#{pno},#{sno},sysdate(),#{comment},#{difficulty},#{quality},#{state},#{upvote},#{downvote})
+  </insert>
+    
+</mapper>

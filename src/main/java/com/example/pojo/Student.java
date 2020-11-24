@@ -1,15 +1,18 @@
 package com.example.pojo;
 
 import java.util.Date;
+import org.apache.ibatis.type.Alias;
+import java.io.Serializable;
 
+@Alias("student")
 //学生类
 public class Student extends Account{
-    private String Sname;       //学生姓名
-    private String Snickname;   //学生昵称
-    private int Syear;          //学生入学年份
-    private String Sgender;     //学生性别
-    private Date Svalid;        //学生账号的有效期
-    private Date Sstate;        //学生账号目前的状态，如果大于当前日期则表示处于封禁状态
+    private String sname;       //学生姓名
+    private String snickname;   //学生昵称
+    private int syear;          //学生入学年份
+    private String sgender;     //学生性别
+    private Date svalid;        //学生账号的有效期
+    private Date sstate;        //学生账号目前的状态，如果大于当前日期则表示处于封禁状态
 
     //全参数的构造器，需要所有参数
   //  public Student(String User, String PW, String Mail, String Snickname, int Syear, Date Svalid, Date Sstate,
@@ -36,22 +39,22 @@ public class Student extends Account{
 
     //设置学生姓名
     public void setSname(String Sname){
-        this.Sname = Sname;
+        this.sname = Sname;
     }
 
     //设置学生昵称
     public void setSnickname(String Snickname){
-        this.Snickname = Snickname;
+        this.snickname = Snickname;
     }
 
     //设置学生入学年份，虽然我觉得这个东西注册之后应该就不需要改变了
     public void setSyear(int Syr){
-        Syear = Syr;
+        syear = Syr;
     }
 
     //设置学生性别，虽然也什么用
     public void setgender(String g){
-        Sgender = g;
+        sgender = g;
     }
 
     /**
@@ -59,7 +62,7 @@ public class Student extends Account{
      * @param v 学生账号有效期到什么时候
      */
     public void setvalid(Date v){
-        Svalid = v;
+        svalid = v;
     }
 
     /**
@@ -67,37 +70,37 @@ public class Student extends Account{
      * @param st 该账号从何时开始起效，如果大于当前日期则表明被封禁
      */
     public void setstate(Date st){
-        Sstate = st;
+        sstate = st;
     }
 
     //返回学生姓名
     public String getSname(){
-        return Sname;
+        return sname;
     }
 
     //返回学生用户名
     public String getSnickname(){
-        return Snickname;
+        return snickname;
     }
 
     //返回学生入学年份
     public int getSyear(){
-        return Syear;
+        return syear;
     }
 
     //返回学生性别
     public String getSgender(){
-        return Sgender;
+        return sgender;
     }
 
     //返回学生账号的有效期
     public Date getSvalid(){
-        return Svalid;
+        return svalid;
     }
 
     //返回学生账号状态
     public Date getState(){
-        return Sstate;
+        return sstate;
     }
 
     /**
@@ -106,7 +109,7 @@ public class Student extends Account{
      * @return 指定日期是否在该账号的有效期内，负数为无效
      */
     public int isValid(Date d1){
-        return Svalid.compareTo(d1);
+        return svalid.compareTo(d1);
     }
 
     /**
@@ -115,6 +118,6 @@ public class Student extends Account{
      * @return 账号在指定日期中是否被封禁，负数为被封禁
      */
     public int isActive(Date d1){
-        return d1.compareTo(Sstate);
+        return d1.compareTo(sstate);
     }
 }
