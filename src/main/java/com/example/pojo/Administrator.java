@@ -8,12 +8,6 @@ public class Administrator extends Account{
     private String anickname;   //管理员昵称
     private String aprivilege;  //管理员权限
 
-    //管理员类构造器
-    public Administrator(String User, String PW, String Mail, String Anickname, String Aprivilege) {
-        this.anickname = Anickname;
-        this.aprivilege = Aprivilege;
-    }
-
     //设置管理员昵称
     public void setAname(String n){
         anickname = n;

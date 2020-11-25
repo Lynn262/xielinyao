@@ -9,26 +9,19 @@ public class SCR {
     private String pno; //所选课程教师的编号
     private String cno; //所选课程的编号
 
-    //选课类构造器
-    public SCR(String Sno, String Pno, String Cno){
-        this.sno = Sno;
-        this.pno = Pno;
-        this.cno = Cno;
-    }
-
     //设置选课学生的学号
     public void setSno(String sno) {
-        sno = sno;
+        this.sno = sno;
     }
 
     //设置所报课程的教师编号
     public void setPno(String pno) {
-        pno = pno;
+        this.pno = pno;
     }
 
     //设置所报课程的编号
     public void setCno(String cno) {
-        cno = cno;
+        this.cno = cno;
     }
 
     //返回选课学生的学号

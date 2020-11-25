@@ -11,14 +11,10 @@ public class Professor {
     private String pinfo;       //教师信息
     private String pdept;       //教师所属院系
 
-    //教师类构造器
-   // public Professor(String no, String name, String pos, String info, String dept){
-   //     Pno = no;
-    //    Pname = name;
-   //     Ppos = pos;
-   //     Pinfo = info;
-  //      Pdept = dept;
-  //  }
+    //设置教师编号
+    public void setPno(String pno) {
+        this.pno = pno;
+    }
 
     //设置教师姓名
     public void setPname(String n){

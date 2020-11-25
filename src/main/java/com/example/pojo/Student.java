@@ -14,29 +14,6 @@ public class Student extends Account{
     private java.sql.Date svalid;        //学生账号的有效期
     private java.sql.Date sstate;        //学生账号目前的状态，如果大于当前日期则表示处于封禁状态
 
-    //全参数的构造器，需要所有参数
-  //  public Student(String User, String PW, String Mail, String Snickname, int Syear, Date Svalid, Date Sstate,
-  //                 String Sname, String Sgender) {
-  //      super(User, PW, Mail);
-  //      this.Snickname = Snickname;
-  //      this.Syear = Syear;
-  //      this.Svalid = Svalid;
- //      this.Sstate = Sstate;
-  //      this.Sname = Sname;
-   //     this.Sgender = Sgender;
-  //  }
-
-    //精简版的构造器，姓名和性别设置为默认值，分别是空字符串和other
-   // public Student(String User, String PW, String Mail, String Snickname, int Syear, Date Svalid, Date Sstate){
-       
-  //      this.Snickname = Snickname;
-  //      this.Syear = Syear;
-  //      this.Svalid = Svalid;
-  //      this.Sstate = Sstate;
-   //     this.Sname = "";
-   //     this.Sgender = "other";
-  //  }
-
     //设置学生姓名
     public void setSname(String Sname){
         this.sname = Sname;

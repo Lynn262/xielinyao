@@ -11,14 +11,7 @@ public class Course {
     private int ccredit;        //课程学分
     private String cdept;       //课程所属院系
 
-    //课程构造函数
-  //  public Course(String no, String name, int term, int credit, String dept){
-    //    Cno = no;
-      //  Cname = name;
-        //Cterm = term;
-        //Ccredit = credit;
-        //Cdept = dept;
-   // }
+    //设置课程编号
     public void setCno(String c)
     {
     	cno=c;
