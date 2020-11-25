@@ -4,8 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><!--规则 格式-->
 <mapper namespace="com.example.dao.ReviewDao">
 
-  <select id="queryall"   resultType="review">
-         SELECT * FROM review
+  <select id="queryall"   resultType="reviewfront">
+        SELECT Snickname,Cname,Pname,Revt,Comment,difficulty,quality,upvote,downvote
+        FROM review,student,course,professor
+        WHERE student.Sno=review.Sno AND course.Cno=review.Cno AND professor.Pno=review.Pno;
     </select>
   
   <insert id="saveRev" parameterType="review" >

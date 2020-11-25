@@ -46,7 +46,7 @@ body{
 	width:280px;
 	border-color: #2ecc71;
 	}
-.box input[type ="password"]{
+.box input[type ="text1"]{
 	position:absolute;
 	top:10%;left:54%;
 	 border: 0;
@@ -62,7 +62,7 @@ body{
 	 border-radius: 24px;
 	 transition: 0.25s;
 	}
-.box input[type ="password"]:focus{
+.box input[type ="text1"]:focus{
 		width:280px;
 		border-color: #2ecc71;
 		}

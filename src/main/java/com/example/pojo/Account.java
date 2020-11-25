@@ -5,9 +5,9 @@ import java.io.Serializable;
 //账号类
 @Alias("account")
 public class Account{
-    private  String user; //用户名
-    private String pw;          //密码
-    private  String mail; //注册邮箱
+    private  String sno; //用户名
+    private String spw;          //密码
+    private  String smail; //注册邮箱
 
     //账户类构造函数
    // public Account(String User, String PW, String Mail){
@@ -17,31 +17,31 @@ public class Account{
    // }
     public void setMail(String Mail)
     {
-    	this.mail = Mail;
+    	this.smail = Mail;
     }
 
     //设置账户密码
     public void setPW(String PW){
-        this.pw = PW;
+        this.spw = PW;
     }
 
     //核对账户密码
     public boolean checkPW(String PW){
-        return this.pw.equals(PW);
+        return this.spw.equals(PW);
     }
 
     //返回用户名
     public String getid(){
-        return this.user;
+        return this.sno;
     }
 
     //返回密码
     public String getPW(){
-        return this.pw;
+        return this.spw;
     }
 
     //返回注册邮箱
     public String getMail(){
-        return this.mail;
+        return this.smail;
     }
 }

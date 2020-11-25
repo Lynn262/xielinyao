@@ -3,7 +3,37 @@ body{
 	padding: 0;
 	background-color: #7ed6df;
 }
-/* font-size可以更改图标的大小 */
+/* font-size鍙互鏇存敼鍥炬爣鐨勫ぇ灏� */
+*{
+				margin: 0;
+				padding:0;
+			}
+			.outer{
+				margin: 0 auto;
+				width :600px;
+				height:50px;
+				position:relative;
+				background-color:#c7ecee;
+			}
+			ul{
+				list-style-type: none;
+				width:100%;
+				height:100%;
+			}
+			ul::after,u1::before{
+				content:"";
+				display:block;
+				clear:both;
+			}
+			li{
+				width:180px;
+				height:100%;
+				line-height: 50px;
+				cursor:pointer;
+				float:left;
+				text-align: center;
+			}
+
 .search-box{
 	position: absolute;
 	top:100px;
@@ -15,7 +45,7 @@ body{
 	padding: 10px;
 }
 .search-box:hover > .search-txt{
-	width:600px;
+	width:500px;
 	padding: 0 6px;
 }
 .search-box:hover > .search-btn{
@@ -47,20 +77,87 @@ body{
 }
 .pic{
   font-size:20px;
-  margin-top: 50px;
   margin-right:20px;
   float:right;
   }
   .pic:hover{
 	  color: #ec524b;
   }
- /* 没有起作用
+ /* 娌℃湁璧蜂綔鐢�
  table{
     border-collapse:separate;
           border-spacing: 0px 10px;
     width="200";
     border-style: none;
    } */
+.btm{
+				width:180px;
+				height: 5px;
+				position:absolute;
+				left: 0px;
+				background-color:#1abc9c;
+				transition: 0.5s;
+			}
+			.side_div {
+				/* float: left;
+				margin: 5px;
+				padding: 15px; */
+				float:left;
+				position:absolute;
+				top:140px;
+				left:0px;
+			    color: #F7F7F7;
+			    background-color: #c7ecee;
+			    font-size:30px;
+			  width: 300px;
+			  height: 500px;
+			  }
+			  .side_div1 {
+				  float:left;
+				  position:absolute;
+				  top:140px;
+				  left:1100px;
+			    color: #F7F7F7;
+			    background-color: #c7ecee;
+			    font-size:30px;
+			    width: 300px;
+			    height: 500px;
+			    }
+			 .middle_div{
+				 float:left;
+				 position:absolute;
+				 top:140px;
+				 left:300px;
+			     color: #F7F7F7;
+			  /* padding:15px 10px; */
+			    font-size:30px;
+			  width:750px;
+			  height: 800px; 
+			  }
+			 .middle_T{ 
+			  padding: 10px 10px;
+			  border-style: none;
+			  border-color: #535c68;
+			  border-width: 1px;
+			  width: 700px;
+			  height:60px;
+			  font-size: 20px;
+			  color: #191919;
+			  margin-left:25px;
+			  }
+			 .side_T{
+				 color: #34626c;
+			 padding: 10px 10px;
+			  border-style: none;
+			  border-color: #535c68;
+			  border-width: 1px;
+			  width: 300px;
+			  height:40px; 
+			  /* padding: center; */
+			  }
+			td{
+				 background-color: #c7ecee;
+			}
    .teacher{
 	   background-color: #16a596;
 	   height: 50px;
@@ -75,4 +172,40 @@ body{
    	   background-color: #16a596;
    	   height: 50px;
    	   text-align: center;
+	   width: 670px;
+	   border-radius: 5px;
+	   
    }
+
+
+	/*.userID{
+		font-size:14px;
+		font-family:Cambria;
+	}
+	.Cmtt{
+		font-size:19px;
+		font-weight: 700;
+		height:25px;
+	}
+	.CmtIn{
+		margin-top:6px;
+		margin-left:5px;
+		font-size:16px;
+		height:20px;
+	}*/
+.Cscore{
+	float:left;
+	width:200px;
+	height:150px;
+	margin-left: 30px;
+	margin-top: 10px;
+}
+.Comment{
+	float:left;
+	width:400px;
+	height:150px;
+	margin-left: 10px;
+	margin-top:10px;
+	padding:5px;
+	font-size:18px;
+}

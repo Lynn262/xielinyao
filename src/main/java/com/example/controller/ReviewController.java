@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.pojo.Review;
-
+import com.example.pojo.ReviewFront;
 import com.example.service.ReviewService;
 
 
@@ -26,9 +26,9 @@ public class ReviewController {
 	
 	@RequestMapping("/queryall")//查询所有评价
 	@ResponseBody
-	public List<Review> queryall() {
+	public List<ReviewFront> queryall() {
 		System.out.println("111");
-		List<Review> list =reviewService.queryall();
+		List<ReviewFront> list =reviewService.queryall();
 		return list;
 	}
 	

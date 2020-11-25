@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.dao.ReviewDao;
 import com.example.pojo.Review;
+import com.example.pojo.ReviewFront;
 import com.example.service.ReviewService;
 
 @Service
@@ -18,7 +19,7 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewDao reviewDao = null;
 	
 	@Override
-	public List<Review> queryall() {
+	public List<ReviewFront> queryall() {
 		return reviewDao.queryall();
 	}
 	

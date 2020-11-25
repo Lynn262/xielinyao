@@ -11,8 +11,8 @@ public class Student extends Account{
     private String snickname;   //学生昵称
     private int syear;          //学生入学年份
     private String sgender;     //学生性别
-    private Date svalid;        //学生账号的有效期
-    private Date sstate;        //学生账号目前的状态，如果大于当前日期则表示处于封禁状态
+    private java.sql.Date svalid;        //学生账号的有效期
+    private java.sql.Date sstate;        //学生账号目前的状态，如果大于当前日期则表示处于封禁状态
 
     //全参数的构造器，需要所有参数
   //  public Student(String User, String PW, String Mail, String Snickname, int Syear, Date Svalid, Date Sstate,
@@ -61,7 +61,7 @@ public class Student extends Account{
      * 设置学生账号的有效期
      * @param v 学生账号有效期到什么时候
      */
-    public void setvalid(Date v){
+    public void setvalid(java.sql.Date v){
         svalid = v;
     }
 
@@ -69,7 +69,7 @@ public class Student extends Account{
      * 设置学生账号的状态
      * @param st 该账号从何时开始起效，如果大于当前日期则表明被封禁
      */
-    public void setstate(Date st){
+    public void setstate(java.sql.Date st){
         sstate = st;
     }
 
