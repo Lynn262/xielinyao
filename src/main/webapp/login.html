@@ -7,11 +7,37 @@
 		<link rel="stylesheet" href="css/style_login.css">
 	</head>
 	<body>
-		<form  class="box" action="login.html" method="post">
+		<form  class="box">
 			<h1>登录</h1>
-			<input type="text" name="" placeholder="用户名">
-			<input type="password" name="" placeholder="密码">
-			<input type="submit" name="" value="login">
+			<input id="user" type="text" name="" placeholder="用户名">
+			<input id="passwd" type="password" name="" placeholder="密码">
+			<input type="submit" name="" value="login" onclick="tryLogin()">
 		</form>
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript">
+			function tryLogin(){
+				var usr = document.getElementById("user");
+				var passwd = document.getElementById("passwd");
+				$.ajax({
+					type: 'POST',
+					url: '/acc/login',
+					data: JSON.stringify({'sno': usr.value, 'pw': passwd.value}),
+					async: false,
+					dataType: 'json',
+					contentType: 'application/json',
+					success: function (response) {
+						console.log('received response');
+						//alert("先暂停一下");
+						//alert("正确");
+						window.location.replace("mainpage2.html");
+						//alert("用户名或密码错误");
+					},
+					error: function (response){
+						alert("请求失败")
+					}
+				});
+				//return false;
+			}
+		</script>
 	</body>
 </html>

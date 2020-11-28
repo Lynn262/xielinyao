@@ -1,11 +1,14 @@
 package com.example.pojo;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import org.apache.ibatis.type.Alias;
 import java.io.Serializable;
 //账号类，学生和管理员的基类
 @Alias("account")
 public class Account{
     private  String sno; //用户名
+
+    @JsonAlias({"pw"})
     private String spw;          //密码
     private  String smail; //注册邮箱
 
