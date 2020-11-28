@@ -20,10 +20,10 @@ public class ReviewFront {
 	public void setPname(String pname) {
 		this.pname = pname;
 	}
-	public String getSname() {
+	public String getSnickname() {
 		return snickname;
 	}
-	public void setSname(String sname) {
+	public void setSnickname(String sname) {
 		this.snickname = sname;
 	}
 	public java.sql.Date getRevt() {
