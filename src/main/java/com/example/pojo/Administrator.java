@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 @Alias("administrator")
 //管理员类
-public class Administrator extends Account{
+public class Administrator{
+
+    private String ano;
+    private String apw;
+    private String amail;
     private String anickname;   //管理员昵称
     private String aprivilege;  //管理员权限
 
@@ -12,6 +16,18 @@ public class Administrator extends Account{
     public Administrator(String User, String PW, String Mail, String Anickname, String Aprivilege) {
         this.anickname = Anickname;
         this.aprivilege = Aprivilege;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
+    public void setApw(String apw) {
+        this.apw = apw;
+    }
+
+    public void setAmail(String amail) {
+        this.amail = amail;
     }
 
     //设置管理员昵称
@@ -22,6 +38,18 @@ public class Administrator extends Account{
     //设置管理员权限
     public void setAprvlg(String p){
         aprivilege = p;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public String getApw() {
+        return apw;
+    }
+
+    public String getAmail() {
+        return amail;
     }
 
     //返回管理员昵称
