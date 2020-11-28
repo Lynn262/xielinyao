@@ -5,7 +5,7 @@
 <mapper namespace="com.example.dao.ReviewDao">
 
   <select id="queryall"   resultType="reviewfront">
-        SELECT Snickname,Cname,Pname,Revt,Comment,difficulty,quality,upvote,downvote
+        SELECT id_review,Snickname,Cname,Pname,Revt,Comment,difficulty,quality,upvote,downvote
         FROM review,student,course,professor
         WHERE student.Sno=review.Sno AND course.Cno=review.Cno AND professor.Pno=review.Pno;
     </select>
@@ -13,5 +13,15 @@
   <insert id="saveRev" parameterType="review" >
   		INSERT INTO review (Cno,Pno,Sno,Revt,Comment,difficulty,quality,state,upvote,downvote)VALUES (#{cno},#{pno},#{sno},sysdate(),#{comment},#{difficulty},#{quality},#{state},#{upvote},#{downvote})
   </insert>
+  
+  <update id="upvote" parameterType="int" >
+  
+  		UPDATE review SET upvote=upvote+1 WHERE id_review=(#{id_review})
+  </update>
+  
+  <update id="downvote" parameterType = "int" >
+  		UPDATE review SET downvote=downvote+1 WHERE id_review=(#{id_review})
+  
+  </update>
     
 </mapper>

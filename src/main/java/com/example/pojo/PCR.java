@@ -9,13 +9,6 @@ public class PCR {
     private String cno; //课程编号
     private int pcrt;   //教师教授这门课程的年份
 
-    //任课类构造器
-    public PCR(String Pno, String Cno, int t){
-        this.pno = Pno;
-        this.cno = Cno;
-        pcrt = t;
-    }
-
     //设置任课教师的编号
     public void setPno(String pno) {
         this.pno = pno;

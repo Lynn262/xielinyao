@@ -39,5 +39,19 @@ public class ReviewController {
 		return reviewService.saveRev(reviewVo);
 	}
 	
+	@RequestMapping("/upvote")//查询所有评价
+	@ResponseBody
+	public int upvote(int id_review) {
+		
+		return reviewService.upvote(id_review);
+	}
+	
+	@RequestMapping("/downvote")//查询所有评价
+	@ResponseBody
+	public int downvote(int id_review) {
+		System.out.println(id_review);
+		
+		return reviewService.downvote(id_review);
+	}
 	//这是一个github push测试
 }

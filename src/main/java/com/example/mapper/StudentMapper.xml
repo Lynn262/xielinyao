@@ -5,7 +5,7 @@
 <mapper namespace="com.example.dao.StudentDao">
 
   <select id="getStu" parameterType="String" resultType="student">
-         SELECT * FROM student where ( Sno=#{Sno}) 
+         SELECT * FROM student where ( Sno=#{Sno})
     </select>
   
     

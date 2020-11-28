@@ -11,4 +11,8 @@ public interface ReviewService {
 	
 	int saveRev(Review reviewVo);
 	
+	int upvote(int id_review);
+	
+	int downvote(int id_review);
+	
 }

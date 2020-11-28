@@ -27,6 +27,15 @@ public class ReviewServiceImpl implements ReviewService {
 	public int saveRev(Review reviewVo) {
 		return reviewDao.saveRev(reviewVo);
 	}
+	@Override
+	public int upvote(int id_review) {
+		return reviewDao.upvote(id_review);
+	}
+
+	@Override
+	public int downvote(int id_review) {
+		return reviewDao.downvote(id_review);
+	}
 
 	 
 }

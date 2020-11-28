@@ -8,67 +8,67 @@ import java.io.Serializable;
 //评价类
 public class Review {
     private  int  id;         //每个评价评价都有唯一的id
-    public void setCno(String cno) {
-		this.cno = cno;
-	}
-
-	public void setPno(String pno) {
-		this.pno = pno;
-	}
-
-	public void setSno(String sno) {
-		this.sno = sno;
-	}
-
 	private String cno;     //评价的课程号
     private  String pno;     //评价的教师号
     private  String sno;     //评价的学号
     private java.sql.Date revt;    //评价时间
     private String comment; //评价内容
+    private int personality; //教师素养
     private int difficulty; //评价课程的难度
-    private  int quality;    //评价课程的质量
+    private  int quality;    //受益程度
     private int state;      //评价的状态，1表示有效，2表示待删除，3表示被举报
     private int downvote;   //评价的踩数量
     private int upvote;     //评价的点赞数量
 
-    //全参数的评价构造器
-  //  public Review(int id, String Sno, String Pno, String Cno, String revt, String comment, int difficulty,
-   //               int quality, int state, int downvote, int upvote){
-  //      this.id = id;
-   //     this.Sno = Sno;
-   //     this.Pno = Pno;
-   //     this.Cno = Cno;
-  //      this.revt = revt;
-   //     this.comment = comment;
-   //     this.difficulty = difficulty;
-   //     this.quality = quality;
-   //     this.state = state;
-   //     this.downvote = downvote;
-   //     this.upvote = upvote;
-  //  }
+    //设置评论id
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    //精简版的评价构造器，只需输入所有必需的参数即可
-  //  public Review(int id, String Sno, String Pno, String Cno, String revt, String comment, int difficulty,
-    //              int quality,int state){
-  //      this.id = id;
- //       this.Sno = Sno;
-  //      this.Pno = Pno;
- //       this.Cno = Cno;
-  //      this.revt = revt;
-  //      this.comment = comment;
-  //      this.difficulty = difficulty;
-  //      this.quality = quality;
-  //      this.state = state;
-  //      this.downvote = 0;
-  //      this.upvote = 0;
-  //  }
+    //设置评价的课程编号
+    public void setCno(String cno) {
+        this.cno = cno;
+    }
+
+    //设置评价的老师的编号
+    public void setPno(String pno) {
+        this.pno = pno;
+    }
+
+    //设置评价的学号
+    public void setSno(String sno) {
+        this.sno = sno;
+    }
+
+    //设置评价时间
+    public void setRevt(Date revt) {
+        this.revt = revt;
+    }
+
+    //设置评价内容
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    //设置评价的教师素养
+    public void setPersonality(int personality) {
+        this.personality = personality;
+    }
+
+    //设置评价的课程难度
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    //设置评价的受益程度
+    public void setQuality(int quality) {
+        this.quality = quality;
+    }
 
     /**
      * 设置评价的状态
      * @param s 评价的状态，1表示有效，2表示待删除，3表示被举报
      */
-    
-    
     public void setState(int s){
         state = s;
     }
@@ -129,6 +129,11 @@ public class Review {
     //返回评价的内容
     public String getComment() {
         return comment;
+    }
+
+    //返回评价老师的
+    public int getPersonality() {
+        return personality;
     }
 
     //返回评价课程的难度
