@@ -12,4 +12,10 @@ import org.springframework.stereotype.Repository;
 public interface StudentDao {
 	
 	Student getStu( String Sno);
+	
+	int updatesnickname(String Sno,String Snickname);
+	
+	int updatespw(String Sno,String Spw);
+	
+	
 }

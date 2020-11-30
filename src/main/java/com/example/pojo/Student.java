@@ -1,18 +1,63 @@
 package com.example.pojo;
 
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonAlias;
 import org.apache.ibatis.type.Alias;
 import java.io.Serializable;
 
 @Alias("student")
 //学生类
-public class Student extends Account{
+public class Student{
+
+    private String sno;
+
+    @JsonAlias({"pw"})
+    private String spw;
+    private String smail;
     private String sname;       //学生姓名
     private String snickname;   //学生昵称
     private int syear;          //学生入学年份
     private String sgender;     //学生性别
     private java.sql.Date svalid;        //学生账号的有效期
     private java.sql.Date sstate;        //学生账号目前的状态，如果大于当前日期则表示处于封禁状态
+
+
+    //全参数的构造器，需要所有参数
+  //  public Student(String User, String PW, String Mail, String Snickname, int Syear, Date Svalid, Date Sstate,
+  //                 String Sname, String Sgender) {
+  //      super(User, PW, Mail);
+  //      this.Snickname = Snickname;
+  //      this.Syear = Syear;
+  //      this.Svalid = Svalid;
+ //      this.Sstate = Sstate;
+  //      this.Sname = Sname;
+   //     this.Sgender = Sgender;
+  //  }
+
+    //精简版的构造器，姓名和性别设置为默认值，分别是空字符串和other
+   // public Student(String User, String PW, String Mail, String Snickname, int Syear, Date Svalid, Date Sstate){
+       
+  //      this.Snickname = Snickname;
+  //      this.Syear = Syear;
+  //      this.Svalid = Svalid;
+  //      this.Sstate = Sstate;
+   //     this.Sname = "";
+   //     this.Sgender = "other";
+  //  }
+
+
+    public void setSno(String sno) {
+        this.sno = sno;
+    }
+
+    public void setSpw(String spw) {
+        this.spw = spw;
+    }
+
+    public void setSmail(String smail) {
+        this.smail = smail;
+    }
 
     //设置学生姓名
     public void setSname(String Sname){
@@ -48,6 +93,18 @@ public class Student extends Account{
      */
     public void setstate(java.sql.Date st){
         sstate = st;
+    }
+
+    public String getSno() {
+        return sno;
+    }
+
+    public String getSpw() {
+        return spw;
+    }
+
+    public String getSmail() {
+        return smail;
     }
 
     //返回学生姓名
@@ -96,5 +153,10 @@ public class Student extends Account{
      */
     public int isActive(Date d1){
         return d1.compareTo(sstate);
+    }
+
+    //核对账户密码
+    public boolean checkSpw(String PW){
+        return this.spw.equals(PW);
     }
 }

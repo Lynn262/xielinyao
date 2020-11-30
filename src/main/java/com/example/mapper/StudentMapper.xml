@@ -8,5 +8,15 @@
          SELECT * FROM student where ( Sno=#{Sno})
     </select>
   
+    <update id="updatesnickname" parameterType="String" >
+     UPDATE Student
+        SET Snickname=#{Snickname}
+        WHERE ( Sno=#{Sno})
+    </update>
     
+     <update id="updatespw" parameterType="String" >
+     UPDATE Student
+        SET Spw=#{Spw}
+        WHERE ( Sno=#{Sno})
+    </update>
 </mapper>

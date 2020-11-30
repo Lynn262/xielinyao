@@ -14,4 +14,11 @@ public interface StudentService {
 	 * @return 用户输入的凭证与数据库中的凭证是否匹配
 	 */
 	boolean checkCredential(String id, String passwd);
+	
+	int updatesnickname(String Sno,String Snickname);
+	
+	int updatespw(String Sno,String Spw);
+	
+	
+
 }

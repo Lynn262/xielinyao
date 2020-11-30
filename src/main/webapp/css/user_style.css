@@ -1,0 +1,175 @@
+/* css文件注释的快捷键是ctrl+/ */
+body{
+	background: #7ed6df;
+	margin: 0;
+}
+.middle_T{ 		
+			  padding: 10px 10px;
+			  border-style: none;
+			  border-color: #fab1a0;
+			  border-width: 1px;
+			  width: 500px;
+			  height:60px;
+			  font-size: 20px;
+			  color: #191919;
+			  }
+.Cscore{
+			   float:left;
+			   width:200px;
+			   height:150px;
+			   margin-left: 30px;
+			   margin-top: 10px;
+			  }
+.Comment{
+			   float:left;
+			   width:400px;
+			   height:150px;
+			   margin-left: 10px;
+			   margin-top:10px;
+			   padding:5px;
+			   font-size:18px;
+			  }
+.pic{
+			    font-size:20px;
+			    margin-right:20px;
+			    float:right;
+			    }
+.infoC{
+					border: solid;
+				}
+.search-box{
+	position: absolute;
+	top:50px;
+	left:50%;
+	transform:translate(-50%,-50%);
+	background: #20B2AA;
+	height: 40px;
+	border-radius: 40px;
+	padding: 10px;
+}
+.search-box:hover > .search-txt{
+	width:600px;
+	padding: 0 6px;
+}
+.search-box:hover > .search-btn{
+	background: white;
+}
+.search-btn{
+	color: #411F1A;
+	float: right;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #20B2AA;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	transition: 0.4s;
+}
+.search-txt{
+	border: none;
+	background: none;
+	outline: none;
+	float: left;
+	padding: 0;
+	color: white;
+	font-size: 16px;
+	transition:0.4s;
+	line-height: 40px;
+	width: 0px;
+}				
+
+/* 泡泡 */
+/* ---- reset ---- */
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+/* ---- tsparticles container ---- */
+#tsparticles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+/* 泡泡 */
+button{
+    position: relative;
+    height: 50px;
+    width: 200px;
+    margin: 0 35px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    background: #0fb9b1;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* 删除评价的图标为什么显示不出来。。
+buttons1{
+    position: relative;
+    height: 25px;
+    width: 100px;
+   /* margin: 0 35px; 
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    background: #78e08f;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+} */
+
+button:first-child:hover{
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+}
+
+
+button:last-child:hover{
+    background: linear-gradient(90deg, #03a9f4, #f5ce62, #e43603, #fa7199);
+    background-size: 400%;
+}
+
+button:first-child:before,
+button:last-child:before{
+    content: '';
+    position: absolute;
+    background: inherit;
+    top: -5px;
+    right:-5px;
+    bottom: -5px;
+    left: -5px;
+    border-radius: 50px;
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+button:first-child:hover:before,
+button:last-child:hover:before{
+    opacity: 1;
+    z-index: -1;
+}
+
+button:hover{
+    z-index: 1;
+    animation: glow 8s linear infinite;
+}
+
+@keyframes glow {
+    0%{
+        background-position: 0%;
+    }
+    100%{
+        background-position: 400%;
+    }
+}
+
+
+

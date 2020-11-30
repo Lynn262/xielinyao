@@ -17,7 +17,7 @@ import com.example.pojo.Student;
 import com.example.service.StudentService;
 
 @Controller
-@RequestMapping("/course")
+@RequestMapping("/student")
 public class StudentController {
 
 	@Autowired
@@ -32,6 +32,21 @@ public class StudentController {
 		student =studentService.getStu( Sno);
 		return student;
 	}
+	
+	@RequestMapping("/updatesnickname")//更改昵称
+	@ResponseBody
+	public int updatesnickname(String Sno,String Snickname) {//spring帮助获取参数
+		
+		return studentService.updatesnickname(Sno,Snickname);
+	}
+	
+	@RequestMapping("/updatespw")//更改密码
+	@ResponseBody
+	public int updatespw(String Sno,String Spw) {//spring帮助获取参数
+		
+		return studentService.updatespw(Sno,Spw);
+	}
+	
 	
 	
 }

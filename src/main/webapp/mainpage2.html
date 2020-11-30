@@ -50,7 +50,7 @@
 			}
 			function upvote(id_review)
 			{
-				var url="review/upvote?id_review+"+id_review;
+				var url="review/upvote?id_review="+id_review;
 				$.ajaxSettings.async = false;
 				$.get(url, function(Review, status) {
 					alert("点赞成功！");
@@ -58,8 +58,8 @@
 			}
 			function downvote(id_review)
 			{
-				alert("11111");
-				var url="review/downvote?id_review+"+id_review;
+				
+				var url="review/downvote?id_review="+id_review;
 				$.ajaxSettings.async = false;
 				$.get(url, function(Review, status) {
 					alert("踩成功！");
@@ -73,7 +73,7 @@
 					{
 					
 					tmp="  <tr><td style=\"border: none;border-radius: "+
-						"10px;height: 220px;\"><div><div  style=\"float:left; margin-left:120px;text-align: center;\">"+Review[i].cname+"</div> <div style=\"float:left;margin-left: 240px;text-align: center;\">"+Review[i].pname+"</div></div><div class=\"Cscore\"><div style=\"font-size:16px;\">  教师素养：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].quality+"</div><div style=\"margin-top:40px;font-size:16px;\"> 课程难度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].difficulty+"</div><div style=\"margin-top:40px;font-size:16px;\"> 受益程度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].quality+"</div></div><div class=\"Comment\">"+Review[i].snickname+":"+Review[i].comment+"</div><div style=\"margin-top: 180px;\"><a class=\"pic\"><i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\"></i>  </ a><a class=\"pic\">"+Review[i].downvote+"<i class=\"fa fa-thumbs-down\" aria-hidden=\"true\" onclick=\"downvote("+Review[i].id_review+")\"></i>  </ a><a class=\"pic\">"+Review[i].upvote+"<i class=\"fa fa-thumbs-up\" aria-hidden=\"true\"></i> </ a><a style=\" margin-right:50px;float:right;font-size:15px;\">"+Review[i].revt+"</a> </div></td></tr>";
+						"10px;height: 220px;\"><div><div  style=\"float:left; margin-left:120px;text-align: center;\">"+Review[i].cname+"</div> <div style=\"float:left;margin-left: 240px;text-align: center;\">"+Review[i].pname+"</div></div><div class=\"Cscore\"><div style=\"font-size:16px;\">  教师素养：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].quality+"</div><div style=\"margin-top:40px;font-size:16px;\"> 课程难度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].difficulty+"</div><div style=\"margin-top:40px;font-size:16px;\"> 受益程度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].quality+"</div></div><div class=\"Comment\">"+Review[i].snickname+":"+Review[i].comment+"</div><div style=\"margin-top: 180px;\"><a class=\"pic\"><i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\"></i>  </ a><a class=\"pic\">"+Review[i].downvote+"<i class=\"fa fa-thumbs-down\" aria-hidden=\"true\" onclick=\"downvote("+Review[i].id_review+")\"></i>  </ a><a class=\"pic\">"+Review[i].upvote+"<i class=\"fa fa-thumbs-up\" aria-hidden=\"true\" onclick=\"upvote("+Review[i].id_review+")\"></i> </ a><a style=\" margin-right:50px;float:right;font-size:15px;\">"+Review[i].revt+"</a> </div></td></tr>";
 					reviewhtml+=tmp;
 					}
 				 $('#review').html(reviewhtml);	

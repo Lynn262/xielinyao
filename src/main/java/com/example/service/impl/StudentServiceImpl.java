@@ -33,6 +33,26 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public boolean checkCredential(String id, String passwd) {
 		Student stu1 = this.studentDao.getStu(id);
-		return stu1.checkPW(passwd);
+
+		return stu1.checkSpw(passwd);
+
 	}
+	
+	@Override
+	public int updatesnickname(String Sno,String Snickname) {
+		
+
+		return studentDao.updatesnickname(Sno,Snickname);
+
+	}
+	
+	@Override
+	public int updatespw(String Sno,String Spw) {
+		
+
+		return studentDao.updatespw(Sno,Spw);
+
+	}
+	
+	
 }

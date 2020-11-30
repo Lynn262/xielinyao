@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="css/user_style.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		
+	</head>
+	<body onload="querystudent()">
+		<!-- 这是添加的界面的动态泡泡效果，嘻嘻 -->
+		<!-- <div id="tsparticles"  z-index:10;></div  z-index:1;>
+		<script src='js/tsparticles.min.js'></script>
+		<script src="js/script.js"></script> -->
+		<!-- 这是添加的界面的动态泡泡效果 -->
+		<table    style="text-align：center;border-width: 2px;border-radius: 10px;float: left;margin-left: 100px;margin-top: 80px;" width="250px" height="300px" align="left">
+		  <tr>
+		  	<td align="center" style="border-radius: 10px;border-width: 2px;background-color: #16a596;">
+		  				   个人基本信息
+		  			   </td>
+		  	</tr>
+		  <tr>
+			   <td align="left" style="border-radius: 10px;border-width: 2px;background-color:#16a596;" >
+				   昵称
+			   <div style="float:right" id="snickname">
+				   Sweet
+			   </div>
+			   </td>
+			 </tr>
+			  <tr>
+			   <td align="left" style="border-radius: 10px;border-width: 2px;background-color: #16a596;">
+				   姓名
+			   <div style="float:right" id="sname">
+			   	   武阗阗
+			   </div>
+			   </td>
+			 </tr>			 
+			  <tr>
+			   <td align="left" style="border-radius: 10px;background-color: #16a596;">
+				   学号
+			   <div style="float:right" id="sno">
+			   	    1181002035
+			   </div>
+			   </td>
+			 </tr>
+			 <tr>
+			   <td align="left" style="border-radius: 10px;border-width: 2px;background-color: #16a596;">
+			 				   账号有效期
+			   <div style="float:right" id="svalid">
+			   	   2022年9月1日
+			   </div>
+			   </td>
+			 </tr>
+		</table>
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script>
+		var sno="1181002035";
+		var newname1="";
+		var spw="";
+		
+		
+		function querystudent(){
+			var url="student/querystudent?Sno="+sno;
+			$.ajaxSettings.async = false;
+			$.get(url, function(student, status) {
+				 $('#snickname').html(student.snickname);
+				 $('#sname').html(student.sname);
+				 $('#sno').html(student.sno);
+				 $('#svalid').html(student.svalid);
+				  spw=student.spw;
+				  newname1 =student.snickname;
+			});
+		}
+		
+		
+		var newname2="";
+		var Password1="";
+		var  Password2="";
+		
+		
+		function updatesnickname(){
+			var url="student/updatesnickname?Sno="+sno+"&Snickname="+newname2;
+			$.ajaxSettings.async = false;
+			$.get(url, function(student, status) {
+				alert("修改成功！");
+			});
+		}
+		
+		
+		function updatespw(){
+			var url="student/updatespw?Sno="+sno+"&Spw="+Password2;
+			$.ajaxSettings.async = false;
+			$.get(url, function(student, status) {
+				alert("修改成功！");
+			});
+		}
+		
+		
+			function init()
+			{
+			newname2 = window.prompt("请输入您的新昵称", "");
+			if(newname1==newname2)
+			alert("修改失败，请不要重复输入！")
+			else
+			updatesnickname();						
+			}
+			
+			
+			function check(){
+				if(spw!=Password1){alert("不好意思旧密码错误");return 0;}
+				return 1;
+			}
+			
+			
+		        function Password_change()    //创建函数
+		        {
+			 Password1 = window.prompt("请输入您的旧密码", "");
+			 if(check()==1){
+			 Password2 = window.prompt("请输入您的新密码", "");
+		            if(Password1==Password2)
+		alert("修改失败，请不要重复输入！")
+		else
+		updatespw();
+			 }
+		        }
+		
+		
+		    </script>
+		<div class="buttons" style="position: absolute;left: 90px; top:400px;">
+		        <button onclick="init()">修改基本信息</button>
+				 </div>
+		<div class="buttons" style="position: absolute;left: 90px; top: 470px;">
+				          <button onclick="Password_change()">修改登录密码</button>
+				 		 </div>
+		       <div class="buttons" style="position: absolute;left:90px;top: 540px;">
+		                <button>发布评价</button>
+		       		 </div>
+		   
+			<div class="search-box">
+				<input class="search-txt" type="text" name="" placeholder="请输入教师/课程名称查询">
+				<a class="search-btn" herf="#">
+					<i class="fa fa-search"></i>
+				</a>
+			</div>
+		</div>
+		<div >
+			 <table  style="float: left;margin-left: 150px;margin-top: 80px;" cellspacing="10">
+			  <tbody>
+			    <tr>
+			      <td style="border-radius: 10px;height: 50px;background-color: #c7ecee;">
+			    	  <div>
+			    	  <div  style="text-align: center;">
+			    		  我的评价
+			    		  </div>
+			      </td>
+			    </tr>
+				<tr>
+			      <td style="border-radius: 10px;height: 220px;background-color: #c7ecee;">
+					  <div>
+					  <div  style="float:left; margin-left:120px;text-align: center;">
+						  操作系统
+						  </div>
+					  <div style="float:left;margin-left: 240px;text-align: center;">
+						  霍其润
+						  </div>
+					  </div>
+					  <div class="Cscore">
+						  <div style="font-size:16px;">
+						  教师素养：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					    <div style="margin-top:40px;font-size:16px;">
+						  课程难度：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					    <div style="margin-top:40px;font-size:16px;">
+						  受益程度：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					  </div>
+					  <div class="Comment">
+					  	Bruce·White:老师看着年轻但讲的好棒啊！
+					  </div>
+					  <div style="margin-top: 180px;">
+					    <a class="pic">
+					     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+					      </ a>
+					      <a class="pic">
+					     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+					      </ a>
+						  <a class="pic">
+							 <i class="fa fa-trash-o " aria-hidden="true"></i>
+							 </ a>
+						  <a style=" margin-right:50px;float:right;font-size:15px;">
+							  2020-11-24
+						  </a>
+							  <!-- 点赞，踩，举报所有的图标 -->
+					  </div>
+					 
+				  </td>
+			    </tr>
+			    <tr>
+			      <td style="border-radius: 10px;height: 220px;background-color: #c7ecee;">
+					  <div>
+					  <div  style="float:left; margin-left:120px;text-align: center;">
+						  计算机网络原理
+						  </div>
+					  <div style="float:left;margin-left: 240px;text-align: center;">
+						  陈文龙
+						  </div>
+					  </div>
+					  <div class="Cscore">
+						  <div style="font-size:16px;">
+						  教师素养：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					    <div style="margin-top:40px;font-size:16px;">
+						  课程难度：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					    <div style="margin-top:40px;font-size:16px;">
+						  受益程度：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					  </div>
+					  <div class="Comment">
+					  	日天：龙哥永远的神
+					  </div>
+					  <div style="margin-top: 180px;">
+					    <a class="pic">
+					     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+					      </ a>
+					      <a class="pic">
+					     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+					      </ a>
+							<a class="pic">
+							 <i class="fa fa-trash-o " aria-hidden="true"></i>
+							</ a>
+						  <a style=" margin-right:50px;float:right;font-size:15px;">
+							  2020-11-24
+						  </a>
+							  <!-- 点赞，踩，举报所有的图标 -->
+					  </div>
+				  </td>
+			    </tr>
+				 <tr>
+			      <td style="border-radius: 10px;height: 220px;background-color:#c7ecee;">
+					  <div>
+					   <div  style="float:left; margin-left:120px;text-align: center;">
+						  信息科学导论
+						  </div>
+					 <div style="float:left;margin-left: 240px;text-align: center;">
+						  柏玲
+						  </div>
+					  </div>
+					  <div class="Cscore">
+						  <div style="font-size:16px;">
+						  教师素养：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					    <div style="margin-top:40px;font-size:16px;">
+						  课程难度：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					    <div style="margin-top:40px;font-size:16px;">
+						  受益程度：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					  </div>
+					  <div class="Comment">
+					  	***：懂得都懂。
+					  </div>
+					  <div style="margin-top: 180px;">
+					    <a class="pic">
+					     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+					      </a>
+					      <a class="pic">
+					     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+					      </a>
+						  <a class="pic">
+						  <i class="fa fa-trash-o " aria-hidden="true"></i>
+						  	 </ a>
+						  <a style=" margin-right:50px;float:right;font-size:15px;">
+							  2020-11-24
+						  </a>
+							  <!-- 点赞，踩，举报所有的图标 -->
+					  </div>
+					 
+				  </td>
+			    </tr>
+			  </tbody>
+			</table>
+			 </div>
+		<!-- <div class="signup-form">
+			<form class="" action="register.html" method="post">
+				<h1>个人基本信息</h1>
+				<div style="float:left">
+					姓名：</div>
+				<div style="float:left">
+					<input type="text" placeholder="武阗阗" class="txtb">
+					</div>
+				<input type="text" placeholder="1181002035" class="txtb">
+				<input type="text" placeholder="Password" class="txtb">
+				<input type="text" placeholder="Password(请确认)" class="txtb">
+				<input type="text" placeholder="Password(请确认)" class="txtb">
+				<input type="submit" value="Create Account" class="signup-btn">
+				<a href="#">修改密码?</a>
+			</form>
+		</div> -->
+	</body>
+</html>

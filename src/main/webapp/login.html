@@ -26,14 +26,19 @@
 					dataType: 'json',
 					contentType: 'application/json',
 					success: function (response) {
-						console.log('received response');
-						//alert("先暂停一下");
-						alert("正确");
-						window.location.replace("mainpage2.html");
-						//alert("用户名或密码错误");
+
+						if(response == 1){
+							alert("登陆成功");
+							location.href = "/mainpage2.html";
+							window.event.returnValue=false;
+						}
+						else {
+							alert("用户名或密码错误");
+						}
 					},
 					error: function (response){
-						alert("请求失败")
+						alert("请求失败");
+
 					}
 				});
 				//return false;

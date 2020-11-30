@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+
 import com.example.pojo.Student;
 
 @Controller
@@ -28,23 +29,24 @@ public class AccountController {
     @PostMapping("/login")
     @ResponseBody
     public int login(HttpServletRequest request, @RequestBody Student acc1) {
-            String sno = acc1.getsno();
-            String passwd = acc1.getPW();
-            System.out.println(sno);
-            System.out.println(passwd);
-            Student stu1 = this.studentService.getStu(sno);
-            if(stu1 != null){ //首先检查是否是以学生身份登录
-                if(this.studentService.checkCredential(sno, passwd)){
-                    request.getSession().setAttribute("sno", sno);
+        String sno = acc1.getSno();
+        String passwd = acc1.getSpw();
+        System.out.println(sno);
+        System.out.println(passwd);
+        Student stu1 = this.studentService.getStu(sno);
+        if(stu1 != null){ //首先检查是否是以学生身份登录
+            if(this.studentService.checkCredential(sno, passwd)){
+                request.getSession().setAttribute("sno", sno);
 
-                }
-                else{ //如果是以学生身份登录但是登录凭证不正确
-                    return 0;
-                }
+                return 1;
             }
-            else{ //再检查是否是以管理员身份登录
+            else{ //如果是以学生身份登录但是登录凭证不正确
+                return 0;
+            }
+        }
+        else{ //再检查是否是以管理员身份登录
 
-            }
-        return 1;
+        }
+        return 0;
     }
 }
