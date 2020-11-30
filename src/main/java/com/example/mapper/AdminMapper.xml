@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><!--规则 格式-->
+<mapper namespace="com.example.dao.AdminDao">
+
+    <select id="getAdmin" parameterType="String" resultType="Administrator">
+        SELECT * FROM Administrator where (Ano=#{ano})
+    </select>
+
+</mapper>
