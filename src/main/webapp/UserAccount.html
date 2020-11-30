@@ -94,38 +94,73 @@
 				alert("修改成功！");
 			});
 		}
-		
-		
-			function init()
-			{
+
+
+		function init()
+		{
 			newname2 = window.prompt("请输入您的新昵称", "");
 			if(newname1==newname2)
-			alert("修改失败，请不要重复输入！")
+				alert("修改失败，请不要重复输入！")
 			else
-			updatesnickname();						
+				updatesnickname();
+		}
+
+
+		function check(){
+			if(spw!=Password1){alert("不好意思旧密码错误");return 0;}
+			return 1;
+		}
+
+		function show(Review){
+			var num=Review.length;
+			var tmp = "";
+			var reviewhtml="";
+			for (var i=0;i<num;i++)
+			{
+
+				tmp="  <tr><td style=\"border: none;border-radius: "+
+						"10px;height: 220px;background-color: #c7ecee;\"><div><div  style=\"float:left; margin-left:120px;text-align: center;\">"+Review[i].cname+"</div> <div style=\"float:left;margin-left: 240px;text-align: center;\">"+Review[i].pname+"</div></div><div class=\"Cscore\"><div style=\"font-size:16px;\">  教师素养：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].quality+"</div><div style=\"margin-top:40px;font-size:16px;\"> 课程难度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].difficulty+"</div><div style=\"margin-top:40px;font-size:16px;\"> 受益程度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].quality+"</div></div><div class=\"Comment\">"+Review[i].snickname+":"+Review[i].comment+"</div><div style=\"margin-top: 180px;\"><a class=\"pic\" onclick=\"tryDele("+Review[i].id_review+")\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>  </ a><a class=\"pic\">"+Review[i].downvote+"<i class=\"fa fa-thumbs-down\" aria-hidden=\"true\" onclick=\"downvote("+Review[i].id_review+")\"></i>  </ a><a class=\"pic\">"+Review[i].upvote+"<i class=\"fa fa-thumbs-up\" aria-hidden=\"true\" onclick=\"upvote("+Review[i].id_review+")\"></i> </ a><a style=\" margin-right:50px;float:right;font-size:15px;\">"+Review[i].revt+"</a> </div></td></tr>";
+				reviewhtml+=tmp;
 			}
-			
-			
-			function check(){
-				if(spw!=Password1){alert("不好意思旧密码错误");return 0;}
-				return 1;
+			$('#review').html(reviewhtml);
+		}
+
+		function tryDele(id_review){ //像后端发送删除评价的请求
+			var url1 = "/review/tryDele?id_review="+id_review;
+			$.ajax({
+				type: "POST",
+				url: url1,
+				async: false,
+				success: function (response){
+					if(response == 0){
+						alert("删除失败");
+					}
+				}
+			})
+		}
+
+		function Password_change()//创建函数
+		{
+			Password1 = window.prompt("请输入您的旧密码", "");
+			if(check()==1){
+				Password2 = window.prompt("请输入您的新密码", "");
+				if(Password1==Password2)
+					alert("修改失败，请不要重复输入！")
+				else
+					updatespw();
 			}
-			
-			
-		        function Password_change()    //创建函数
-		        {
-			 Password1 = window.prompt("请输入您的旧密码", "");
-			 if(check()==1){
-			 Password2 = window.prompt("请输入您的新密码", "");
-		            if(Password1==Password2)
-		alert("修改失败，请不要重复输入！")
-		else
-		updatespw();
-			 }
-		        }
+		}
+
+		$(document).ready(function(){
+			sno = "1181002035";
+			var url="review/queryByStu?Sno="+sno;
+			$.ajaxSettings.async = false;
+			$.get(url, function(Review, status) {
+				show(Review);
+			});
+		});
 		
-		
-		    </script>
+		</script>
 		<div class="buttons" style="position: absolute;left: 90px; top:400px;">
 		        <button onclick="init()">修改基本信息</button>
 				 </div>
@@ -143,7 +178,7 @@
 				</a>
 			</div>
 		</div>
-		<div >
+		<div>
 			 <table  style="float: left;margin-left: 150px;margin-top: 80px;" cellspacing="10">
 			  <tbody>
 			    <tr>
@@ -154,7 +189,7 @@
 			    		  </div>
 			      </td>
 			    </tr>
-				<tr>
+				<tr id="review">
 			      <td style="border-radius: 10px;height: 220px;background-color: #c7ecee;">
 					  <div>
 					  <div  style="float:left; margin-left:120px;text-align: center;">
@@ -200,113 +235,6 @@
 						  <a class="pic">
 							 <i class="fa fa-trash-o " aria-hidden="true"></i>
 							 </ a>
-						  <a style=" margin-right:50px;float:right;font-size:15px;">
-							  2020-11-24
-						  </a>
-							  <!-- 点赞，踩，举报所有的图标 -->
-					  </div>
-					 
-				  </td>
-			    </tr>
-			    <tr>
-			      <td style="border-radius: 10px;height: 220px;background-color: #c7ecee;">
-					  <div>
-					  <div  style="float:left; margin-left:120px;text-align: center;">
-						  计算机网络原理
-						  </div>
-					  <div style="float:left;margin-left: 240px;text-align: center;">
-						  陈文龙
-						  </div>
-					  </div>
-					  <div class="Cscore">
-						  <div style="font-size:16px;">
-						  教师素养：<i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-					    </div>
-					    <div style="margin-top:40px;font-size:16px;">
-						  课程难度：<i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-					    </div>
-					    <div style="margin-top:40px;font-size:16px;">
-						  受益程度：<i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-					    </div>
-					  </div>
-					  <div class="Comment">
-					  	日天：龙哥永远的神
-					  </div>
-					  <div style="margin-top: 180px;">
-					    <a class="pic">
-					     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
-					      </ a>
-					      <a class="pic">
-					     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
-					      </ a>
-							<a class="pic">
-							 <i class="fa fa-trash-o " aria-hidden="true"></i>
-							</ a>
-						  <a style=" margin-right:50px;float:right;font-size:15px;">
-							  2020-11-24
-						  </a>
-							  <!-- 点赞，踩，举报所有的图标 -->
-					  </div>
-				  </td>
-			    </tr>
-				 <tr>
-			      <td style="border-radius: 10px;height: 220px;background-color:#c7ecee;">
-					  <div>
-					   <div  style="float:left; margin-left:120px;text-align: center;">
-						  信息科学导论
-						  </div>
-					 <div style="float:left;margin-left: 240px;text-align: center;">
-						  柏玲
-						  </div>
-					  </div>
-					  <div class="Cscore">
-						  <div style="font-size:16px;">
-						  教师素养：<i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-					    </div>
-					    <div style="margin-top:40px;font-size:16px;">
-						  课程难度：<i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-					    </div>
-					    <div style="margin-top:40px;font-size:16px;">
-						  受益程度：<i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-							  <i class="fa fa-star-o" aria-hidden="true"></i>
-					    </div>
-					  </div>
-					  <div class="Comment">
-					  	***：懂得都懂。
-					  </div>
-					  <div style="margin-top: 180px;">
-					    <a class="pic">
-					     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
-					      </a>
-					      <a class="pic">
-					     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
-					      </a>
-						  <a class="pic">
-						  <i class="fa fa-trash-o " aria-hidden="true"></i>
-						  	 </ a>
 						  <a style=" margin-right:50px;float:right;font-size:15px;">
 							  2020-11-24
 						  </a>

@@ -7,10 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.pojo.Review;
 import com.example.pojo.ReviewFront;
@@ -31,7 +28,14 @@ public class ReviewController {
 		List<ReviewFront> list =reviewService.queryall();
 		return list;
 	}
-	
+
+	@GetMapping("/queryByStu") //查询某个学生发布的所有评价
+	@ResponseBody
+	public List<ReviewFront> queryByStu(String Sno){
+		List<ReviewFront> list = reviewService.queryByStu(Sno);
+		return list;
+	}
+
 	@RequestMapping("/saveRev")//查询所有评价
 	@ResponseBody
 	public int saveRev(@RequestBody Review reviewVo) {
@@ -52,5 +56,20 @@ public class ReviewController {
 		
 		return reviewService.downvote(id_review);
 	}
-	//这是一个github push测试
+
+	@PostMapping("/tryDele")
+	@ResponseBody
+	public int tryDele(int id_review){ //尝试申请删除评价
+		Review rev1 = reviewService.getRev(id_review);
+		if(rev1 != null){
+			if(rev1.getSno().equals("1181002035")){ //仅供占位用，用于确认用户是否有权限请求删除该评价，部署时应利用session中保存的sno
+				if(reviewService.tryDele(id_review)){
+					return 1;
+				}
+				System.out.println("删除失败");
+			}
+			System.out.println("sno不对");
+		}
+		return 0;
+	}
 }

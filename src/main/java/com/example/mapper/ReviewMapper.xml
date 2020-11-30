@@ -23,5 +23,19 @@
   		UPDATE review SET downvote=downvote+1 WHERE id_review=(#{id_review})
   
   </update>
+
+    <select id="queryByStu" parameterType="String" resultType="reviewfront">
+        SELECT id_review,Snickname,Cname,Pname,Revt,Comment,difficulty,quality,upvote,downvote
+        FROM review,student,course,professor
+        WHERE student.Sno=review.Sno AND course.Cno=review.Cno AND professor.Pno=review.Pno AND review.Sno = (#{sno});
+    </select>
+
+    <select id="getRev" parameterType="int" resultType="review">
+        SELECT * FROM review where (id_review = #{id_review})
+    </select>
+
+    <update id="modState" parameterType="int">
+        UPDATE review set state=(#{n}) WHERE id_review=(#{id_review})
+    </update>
     
 </mapper>

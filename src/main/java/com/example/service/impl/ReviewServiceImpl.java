@@ -37,5 +37,29 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDao.downvote(id_review);
 	}
 
-	 
+	@Override
+	public List<ReviewFront> queryByStu(String sno) {
+		return reviewDao.queryByStu(sno);
+	}
+
+	/**
+	 * @param id_review 需要更改状态的评价的id
+	 * @return 如果评价已被举报则返回false，如果评价可以被申请删除则返回true
+	 */
+	@Override
+	public boolean tryDele(int id_review) {
+		Review rev1 = reviewDao.getRev(id_review);
+		if(rev1.getState() > 2){ //如果评价已经被举报，则返回0
+			return false;
+		}
+		else{
+			reviewDao.modState(id_review, 2);
+			return true;
+		}
+	}
+
+	@Override
+	public Review getRev(int id_review) {
+		return reviewDao.getRev(id_review);
+	}
 }

@@ -14,5 +14,11 @@ public interface ReviewService {
 	int upvote(int id_review);
 	
 	int downvote(int id_review);
-	
+
+	List<ReviewFront> queryByStu(String sno);
+
+	boolean tryDele(int id_review);
+
+	Review getRev(int id_review);
+
 }
