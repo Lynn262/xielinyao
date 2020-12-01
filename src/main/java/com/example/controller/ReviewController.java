@@ -66,9 +66,7 @@ public class ReviewController {
 				if(reviewService.tryDele(id_review)){
 					return 1;
 				}
-				System.out.println("删除失败");
 			}
-			System.out.println("sno不对");
 		}
 		return 0;
 	}
@@ -78,5 +76,17 @@ public class ReviewController {
 	public List<ReviewFront> queryreview(String PCname) {
 		List<ReviewFront> list =reviewService.queryreview(PCname);
 		return list;
+	}
+
+	@PostMapping("/reportRev") //举报评价
+	@ResponseBody
+	public int reportRev(int id_review){
+		Review rev1 = reviewService.getRev(id_review);
+		if(rev1 != null){
+			if(reviewService.reportRev(id_review)){
+				return 1;
+			}
+		}
+		return 0;
 	}
 }

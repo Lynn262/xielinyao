@@ -67,4 +67,16 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewFront> queryreview(String PCname)  {
 		return reviewDao.queryreview( PCname);
 	}
+
+	@Override
+	public boolean reportRev(int id_review) {
+		Review rev1 = reviewDao.getRev(id_review);
+		if(rev1.getState() == 1){ //如果评价处于有效状态则更改其状态为被举报
+			reviewDao.modState(id_review, 3);
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }
