@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="css/user_style2.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/tanchuang_user.css">
+		
+	</head>
+	<body onload="querystudent()">
+		<!-- 这是添加的界面的动态泡泡效果，嘻嘻 -->
+		<!-- <div id="tsparticles"  z-index:10;></div  z-index:1;>
+		<script src='js/tsparticles.min.js'></script>
+		<script src="js/script.js"></script> -->
+		<!-- 这是添加的界面的动态泡泡效果 -->
+		<table class="table1">
+		  <tr >
+		  	<td class="sweet" colspan="2">个人基本信息</td>
+			<td ></td>
+			</tr>
+		  <tr>
+			   <td class="td2" >
+				   昵称
+			   </td>
+			   <td class="td3" id="snickname">
+				   Sweet
+			   </td>
+			 </tr>
+			  <tr>
+			   <td class="td2">
+				   姓名
+			   </td>
+			   <td class="td3" id="sname">
+			   	   武阗阗
+			   </td>
+			 </tr>			 
+			  <tr>
+			   <td class="td2">
+				   学号
+			   </td>
+			   <td class="td3" id="sno">
+			   	    1181002035
+			   </td>
+			 </tr>
+			 <tr>
+			   <td class="td2">
+			 	  账号有效期
+			   </td>
+			   <td class="td3" id="svalid">
+			   	   2022年9月1日
+			   </td>
+			 </tr>
+		</table>
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script>
+		var sno="1181002035";
+		var newname1="";
+		var spw="";
+		
+		
+		function querystudent(){
+			var url="student/querystudent?Sno="+sno;
+			$.ajaxSettings.async = false;
+			$.get(url, function(student, status) {
+				 $('#snickname').html(student.snickname);
+				 $('#sname').html(student.sname);
+				 $('#sno').html(student.sno);
+				 $('#svalid').html(student.svalid);
+				  spw=student.spw;
+				  newname1 =student.snickname;
+			});
+		}
+		
+		
+		var newname2="";
+		var Password1="";
+		var  Password2="";
+		
+		
+		function updatesnickname(){
+			var url="student/updatesnickname?Sno="+sno+"&Snickname="+newname2;
+			$.ajaxSettings.async = false;
+			$.get(url, function(student, status) {
+				alert("修改成功！");
+			});
+		}
+		
+		
+		function updatespw(){
+			var url="student/updatespw?Sno="+sno+"&Spw="+Password2;
+			$.ajaxSettings.async = false;
+			$.get(url, function(student, status) {
+				alert("修改成功！");
+			});
+		}
+
+
+		
+
+
+		function check(){
+			if(spw!=Password1){alert("不好意思旧密码错误");return 0;}
+			return 1;
+		}
+
+		function show(Review){
+			var num=Review.length;
+			var tmp = "";
+			var reviewhtml="";
+			for (var i=0;i<num;i++)
+			{
+
+				tmp="  <tr><td style=\"border: none;border-radius: "+
+						"10px;height: 220px;background-color: #e8e8e8;\"><div><div  style=\"float:left; margin-left:120px;text-align: center;\">"+Review[i].cname+"</div> <div style=\"float:left;margin-left: 240px;text-align: center;\">"+Review[i].pname+"</div></div><div class=\"Cscore\"><div style=\"font-size:16px;\">  教师素养：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].quality+"</div><div style=\"margin-top:40px;font-size:16px;\"> 课程难度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].difficulty+"</div><div style=\"margin-top:40px;font-size:16px;\"> 受益程度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"+Review[i].quality+"</div></div><div class=\"Comment\">"+Review[i].snickname+":"+Review[i].comment+"</div><div style=\"margin-top: 180px;\"><a class=\"pic\" onclick=\"tryDele("+Review[i].id_review+")\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>  </ a><a class=\"pic\">"+Review[i].downvote+"<i class=\"fa fa-thumbs-down\" aria-hidden=\"true\" onclick=\"downvote("+Review[i].id_review+")\"></i>  </ a><a class=\"pic\">"+Review[i].upvote+"<i class=\"fa fa-thumbs-up\" aria-hidden=\"true\" onclick=\"upvote("+Review[i].id_review+")\"></i> </ a><a style=\" margin-right:50px;float:right;font-size:15px;\">"+Review[i].revt+"</a> </div></td></tr>";
+				reviewhtml+=tmp;
+			}
+			$('#review').html(reviewhtml);
+		}
+
+		function tryDele(id_review){ //像后端发送删除评价的请求
+			var url1 = "/review/tryDele?id_review="+id_review;
+			$.ajax({
+				type: "POST",
+				url: url1,
+				async: false,
+				success: function (response){
+					if(response == 0){
+						alert("删除失败");
+					}
+				}
+			})
+		}
+
+		
+
+		$(document).ready(function(){
+			sno = "1181002035";
+			var url="review/queryByStu?Sno="+sno;
+			$.ajaxSettings.async = false;
+			$.get(url, function(Review, status) {
+				show(Review);
+			});
+		});
+		
+		</script>
+		<div class="buttons" style="position: absolute;left: 1100px; top:120px;">
+		        <button onclick="dianwo()">修改基本信息</button>
+				<div class="zhezhao" id='zhezhao'>
+					<div class="tankuang">
+						<div id="header">
+							<span class="h1">修改个人信息</span>
+							<span class="h2">提示：您只能对昵称进行修改</span>
+							<span class="h3" >请输入新昵称：</span>
+							<!-- 下面是点击×可以剪掉网页的设置 -->
+							<div id="header-right" onclick="hidder()">x</div>
+							<input type="text" name="d1" id="d3"  class="switch"/>
+						    <input type="submit" name="" id="" value="提交信息" class="submit1" onclick="sub2()"/>
+						</div>
+					</div>
+				</div>
+				 </div>
+		<div class="buttons" style="position: absolute;left: 1100px; top: 190px;">
+				<button onclick="dianwo1()">修改登录密码</button> <!-- onclick="dianwo1()" -->
+				 	<div class="zhezhao1" id='zhezhao1'>
+				 		<div class="tankuang1">
+				 			<div id="header">
+				 				<span class="h1">修改登陆密码</span>
+				 				<!-- 下面是点击×可以剪掉网页的设置 -->
+				 				<div id="header-right" onclick="hidder1()">x</div>
+				 				<input type="password" name="d1" id="d1" placeholder="请输入旧密码" class="switch1"/>
+								<input type="password" name="d1" id="d2" placeholder="请输入您的新密码" class="switch2"/>
+				 			    <input type="submit" name="" id="" value="提交修改" class="submit1" onclick="sub()"/>
+				 			</div>
+				 		</div>
+				 	</div>	 
+		</div>
+		       <div class="buttons" style="position: absolute;left:1100px;top: 260px;">
+		                <button >发布评价</button>
+		       		 </div>
+		   <!-- 这是弹窗的js代码 -->
+		   <script>
+		   		function sub(){//这是修改密码的提交函数
+		   			Password1 = document.getElementById("d1").value;
+		   			if(check()==1){
+						Password2 = document.getElementById("d2").value;
+						if(Password1==Password2)
+							alert("修改失败，请不要重复输入！")
+						else
+							updatespw();
+					}
+		   			}
+		   		
+		   		function sub2(){//这是修改昵称的提交函数
+		   			newname2 = document.getElementById("d3").value;
+		   			if(newname1==newname2)
+						alert("修改失败，请不要重复输入！")
+					else
+						updatesnickname();
+		   			}
+		   		</script>
+		   		<script type="text/javascript">
+		   			document.getElementById('zhezhao').style.display="none";
+		   			function dianwo(){
+		   				document.getElementById('zhezhao').style.display="";
+		   			}
+		   			function hidder(){
+		   				document.getElementById('zhezhao').style.display="none";
+		   			}
+					</script>
+				<script>
+					document.getElementById('zhezhao1').style.display="none";
+					function dianwo1(){
+					document.getElementById('zhezhao1').style.display="";
+					}
+					function hidder1(){
+						document.getElementById('zhezhao1').style.display="none";
+					}
+		   		</script>
+			<!-- 这是弹窗的js代码 -->
+			<div class="search-box">
+				<input class="search-txt" type="text" name="" placeholder="请输入教师/课程名称查询">
+				<a class="search-btn" herf="#">
+					<i class="fa fa-search"></i>
+				</a>
+			</div>
+		</div>
+		<div>
+			 <table  style="float: left;margin-left: 110px;margin-top: 100px;" cellspacing="10">
+			  <tbody>
+			    <tr>
+			      <td style="border-radius: 10px;height: 50px;background-color: #495464;">
+			    	  <div>
+			    	  <div  style="text-align: center;color: white;">
+			    		  我的评价
+			    		  </div>
+			      </td>
+			    </tr>
+				<tr id="review">
+			      <td style="border-radius: 10px;height: 220px;background-color: #e8e8e8;">
+					  <div>
+					  <div  style="float:left; margin-left:120px;text-align: center;">
+						  操作系统
+						  </div>
+					  <div style="float:left;margin-left: 240px;text-align: center;">
+						  霍其润
+						  </div>
+					  </div>
+					  <div class="Cscore">
+						  <div style="font-size:16px;">
+						  教师素养：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					    <div style="margin-top:40px;font-size:16px;">
+						  课程难度：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					    <div style="margin-top:40px;font-size:16px;">
+						  受益程度：<i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+							  <i class="fa fa-star-o" aria-hidden="true"></i>
+					    </div>
+					  </div>
+					  <div class="Comment">
+					  	Bruce·White:老师看着年轻但讲的好棒啊！
+					  </div>
+					  <div style="margin-top: 180px;">
+					    <a class="pic">
+					     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+					      </ a>
+					      <a class="pic">
+					     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+					      </ a>
+						  <a class="pic">
+							 <i class="fa fa-trash-o " aria-hidden="true"></i>
+							 </ a>
+						  <a style=" margin-right:50px;float:right;font-size:15px;">
+							  2020-11-24
+						  </a>
+							  <!-- 点赞，踩，举报所有的图标 -->
+					  </div>
+					 
+				  </td>
+			    </tr>
+			  </tbody>
+			</table>
+			 </div>
+		<!-- <div class="signup-form">
+			<form class="" action="register.html" method="post">
+				<h1>个人基本信息</h1>
+				<div style="float:left">
+					姓名：</div>
+				<div style="float:left">
+					<input type="text" placeholder="武阗阗" class="txtb">
+					</div>
+				<input type="text" placeholder="1181002035" class="txtb">
+				<input type="text" placeholder="Password" class="txtb">
+				<input type="text" placeholder="Password(请确认)" class="txtb">
+				<input type="text" placeholder="Password(请确认)" class="txtb">
+				<input type="submit" value="Create Account" class="signup-btn">
+				<a href="#">修改密码?</a>
+			</form>
+		</div> -->
+	</body>
+</html>

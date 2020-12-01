@@ -1,0 +1,183 @@
+ body{
+ 	margin: 0px;
+ }
+ .h1{
+	 position: absolute;
+	 left: 40%;
+	 top: 10%;
+	 color: #000000;
+	 font-size: 20px;
+ }
+ .h2{
+ 	 position: absolute;
+ 	 left: 26%;
+ 	 top: 23%;
+ 	 color: #000000;
+ 	 font-size: 20px;
+ }
+ .h3{
+ 	 position: absolute;
+ 	 left: 40%;
+ 	 top: 35%;
+ 	 color: #000000;
+ 	 font-size: 20px;
+ }
+ .switch{
+	 position: absolute;
+	 left: 30%;
+	 top: 45%;
+	 color: #000000;
+	 font-size: 15px;
+     border: 0;
+     background:none;
+     display: block;
+     margin: 20px auto;
+     text-align:center;
+     border:2px solid #3498db;
+     padding: 14px 10px;
+     width: 200px;
+     outline: none;
+    border-radius: 24px;
+    transition: 0.25s;
+ }
+ .switch:focus{
+ 	width:240px;
+ 	border-color: #2ecc71;
+ 	}
+	.switch1{
+		 position: absolute;
+		 left: 30%;
+		 top: 25%;
+		 color: #000000;
+		 font-size: 15px;
+	    border: 0;
+	    background:none;
+	    display: block;
+	    margin: 20px auto;
+	    text-align:center;
+	    border:2px solid #3498db;
+	    padding: 14px 10px;
+	    width: 200px;
+	    outline: none;
+	   border-radius: 24px;
+	   transition: 0.25s;
+	}
+	.switch1:focus{
+		width:240px;
+		border-color: #2ecc71;
+		}
+.switch2{
+		 position: absolute;
+		 left: 30%;
+		 top: 45%;
+		 color: #000000;
+		 font-size: 15px;
+	    border: 0;
+	    background:none;
+	    display: block;
+	    margin: 20px auto;
+	    text-align:center;
+	    border:2px solid #3498db;
+	    padding: 14px 10px;
+	    width: 200px;
+	    outline: none;
+	   border-radius: 24px;
+	   transition: 0.25s;
+	}
+	.switch2:focus{
+		width:240px;
+		border-color: #2ecc71;
+		}
+	/* 这里设置一个流光按钮咋样？ */
+ .submit1{
+ 	 position: absolute;
+ 	 left: 44%;
+ 	 top: 75%;
+ 	 color: #000000;
+ 	 font-size: 15px;
+	 height: 40px;
+	 border-radius: 10px;
+ }
+ .text1{
+	 position: absolute;
+	 left: 25%;
+	 top: 50%;
+	 color: #000000;
+	 font-size: 20px;
+	 width: 400px;
+	 height: 50px;
+ }
+ .text2{
+ 	 position: absolute;
+ 	 left: 25%;
+ 	 top: 30%;
+ 	 color: #000000;
+ 	 font-size: 20px;
+ 	 width: 400px;
+ 	 height: 50px;
+ }
+ .text3{
+ 	 position: absolute;
+ 	 left: 25%;
+ 	 top: 30%;
+ 	 color: #000000;
+ 	 font-size: 20px;
+ 	 width: 400px;
+ 	 height: 50px;
+ }
+ .zhezhao{
+	            				position: fixed;
+	            				left: 0px;
+	            				top: 0px;
+	            				background: #495464;
+	            				width: 100%;
+	            				height: 100%;
+	            				/* opacity: 0.5; 这里面让弹窗全部都变成半透明，不是很好看*/
+								background: rgba(0,0,0,0.5);
+	            			}
+	            			.tankuang{
+	            				position: relative;
+	            				background: #ffffff;
+								top: 30px;
+	            				width: 40%;
+	            				height: 50%;
+	            				border-radius: 5px;
+	            				margin: 5% auto;
+	            			}
+.zhezhao1{
+	position: fixed;
+								            				left: 0px;
+								            				top: 0px;
+								            				background: #495464;
+								            				width: 100%;
+								            				height: 100%;
+								            				/* opacity: 0.5; 这里面让弹窗全部都变成半透明，不是很好看*/
+															background: rgba(0,0,0,0.5);
+								            			}
+								            			.tankuang1{
+								            				position: relative;
+								            				background: #ffffff;
+															top: 30px;
+								            				width: 40%;
+								            				height: 50%;
+								            				border-radius: 5px;
+								            				margin: 5% auto;
+								            			}
+	            			#header{
+	            				height: 40px;
+	            			}
+	           #header-right{
+				position: absolute;
+				width: 25px;
+				height: 25px;
+				border-radius: 5px;
+				background: red;
+				color: #fff;
+				right: 5px;
+				top: 5px;
+				text-align: center;
+			}
+			#header-right:hover{
+				cursor: pointer;
+			}
+			
