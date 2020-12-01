@@ -27,4 +27,6 @@ public interface ReviewDao {
 	 * @param n 将该评价的状态更改至多少
 	 */
 	void modState(int id_review, int n);
+	
+	List<ReviewFront> queryreview(String PCname);
 }

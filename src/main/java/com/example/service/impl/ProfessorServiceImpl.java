@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.dao.ProfessorDao;
 import com.example.pojo.Professor;
+import com.example.pojo.Student;
 import com.example.service.ProfessorService;
 
 @Service
@@ -22,5 +23,14 @@ public class ProfessorServiceImpl implements ProfessorService {
 		return professorDao.getPrf(Pno);
 	}
 
+	@Override
+	public int savePrf(Professor professorVo) {
+		return professorDao.savePrf(professorVo);
+	}
+	
+	@Override
+	public int deletePrf(String Pno) {
+		return professorDao.deletePrf(Pno);
+	}
 	 
 }

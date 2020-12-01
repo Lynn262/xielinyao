@@ -8,5 +8,15 @@
          SELECT * FROM professor where ( Pno=#{Pno}) 
     </select>
   
+   <insert id="savePrf"  parameterType="professor">
+     INSERT 
+        INTO Student(Sno,Sname,Snickname,Spw,Syear,Sgender,Smail,Svalid,Sstate)
+        VALUES(#{Sno},#{Sname},#{Snickname},#{Spw},#{Syear},#{Sgender},#{Smail},#{Svalid},#{Sstate});
+    </insert>
     
+    <delete id="deletePrf" parameterType="String">
+     DELETE 
+        FROM Professor 
+        WHERE Pno=#{Pno};
+    </delete>
 </mapper>

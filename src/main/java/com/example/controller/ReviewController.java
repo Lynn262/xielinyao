@@ -72,4 +72,11 @@ public class ReviewController {
 		}
 		return 0;
 	}
+	
+	@GetMapping("/queryreview")//查询与pcno匹配的部分评价
+	@ResponseBody
+	public List<ReviewFront> queryreview(String PCname) {
+		List<ReviewFront> list =reviewService.queryreview(PCname);
+		return list;
+	}
 }

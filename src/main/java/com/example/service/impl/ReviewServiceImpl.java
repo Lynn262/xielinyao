@@ -62,4 +62,9 @@ public class ReviewServiceImpl implements ReviewService {
 	public Review getRev(int id_review) {
 		return reviewDao.getRev(id_review);
 	}
+	
+	@Override
+	public List<ReviewFront> queryreview(String PCname)  {
+		return reviewDao.queryreview( PCname);
+	}
 }

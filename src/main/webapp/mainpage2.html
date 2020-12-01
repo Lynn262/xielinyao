@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/style2.css">
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<title>Document</title>	
 	</head>
@@ -37,6 +37,17 @@
 					//当鼠标离开的时候，div元素位置恢复到0，下面的placeholder是占位符
 					btm.style.left="0px";
 				}
+			}
+			
+			var PCname="";
+			function searchreview(){
+				PCname=document.getElementsByTagName("searchreview");
+				var url="review/queryreview?PCname="+PCname;
+				$.ajaxSettings.async = false;
+				$.get(url, function(Review, status) {
+					show(Review);
+				});
+				
 			}
 			
 			function searchall(){
@@ -80,9 +91,9 @@
 			}
 		</script>
 		<div class="search-box">
-			<input class="search-txt" type="text" name="" placeholder="请输入教师/课程名称查询">
+			<input class="search-txt" type="text" name="" placeholder="请输入教师/课程名称查询" id="searchreview">
 			<a class="search-btn" herf="#">
-				<i class="fa fa-search"></i>
+				<i class="fa fa-search" onclick="searchreview()"></i>
 			</a>
 		</div>
 	 <!--白恩昊上届-->

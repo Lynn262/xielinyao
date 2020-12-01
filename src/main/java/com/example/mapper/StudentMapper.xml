@@ -19,4 +19,16 @@
         SET Spw=#{Spw}
         WHERE ( Sno=#{Sno})
     </update>
+    
+    <insert id="saveStu"  parameterType="student">
+     INSERT 
+        INTO Student(Sno,Sname,Snickname,Spw,Syear,Sgender,Smail,Svalid,Sstate)
+        VALUES(#{Sno},#{Sname},#{Snickname},#{Spw},#{Syear},#{Sgender},#{Smail},#{Svalid},#{Sstate});
+    </insert>
+    
+    <delete id="deleteStu" parameterType="String">
+     DELETE 
+        FROM Student 
+        WHERE Sno=#{Sno};
+    </delete>
 </mapper>

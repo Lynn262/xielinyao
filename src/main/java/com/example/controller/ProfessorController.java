@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.pojo.Professor;
-
+import com.example.pojo.Student;
 import com.example.service.ProfessorService;
 
 @Controller
@@ -32,5 +32,16 @@ public class ProfessorController {
 		return professor;
 	}
 	
+	@RequestMapping("/savePrf")//查询所有评价
+	@ResponseBody
+	public int savePrf(@RequestBody Professor professorVo) {
+		return professorService.savePrf(professorVo);
+	}
+	
+	@RequestMapping("/deletePrf")//查询所有评价
+	@ResponseBody
+	public int deletePrf(String Pno) {
+		return professorService.deletePrf(Pno);
+	}
 	
 }

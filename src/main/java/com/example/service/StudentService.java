@@ -2,6 +2,8 @@ package com.example.service;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.RequestBody;
+
 import com.example.pojo.Student;
 
 public interface StudentService {
@@ -19,6 +21,8 @@ public interface StudentService {
 	
 	int updatespw(String Sno,String Spw);
 	
-	
+	 int saveStu(Student studentVo);
+	 
+	int deleteStu(String Sno);
 
 }

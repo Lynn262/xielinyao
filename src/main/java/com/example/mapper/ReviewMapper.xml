@@ -38,4 +38,8 @@
         UPDATE review set state=(#{n}) WHERE id_review=(#{id_review})
     </update>
     
+    <select id="queryreview"  resultType="reviewfront">
+    
+    </select>
+    
 </mapper>

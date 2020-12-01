@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.pojo.Review;
 import com.example.pojo.Student;
 
 import com.example.service.StudentService;
@@ -46,6 +47,19 @@ public class StudentController {
 		
 		return studentService.updatespw(Sno,Spw);
 	}
+	
+	@RequestMapping("/saveStu")//查询所有评价
+	@ResponseBody
+	public int saveStu(@RequestBody Student studentVo) {
+		return studentService.saveStu(studentVo);
+	}
+	
+	@RequestMapping("/deleteStu")//查询所有评价
+	@ResponseBody
+	public int deleteStu(String Sno) {
+		return studentService.deleteStu(Sno);
+	}
+	
 	
 	
 	

@@ -17,5 +17,8 @@ public interface StudentDao {
 	
 	int updatespw(String Sno,String Spw);
 	
+	int saveStu(Student studentVo);
+	
+	int deleteStu(String Sno);
 	
 }

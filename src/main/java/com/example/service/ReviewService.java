@@ -20,5 +20,7 @@ public interface ReviewService {
 	boolean tryDele(int id_review);
 
 	Review getRev(int id_review);
+	
+	List<ReviewFront> queryreview(String PCname);
 
 }

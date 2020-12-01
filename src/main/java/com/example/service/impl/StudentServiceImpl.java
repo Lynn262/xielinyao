@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.dao.StudentDao;
+import com.example.pojo.Review;
 import com.example.pojo.Student;
 import com.example.service.StudentService;
 
@@ -52,6 +53,15 @@ public class StudentServiceImpl implements StudentService {
 
 		return studentDao.updatespw(Sno,Spw);
 
+	}
+	@Override
+	public int saveStu(Student studentVo) {
+		return studentDao.saveStu(studentVo);
+	}
+	
+	@Override
+	public int deleteStu(String Sno) {
+		return studentDao.deleteStu(Sno);
 	}
 	
 	
