@@ -54,7 +54,7 @@
 			}
 
 			function searchreview(){
-				PCname=document.getElementsByTagName("searchreview");
+				PCname=document.getElementById("searchreview").value;
 				var url="review/queryreview?PCname="+PCname;
 				$.ajaxSettings.async = false;
 				$.get(url, function(Review, status) {

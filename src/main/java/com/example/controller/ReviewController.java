@@ -75,6 +75,7 @@ public class ReviewController {
 	@ResponseBody
 	public List<ReviewFront> queryreview(String PCname) {
 		List<ReviewFront> list =reviewService.queryreview(PCname);
+		System.out.println(PCname);
 		return list;
 	}
 

@@ -1,11 +1,11 @@
-/* css文件注释的快捷键是ctrl+/ */
+/* css鏂囦欢娉ㄩ噴鐨勫揩鎹烽敭鏄痗trl+/ */
 body{
 	background: #f4f4f2;
 	margin: 0;
 }
 
 .table1{
-	/* 这是个人基本信息的表格的格式 */
+	/* 杩欐槸涓汉鍩烘湰淇℃伅鐨勮〃鏍肩殑鏍煎紡 */
 	text-align:center;
 	border-width: 5px;
 	float: left;
@@ -40,7 +40,7 @@ body{
 	background-color: #e8e8e8;
 }
 .middle_T{ 		
-/* 	这是评价表单的格式 */
+/* 	杩欐槸璇勪环琛ㄥ崟鐨勬牸寮� */
 			  padding: 10px 10px;
 			  border-style: none;
 			  border-color: #fab1a0;
@@ -71,6 +71,14 @@ body{
 			    margin-right:20px;
 			    float:right;
 			    }
+			    .pic1{
+			    font-size:20px;
+			    margin-right:20px;
+			    float:right;
+			    }
+.pic1:hover{
+	  color: #ec524b;
+  }
 .infoC{
 					border: solid;
 				}
@@ -116,7 +124,7 @@ body{
 	width: 0px;
 }				
 
-/* 泡泡 */
+/* 娉℃场 */
 /* ---- reset ---- */
 canvas {
   display: block;
@@ -128,7 +136,7 @@ canvas {
   width: 100%;
   height: 100%;
 }
-/* 泡泡 */
+/* 娉℃场 */
 button{
     position: relative;
     height: 50px;
@@ -145,7 +153,7 @@ button{
     cursor: pointer;
 }
 
-/* 删除评价的图标为什么显示不出来。。
+/* 鍒犻櫎璇勪环鐨勫浘鏍囦负浠�涔堟樉绀轰笉鍑烘潵銆傘��
 buttons1{
     position: relative;
     height: 25px;

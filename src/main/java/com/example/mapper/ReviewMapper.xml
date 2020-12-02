@@ -39,7 +39,11 @@
     </update>
     
     <select id="queryreview"  resultType="reviewfront">
-    
+    SELECT  id_review,Snickname,Cname,Pname,Revt,Comment,difficulty,quality,upvote,downvote
+        FROM review,student,course,professor
+        WHERE  student.Sno=review.Sno AND course.Cno=review.Cno AND professor.Pno=review.Pno AND Course.Cname LIKE CONCAT_WS('%','%',#{PCname},'%') OR
+        student.Sno=review.Sno AND course.Cno=review.Cno AND professor.Pno=review.Pno AND Professor.Pname LIKE CONCAT_WS('%','%',#{PCname},'%')
+        ;
     </select>
     
 </mapper>
