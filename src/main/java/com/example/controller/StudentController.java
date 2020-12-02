@@ -1,18 +1,11 @@
 package com.example.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import com.example.pojo.Review;
 import com.example.pojo.Student;
 
 import com.example.service.StudentService;
@@ -48,10 +41,23 @@ public class StudentController {
 		return studentService.updatespw(Sno,Spw);
 	}
 	
-	@RequestMapping("/saveStu")//查询所有评价
+	@PostMapping("/saveStu")//查询所有评价
 	@ResponseBody
-	public int saveStu(@RequestBody Student studentVo) {
-		return studentService.saveStu(studentVo);
+	public int saveStu(@RequestBody Student stu1) {
+		System.out.println(stu1.getSno());
+		System.out.println(stu1.getSname());
+		Date date1 = new Date();
+		java.sql.Date sqldate = new java.sql.Date(date1.getTime());
+		String str1 = stu1.getSno() + "@cnu.edu.cn";
+
+		//填入缺省值
+		stu1.setSmail(str1);
+		stu1.setSyear(date1.getYear());
+		stu1.setgender("0");
+		stu1.setvalid(sqldate);
+		stu1.setstate(sqldate);
+
+		return studentService.saveStu(stu1);
 	}
 	
 	@RequestMapping("/deleteStu")//查询所有评价

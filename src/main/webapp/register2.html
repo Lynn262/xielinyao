@@ -7,6 +7,36 @@
 		<link rel="stylesheet" href="css/style_login.css">
 	</head>
 	<body>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script>
+		function register(){
+			var sno = document.getElementById("sno");
+			var snickname = document.getElementById("nickname");
+			var name = document.getElementById("name");
+			var spw1 = document.getElementById("spw1");
+			var spw2 = document.getElementById("spw2");
+			if(spw1 != spw2){
+				alert("密码不匹配");
+				return false;
+			}
+			else{
+				$.ajax({
+					url: "/student/saveStu",
+					type: "POST",
+					data: JSON.stringify({"sno": sno.value, "snickname": snickname.value, "sname": name.value,
+					"spw": spw1}),
+					dataType: "json",
+					contentType: "application/json",
+					success: function(response){
+
+					},
+					error: function(response){
+
+					}
+				})
+			}
+		}
+	</script>
 		<form  class="box" action="register2.html" method="post">
 			<h1>注 册</h1>
 			<!-- 本来的注册界面做成了但是组长没通过，又做了一个和登陆一样的。。 -->
@@ -15,11 +45,12 @@
 			<input type="password" placeholder="Password" class="txtb">
 			<input type="password" placeholder="Password(请确认)" class="txtb">
 			<input type="submit" value="Create Account" class="signup-btn"> -->
-			<input type="text" name="" placeholder="用户名">
-			<input type="text" name="" placeholder="学号">
-			<input type="password" name="" placeholder="密码">
-			<input type="password" name="" placeholder="请确认您的密码">
-			<input type="submit" name="" value="创建账户">
+			<input type="text" name="" placeholder="昵称" id="nickname">
+			<input type="text" name="" placeholder="姓名" id="name">
+			<input type="text" name="" placeholder="学号" id="sno">
+			<input type="password" name="" placeholder="密码" id="spw1">
+			<input type="password" name="" placeholder="请确认您的密码" id="spw2">
+			<input type="submit" name="" value="创建账户" onclick="register()">
 		</form>
 	</body>
 </html>
