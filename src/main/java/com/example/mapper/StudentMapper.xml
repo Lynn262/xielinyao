@@ -23,7 +23,7 @@
     <insert id="saveStu"  parameterType="student">
      INSERT 
         INTO Student(Sno,Sname,Snickname,Spw,Syear,Sgender,Smail,Svalid,Sstate)
-        VALUES(#{Sno},#{Sname},#{Snickname},#{Spw},#{Syear},#{Sgender},#{Smail},#{Svalid},#{Sstate});
+        VALUES(#{sno},#{sname},#{snickname},#{spw},#{syear},#{sgender},#{smail},#{svalid},#{sstate});
     </insert>
     
     <delete id="deleteStu" parameterType="String">
