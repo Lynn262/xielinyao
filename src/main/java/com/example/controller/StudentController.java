@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.pojo.Student;
 
 import com.example.service.StudentService;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/student")
@@ -19,7 +21,7 @@ public class StudentController {
 
 
 	
-	@RequestMapping("/querystudent")//查询课程
+	@RequestMapping("/querystudent")//查询学生
 	@ResponseBody
 	public Student getStu(String Sno) {//spring帮助获取参数
 		Student student = new Student();
@@ -41,26 +43,36 @@ public class StudentController {
 		return studentService.updatespw(Sno,Spw);
 	}
 	
-	@PostMapping("/saveStu")//查询所有评价
+	@PostMapping("/saveStu")//保存学生
 	@ResponseBody
-	public int saveStu(@RequestBody Student stu1) {
-		System.out.println(stu1.getSno());
-		System.out.println(stu1.getSname());
-		Date date1 = new Date();
-		java.sql.Date sqldate = new java.sql.Date(date1.getTime());
+	public int saveStu(HttpServletRequest request, @RequestBody Student stu1) {
+		Calendar date1 = Calendar.getInstance(); //当前日期
+		//设置账号为有效
+		java.sql.Date sqldate1 =
+				new java.sql.Date(date1.getTimeInMillis());
+		//设置账号有效期
+		date1.set(Calendar.YEAR, date1.get(Calendar.YEAR) + 4);
+		java.sql.Date sqldate2 =
+				new java.sql.Date(date1.getTimeInMillis());
 		String str1 = stu1.getSno() + "@cnu.edu.cn";
 
 		//填入缺省值
 		stu1.setSmail(str1);
-		stu1.setSyear(date1.getYear());
+		stu1.setSyear(date1.get(Calendar.YEAR) - 4);
 		stu1.setgender("0");
-		stu1.setvalid(sqldate);
-		stu1.setstate(sqldate);
+		stu1.setstate(sqldate1);
+		stu1.setvalid(sqldate2);
 
-		return studentService.saveStu(stu1);
+		if(studentService.saveStu(stu1) == 1){
+			request.getSession().setAttribute("sno", stu1.getSno());
+			return 1;
+		}
+		else {
+			return 0;
+		}
 	}
 	
-	@RequestMapping("/deleteStu")//查询所有评价
+	@RequestMapping("/deleteStu")//删除学生
 	@ResponseBody
 	public int deleteStu(String Sno) {
 		return studentService.deleteStu(Sno);

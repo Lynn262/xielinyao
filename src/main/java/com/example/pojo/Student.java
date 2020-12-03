@@ -12,7 +12,7 @@ public class Student{
 
     private String sno;
 
-    //@JsonAlias({"pw"})
+    @JsonAlias({"pw"})
     private String spw;
     private String smail;
     private String sname;       //学生姓名

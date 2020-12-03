@@ -15,29 +15,35 @@
 			var name = document.getElementById("name");
 			var spw1 = document.getElementById("spw1");
 			var spw2 = document.getElementById("spw2");
-			if(spw1 != spw2){
+			if(spw1.value != spw2.value){
 				alert("密码不匹配");
-				return false;
 			}
 			else{
 				$.ajax({
 					url: "/student/saveStu",
 					type: "POST",
+					async: false,
 					data: JSON.stringify({"sno": sno.value, "snickname": snickname.value, "sname": name.value,
-					"spw": spw1}),
+					"spw": spw1.value}),
 					dataType: "json",
 					contentType: "application/json",
 					success: function(response){
-
+						if(response == 1){
+							location.href = "/UserAccount2.html";
+							window.event.returnValue = false;
+						}
+						else{
+							alert("注册失败，请检查是否输入正确");
+						}
 					},
 					error: function(response){
-
+						alert("注册失败，请检查是否输入正确");
 					}
 				})
 			}
 		}
 	</script>
-		<form  class="box" action="register2.html" method="post">
+		<form  class="box" action="register2.html">
 			<h1>注 册</h1>
 			<!-- 本来的注册界面做成了但是组长没通过，又做了一个和登陆一样的。。 -->
 			<!-- <input type="text" placeholder="Username" class="txtb">

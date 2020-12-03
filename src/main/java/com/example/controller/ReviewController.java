@@ -36,21 +36,21 @@ public class ReviewController {
 		return list;
 	}
 
-	@RequestMapping("/saveRev")//查询所有评价
+	@RequestMapping("/saveRev")//保存评价
 	@ResponseBody
 	public int saveRev(@RequestBody Review reviewVo) {
 		System.out.println(reviewVo.getComment());
 		return reviewService.saveRev(reviewVo);
 	}
 	
-	@RequestMapping("/upvote")//查询所有评价
+	@RequestMapping("/upvote")//给编号为id_review的评价点赞
 	@ResponseBody
 	public int upvote(int id_review) {
 		
 		return reviewService.upvote(id_review);
 	}
 	
-	@RequestMapping("/downvote")//查询所有评价
+	@RequestMapping("/downvote")//给编号为id_review的评价踩
 	@ResponseBody
 	public int downvote(int id_review) {
 		
@@ -71,7 +71,7 @@ public class ReviewController {
 		return 0;
 	}
 	
-	@GetMapping("/queryreview")//查询与pcno匹配的部分评价
+	@GetMapping("/queryreview")//查询与教师名或课程名部分匹配的评价
 	@ResponseBody
 	public List<ReviewFront> queryreview(String PCname) {
 		List<ReviewFront> list =reviewService.queryreview(PCname);
