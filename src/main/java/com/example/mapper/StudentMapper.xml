@@ -4,6 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><!--规则 格式-->
 <mapper namespace="com.example.dao.StudentDao">
 
+ <select id="queryall"   resultType="student">
+         SELECT * FROM student
+    </select>
+
   <select id="getStu" parameterType="String" resultType="student">
          SELECT * FROM student where ( Sno=#{Sno})
     </select>
@@ -11,6 +15,12 @@
     <update id="updatesnickname" parameterType="String" >
      UPDATE Student
         SET Snickname=#{Snickname}
+        WHERE ( Sno=#{Sno})
+    </update>
+    
+    <update id="updatestate"  >
+     UPDATE Student
+        SET Sstate=#{Sstate}
         WHERE ( Sno=#{Sno})
     </update>
     

@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.example.pojo.ReviewFront;
 import com.example.pojo.Student;
 
 public interface StudentService {
+	
+	List<Student> queryall();
 	
 	Student getStu( String Sno);
 
@@ -24,5 +27,7 @@ public interface StudentService {
 	 int saveStu(Student studentVo);
 	 
 	int deleteStu(String Sno);
+	
+	int updatestate(String Sno,java.sql.Date Sstate);
 
 }

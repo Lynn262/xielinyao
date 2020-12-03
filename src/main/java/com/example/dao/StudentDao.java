@@ -1,9 +1,10 @@
 package com.example.dao;
 
 import java.util.List;
-
+import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.pojo.ReviewFront;
 import com.example.pojo.Student;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface StudentDao {
+	
+	List<Student> queryall();
 	
 	Student getStu(@Param("Sno")String Sno);
 	
@@ -22,4 +25,5 @@ public interface StudentDao {
 	
 	int deleteStu(String Sno);
 	
+	int updatestate(Map map);
 }

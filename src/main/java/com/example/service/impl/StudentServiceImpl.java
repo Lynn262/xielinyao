@@ -1,6 +1,8 @@
 package com.example.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.dao.StudentDao;
 import com.example.pojo.Review;
+import com.example.pojo.ReviewFront;
 import com.example.pojo.Student;
 import com.example.service.StudentService;
 
@@ -26,6 +29,10 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.getStu(Sno);
 	}
 
+	@Override
+	public List<Student> queryall() {
+		return studentDao.queryall();
+	}
 	/**
 	 * @param id    用户输入的用户名
 	 * @param passwd 用户输入的密码
@@ -46,11 +53,17 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.updatesnickname(Sno,Snickname);
 
 	}
+	@Override
+	public int updatestate(String Sno,java.sql.Date Sstate) {
+		Map map = new HashMap();
+		map.put("Sno", Sno);
+		map.put("Sstate", Sstate);
+		return studentDao.updatestate(map);
+
+	}
 	
 	@Override
 	public int updatespw(String Sno,String Spw) {
-		
-
 		return studentDao.updatespw(Sno,Spw);
 
 	}

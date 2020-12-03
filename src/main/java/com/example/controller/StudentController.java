@@ -1,11 +1,13 @@
 package com.example.controller;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.pojo.ReviewFront;
 import com.example.pojo.Student;
 
 import com.example.service.StudentService;
@@ -18,7 +20,13 @@ public class StudentController {
 
 	@Autowired
 	private StudentService studentService = null;
-
+	
+	@GetMapping("/queryall")//查询所有学生
+	@ResponseBody
+	public List<Student> queryall() {
+		List<Student> list =studentService.queryall();
+		return list;
+	}
 
 	
 	@RequestMapping("/querystudent")//查询学生
@@ -27,6 +35,13 @@ public class StudentController {
 		Student student = new Student();
 		student =studentService.getStu( Sno);
 		return student;
+	}
+	
+	@RequestMapping("/updatestate")//更改昵称
+	@ResponseBody
+	public int updatestate(String Sno,java.sql.Date Sstate) {//spring帮助获取参数
+		
+		return studentService.updatestate(Sno,Sstate);
 	}
 	
 	@RequestMapping("/updatesnickname")//更改昵称
@@ -59,7 +74,7 @@ public class StudentController {
 		//填入缺省值
 		stu1.setSmail(str1);
 		stu1.setSyear(date1.get(Calendar.YEAR) - 4);
-		stu1.setgender("0");
+		stu1.setgender("男");
 		stu1.setstate(sqldate1);
 		stu1.setvalid(sqldate2);
 
