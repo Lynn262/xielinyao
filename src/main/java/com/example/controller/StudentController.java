@@ -37,7 +37,7 @@ public class StudentController {
 		return student;
 	}
 	
-	@RequestMapping("/updatestate")//更改昵称
+	@GetMapping("/updatestate")//更改学生状态（封禁学生）
 	@ResponseBody
 	public int updatestate(String Sno,java.sql.Date Sstate) {//spring帮助获取参数
 		
