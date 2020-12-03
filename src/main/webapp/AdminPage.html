@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <title>管理员界面</title>
+        <link rel="stylesheet" href="css/AdminPage_style.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/tanchuang.css">
+        <!-- CSS -->
+ 
+</head>
+<body>
+	<div class="shuipingxian">
+				<div >管理界面</div>
+			</div>
+			<!-- 这是一条水平线 -->
+			<div class="shuipingxian2"></div>
+	<table    class="class2" >
+	  <tr >
+		   <td  class="class_border1">
+			   <a class="pic">
+				   <i class="fa fa-home"  style="color: #000000;"></i>
+			   首页</a>
+			   </td>
+		 </tr>
+		  <tr>
+		   <td  class="class_border">
+			   <a class="pic">
+			   	 <i class="fa fa-tasks"  style="color: #000000;"></i>
+			      管理学生信息  
+				  </a>
+			  </td>
+		 </tr>
+		  <tr>
+		   <td align="center" class="class_border">
+			   <a class="pic">
+			   	<i class="fa fa-tasks"  style="color: #000000;"></i>
+			   管理教师信息 </a>
+			   </td>
+		 </tr>
+		  <tr>
+		   <td align="center" class="class_border">
+			   <a class="pic">
+			   <i class="fa fa-tasks"  style="color: #000000;"></i>
+			   管理课程信息
+			   </a>
+			   </td>
+		 </tr>
+		  <tr>
+		   <td align="center" class="class_border">
+			   <a class="pic">
+			   	<i class="fa fa-tasks"  style="color: #000000;"></i>
+			   管理评价信息
+			    </a>
+			   </td>
+		 </tr>
+		 <tr>
+		   <td align="center" ></td>
+		 </tr>
+		 <tr>
+		   <td align="center" ></td>
+		 </tr>
+		 <tr>
+		   <td align="center" ></td>
+		 </tr>
+		 <tr>
+		   <td align="center" ></td>
+		 </tr>
+		 <tr>
+		   <td align="center" ></td>
+		 </tr>
+		 <tr>
+		   <td align="center" ></td>
+		 </tr>
+		 <tr>
+		   <td align="center" ></td>
+		 </tr>
+		 <tr>
+		   <td align="center" ></td>
+		 </tr>
+		 <tr>
+		   <td align="center" ></td>
+		 </tr>
+		 <tr>
+		   <td align="center" ></td>
+		 </tr>
+		 <tr>
+		   <td align="center" ></td>
+		 </tr>
+	</table>
+	<div class="box">
+			<div class="TOP">
+				学生信息
+			</div>
+			<div class="THead">
+				<input style="width:600px;height:30px;margin-top:15px;margin-left: 80px;font-size:15px">
+					<button style="height:35px;width:50px;font-size:15px">搜索</button>
+				<button onclick="dianwo1()" class="add">
+				增加用户
+				</button>
+				<div class="zhezhao1" id='zhezhao1'>
+							<div class="tankuang1">
+								<div id="header">
+									<!-- 昵称学号名称密码密码 -->
+									<span class="h1">增加学生信息</span>
+									<!-- 下面是点击×可以剪掉网页的设置 -->
+									<div id="header-right" onclick="hidder1()">x</div>
+									<input type="text" name="d1" id="snickname" placeholder="请输入该学生的昵称" class="switch1"/>
+									<input type="text" name="d1" id="sno" placeholder="请输入该学生的学号" class="switch2"/>
+									<input type="text" name="d1" id="sname" placeholder="请输入该学生的名称" class="switch3"/>
+									<input type="password" name="d1" id="spw1" placeholder="请初始化该学生的登录密码" class="switch4"/>
+									<input type="password" name="d1" id="spw2" placeholder="请再次确认该学生的登陆密码" class="switch5"/>
+									<span class="h4">下面请设置该学生的账号有效期：</span>
+									<input type="date" name="d1" id="d1" value="2020-12-1" class="date2"  />
+								    <input type="submit" name="" id="" value="提交信息" class="submit2" onclick="sub()"/>
+								</div>
+							</div>
+						</div>
+			</div>
+			<div class="infoD">
+				<table class="infoT">
+	  		<tbody>
+	    	<tr>
+	      		<td class="infoH">
+					昵称
+				</td>
+				<td class="infoH">
+					姓名
+				</td>
+				<td class="infoH"> 
+					学号
+				</td>
+				<td class="infoH">
+					账号有效期
+				</td>
+				<td class="infoH">
+					修改
+				</td>
+				<td class="infoH">
+					删除
+				</td>
+	    	</tr>
+	    	<tr>
+	      		<td class="info">
+					日天
+				</td>
+				<td class="info">
+					白恩昊
+				</td>
+				<td class="info"> 
+					1181003001
+				</td>
+				<td class="infoH">
+					2020-12-1
+				</td>
+				<td class="info">
+					<button onclick="dianwo()">
+					修改
+					</button>
+					<div class="zhezhao" id='zhezhao'>
+								<div class="tankuang">
+									<div id="header">
+										<span class="h1">修改学生信息</span>
+										<span class="h2">提示：您只能对学生的账号有效期进行修改</span>
+										<span class="h3">请选择学生账号的有效期：</span>
+										<!-- 下面是点击×可以剪掉网页的设置 -->
+										<div id="header-right" onclick="hidder()">x</div>
+										<input type="date" name="d1" id="d1" value="2020-12-1" class="date1"/>
+									    <input type="submit" name="" id="" value="提交信息" class="submit1" onclick="sub()"/>
+									</div>
+								</div>
+							</div>
+				</td>
+				<td class="infoH">
+					<button onclick="dele()">
+					删除
+					</button>
+				</td>
+	    	</tr>
+	    	<tr>
+	      		<td>&nbsp;</td>
+	    	</tr>
+	  		</tbody>
+	</table>
+			</div>
+		</div>
+		<!-- 这是弹窗的js代码 -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+
+		<script type="text/javascript">
+		var sno="";
+		var sname="";
+		var snicname="";
+		var spw="";
+				function sub(){
+					snickname = document.getElementById("snickname").value;
+					sno = document.getElementById("sno").value;
+					sname= document.getElementById("sname").value;
+					spw = document.getElementById("spw1").value;
+					alert(sno);
+					var params ={
+						'sno' :sno,
+						'snickname' : snickname,
+						'sname' : sname,
+						'spw' : spw
+					}
+					var url="student/saveStu";
+					 $.ajax({
+							 type: "post",
+							 url : url,
+							 // 此处需要告知传递参数类型为JSON，不能缺少
+							 contentType : "application/json",
+							 // 将JSON转化为字符串传递
+							 data : JSON.stringify(params),
+							 async: false, // 同步
+							 // 成功后的方法
+							 success : function(result) {
+				  			 if (result !=1) {
+					  			 alert("增加学生成功！");
+				  			 }
+							 }
+						 });
+					}
+				</script>
+				<script type="text/javascript">
+					document.getElementById('zhezhao').style.display="none";
+					function dianwo(){
+						document.getElementById('zhezhao').style.display="";
+					}
+					function hidder(){
+						document.getElementById('zhezhao').style.display="none";
+					}
+				</script>
+				</script>
+				<script type="text/javascript">
+					document.getElementById('zhezhao1').style.display="none";
+					function dianwo1(){
+						document.getElementById('zhezhao1').style.display="";
+					}
+					function hidder1(){
+						document.getElementById('zhezhao1').style.display="none";
+					}
+				</script>
+				<script>
+					function dele(){
+						if (confirm("确认删除此用户吗？")==true)
+						{
+						alert("删除成功");
+						}
+						// alert("您确定要删除此用户吗？")
+					}
+				</script>
+				<!-- 这是弹窗的js代码 -->
+</body>
+</html>
+
+
