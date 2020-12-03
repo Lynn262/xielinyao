@@ -32,6 +32,12 @@ public class ProfessorController {
 		return professor;
 	}
 	
+	@RequestMapping("/querypno")//根据教师名查询教师号
+	@ResponseBody
+	public String getPno(String Pname) {//spring帮助获取参数
+		return professorService.getPno(Pname);
+	}
+	
 	@RequestMapping("/savePrf")//查询所有评价
 	@ResponseBody
 	public int savePrf(@RequestBody Professor professorVo) {

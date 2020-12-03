@@ -17,19 +17,47 @@
 	</head>
 	<script src="js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript">
+	var pno="";
+	var cno="";
+	var sno="1181002036";
+	var personality= "";
+	var difficulty = "";
+	var quality="";
+	var pname="";
+	var cname="";
+	var comment=document.getElementById("comment");	
+	
 	
 	function submit(){
 		
-	var sno="1181002036";
-	var personality= document.getElementById("personality").innerText;
-	var difficulty =  document.getElementById("difficulty").innerText;
-	var quality=document.getElementById("quality").innerText;
-	var pname=document.getElementById("pname").value;
-	var cname=document.getElementById("cname").value;	
-	var comment=document.getElementById("comment");	
+		pname =document.getElementById("pname").value;	
+		var url="professor/querypno?Pname="+pname;
+		$.ajaxSettings.async = false;
+		$.get(url, function(number, status) {
+			pno=number;submit1();
+			
+		});
+	}
+	
+	function submit1(){
+		cname =document.getElementById("cname").value;
+		var url="course/querycno?Cname="+cname;
+		$.ajaxSettings.async = false;
+		$.get(url, function(number1, status) {
+			cno=number1;submit2();
+		});
+	}
+	
+	function submit2(){
+		personality=document.getElementById("personality").innerText;
+		difficulty = document.getElementById("difficulty").innerText;
+		quality=document.getElementById("quality").innerText;
+	alert(pno);
+	alert(cno);
+	alert(quality);
 	var param ={
-			'pno' : pname,
-			'cno' : cname,
+			'pno' : pno,
+			'cno' : cno,
 			'sno'  : sno,
 			'quality':quality,
 			'difficulty':difficulty,
@@ -49,9 +77,11 @@
 			 async: false, // 同步
 			 // 成功后的方法
 			 success : function(result) {
-  			 if (result !=1) {
-	  			 alert("评价失败");
+  			 if (result ==1) {
+	  			 alert("评价成功");
+	  		
   			 }
+  			 else alert("评价失败！");
 			 }
 		 });
 	

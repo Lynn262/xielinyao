@@ -47,10 +47,13 @@ public class ReviewServiceImpl implements ReviewService {
 		boolean cond17 = comment.contains("你妈");
 		boolean cond18 = comment.contains("尼玛");
 		boolean cond19 = comment.contains("肏");
-
+		boolean cond20 = comment.contains("fuck");
+		boolean cond21 = comment.contains("slut");
+		boolean cond22 = comment.contains("cunt");
+		boolean cond23 = comment.contains("shit");
 		//如果符合以上条件则交给管理员审核
 		if(cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7 || cond8 || cond9 || cond10
-				|| cond11 || cond12 || cond13 || cond14 || cond15 || cond16 || cond17 || cond18 || cond19){
+				|| cond11 || cond12 || cond13 || cond14 || cond15 || cond16 || cond17 || cond18 || cond19 || cond20 || cond21 || cond22 || cond23){
 			reviewVo.setState(3);
 		}
 

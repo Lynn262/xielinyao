@@ -11,4 +11,6 @@ public interface CourseService {
 	
 	Course getAdmCrs( String Cno);
 	
+	 String getAdmCno(String Cname);
+	
 }

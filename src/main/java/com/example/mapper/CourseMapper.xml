@@ -8,5 +8,7 @@
          SELECT * FROM course  where ( Cno=#{Cno}) 
     </select>
   
-    
+   <select id="getAdmCno" parameterType="String" resultType="String">
+   		 SELECT Cno FROM course  where ( Cname=#{Cname}) 
+   </select> 
 </mapper>

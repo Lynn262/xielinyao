@@ -13,4 +13,6 @@ import com.example.pojo.Course;
 public interface CourseDao {
 	
 	Course getAdmCrs( String Cno);
+	
+	String getAdmCno(String Cname);
 }

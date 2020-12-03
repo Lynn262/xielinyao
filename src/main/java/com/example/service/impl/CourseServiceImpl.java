@@ -21,6 +21,11 @@ public class CourseServiceImpl implements CourseService {
 	public Course getAdmCrs( String Cno) {
 		return courseDao.getAdmCrs(Cno);
 	}
+	
+	@Override
+	public String getAdmCno(String Cname) {
+		return courseDao.getAdmCno(Cname);
+	}
 
 	 
 }

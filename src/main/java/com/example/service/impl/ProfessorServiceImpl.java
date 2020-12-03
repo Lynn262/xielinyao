@@ -32,5 +32,10 @@ public class ProfessorServiceImpl implements ProfessorService {
 	public int deletePrf(String Pno) {
 		return professorDao.deletePrf(Pno);
 	}
+	
+	@Override
+	public String getPno( String Pname) {
+		return professorDao.getPno(Pname);
+	}
 	 
 }

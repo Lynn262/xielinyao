@@ -13,4 +13,6 @@ public interface ProfessorService {
 	 
 	int deletePrf(String Pno);
 	
+	String getPno(String Pname);
+	
 }

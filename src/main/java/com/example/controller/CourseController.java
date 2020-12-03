@@ -31,5 +31,11 @@ public class CourseController {
 		return course;
 	}
 	
+	@RequestMapping("/querycno")//根据课程名查询课程编号
+	@ResponseBody
+	public String getAdmCno(String Cname) {//spring帮助获取参数
+		return courseService.getAdmCno( Cname);
+	}
+	
 	//这是一个github push测试
 }

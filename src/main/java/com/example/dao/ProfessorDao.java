@@ -14,4 +14,6 @@ public interface ProfessorDao {
 	int savePrf(Professor professorVo);
 	 
 	int deletePrf(String Pno);
+	
+	String getPno(String Pname);
 }
