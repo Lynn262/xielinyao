@@ -25,7 +25,7 @@
 	var quality="";
 	var pname="";
 	var cname="";
-	var comment=document.getElementById("comment");	
+	var comment="";
 	
 	
 	function submit(){
@@ -52,9 +52,7 @@
 		personality=document.getElementById("personality").innerText;
 		difficulty = document.getElementById("difficulty").innerText;
 		quality=document.getElementById("quality").innerText;
-	alert(pno);
-	alert(cno);
-	alert(quality);
+		comment=document.getElementById("comment");	
 	var param ={
 			'pno' : pno,
 			'cno' : cno,
