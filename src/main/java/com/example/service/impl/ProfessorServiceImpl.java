@@ -22,10 +22,25 @@ public class ProfessorServiceImpl implements ProfessorService {
 	public Professor getPrf( String Pno) {
 		return professorDao.getPrf(Pno);
 	}
+	
+	@Override
+	public List<Professor> queryall() {
+		return professorDao.queryall();
+	}
 
 	@Override
 	public int savePrf(Professor professorVo) {
 		return professorDao.savePrf(professorVo);
+	}
+	
+	@Override
+	public int updatepdept(String Pno,String Pdept) {	
+		return professorDao.updatepdept(Pno,Pdept);
+	}
+	
+	@Override
+	public int updateppos(String Pno,String Ppos) {	
+		return professorDao.updateppos(Pno,Ppos);
 	}
 	
 	@Override

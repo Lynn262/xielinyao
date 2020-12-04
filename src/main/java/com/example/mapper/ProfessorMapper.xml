@@ -4,6 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><!--规则 格式-->
 <mapper namespace="com.example.dao.ProfessorDao">
 
+ <select id="queryall"   resultType="professor">
+         SELECT * FROM professor
+    </select>
+
+<update id="updatepdept" parameterType="String" >
+     UPDATE professor
+        SET Pdept=#{Pdept}
+        WHERE ( Pno=#{Pno})
+    </update>
+    
+    <update id="updateppos" parameterType="String" >
+     UPDATE professor
+        SET Ppos=#{Ppos}
+        WHERE ( Pno=#{Pno})
+    </update>
+
   <select id="getPrf" parameterType="String" resultType="professor">
          SELECT * FROM professor where ( Pno=#{Pno}) 
     </select>
