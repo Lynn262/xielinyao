@@ -11,4 +11,34 @@
    <select id="getAdmCno" parameterType="String" resultType="String">
    		 SELECT Cno FROM course  where ( Cname=#{Cname}) 
    </select> 
+   
+   <insert id="savecourse" parameterType="Course">
+   INSERT 
+    INTO Course(Cno,Cname,Cterm,Ccredit,Cdept)
+    VALUES(#{Cno},#{Cname},#{Cterm},#{Ccredit},#{Cdept});
+   </insert>
+   
+   <delete id="deletecourse" parameterType="String"> 
+   DELETE
+    FROM Course
+    WHERE Cno=#{Cno};
+   </delete>
+   
+   <update id="updatecname">
+   UPDATE Course
+        SET Cname=#{Cname}
+        WHERE Cno=#{Cno};
+   </update>
+   
+   <update id="updatecterm">
+   UPDATE Course
+        SET Cterm=#{Cterm}
+        WHERE Cno=#{Cno};
+   </update>
+   
+   <update id="updatecredit">
+   UPDATE Course
+        SET Ccredit=#{Ccredit}
+        WHERE Cno=#{Cno};
+   </update>
 </mapper>

@@ -15,4 +15,14 @@ public interface CourseDao {
 	Course getAdmCrs( String Cno);
 	
 	String getAdmCno(String Cname);
+	
+	int savecourse(Course courseVo);
+	 
+	int deletecourse(String Cno);
+	
+	int updatecname(String Cno,String Cname);
+	
+	int updatecterm(String Cno,String Cterm);
+	
+	int updatecredit(String Cno,String Ccredit);
 }
