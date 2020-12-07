@@ -24,7 +24,6 @@ public class ReviewController {
 	@RequestMapping("/queryall")//查询所有评价
 	@ResponseBody
 	public List<ReviewFront> queryall() {
-		System.out.println("111");
 		List<ReviewFront> list =reviewService.queryall();
 		return list;
 	}
@@ -79,14 +78,62 @@ public class ReviewController {
 		return list;
 	}
 
+	/**
+	 * @param request 获取session
+	 * @param id_review 被举报的评价的id
+	 * @param rtype 被举报的类型
+	 * @return 举报成功返回1，举报失败返回0
+	 */
 	@PostMapping("/reportRev") //举报评价
 	@ResponseBody
-	public int reportRev(int id_review){
+	public int reportRev(HttpServletRequest request, int id_review, int rtype){
 		Review rev1 = reviewService.getRev(id_review);
-		if(rev1 != null){
-			if(reviewService.reportRev(id_review)){
+		if(rev1 != null && rtype > 2 && rtype < 7){
+			if(reviewService.reportRev(id_review, rtype)){
 				return 1;
 			}
+		}
+		return 0;
+	}
+
+	/**
+	 *
+	 * @return 返回所有等待管理员审核的评价
+	 */
+	@GetMapping("/getreport")
+	@ResponseBody
+	public List<ReviewFront> getReport(){
+		return reviewService.getReport();
+	}
+
+	/**
+	 *
+	 * @param id_review 通过审核的评价id
+	 * @return 如果评价通过审核则返回1，否则返回0
+	 */
+	@PostMapping("/approverev")
+	@ResponseBody
+	public int approverev(int id_review){
+		Review rev1 = reviewService.getRev(id_review);
+		if(rev1 != null){
+			reviewService.approveRev(id_review);
+			return 1;
+		}
+		return 0;
+	}
+
+	/**
+	 *
+	 * @param id_review 需要删除的评价的id
+	 * @return 如果评价存在且状态处于被举报或者请求删除，则删除评价后返回1，否则返回0
+	 */
+	@DeleteMapping("/deleRev")
+	@ResponseBody
+	public int deleRev(int id_review){
+		Review rev1 = reviewService.getRev(id_review);
+		if(rev1 != null && rev1.getState() != 1){
+			reviewService.deleRev(id_review);
+			return 1;
 		}
 		return 0;
 	}

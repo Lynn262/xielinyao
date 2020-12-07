@@ -29,4 +29,8 @@ public interface ReviewDao {
 	void modState(int id_review, int n);
 	
 	List<ReviewFront> queryreview(String PCname);
+
+	List<ReviewFront> getReport();
+
+	int deleRev(int id_review);
 }

@@ -46,5 +46,15 @@
         student.Sno=review.Sno AND course.Cno=review.Cno AND professor.Pno=review.Pno AND Professor.Pname LIKE CONCAT_WS('%','%',#{PCname},'%')
         ;
     </select>
-    
+
+    <select id="getReport" resultType="reviewfront">
+        SELECT id_review,Snickname,Cname,Pname,Revt,Comment,difficulty,quality,upvote,downvote
+        FROM review,student,course,professor
+        WHERE student.Sno=review.Sno AND course.Cno=review.Cno AND professor.Pno=review.Pno AND review.state > 1;
+    </select>
+
+    <delete id="deleRev" parameterType="int">
+        DELETE FROM review WHERE id_review = #{id_review}
+    </delete>
+
 </mapper>

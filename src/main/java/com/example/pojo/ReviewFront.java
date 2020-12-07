@@ -15,7 +15,7 @@ public class ReviewFront {
 	private String comment; //评价内容
 	private int difficulty; //评价课程的难度
 	private  int quality;    //评价课程的质量
-	private int state;      //评价的状态，1表示有效，2表示待删除，3表示被举报
+	private int state;      //评价的状态，1表示有效，2表示待删除，3表示被举报不文明，4表示被举报广告，5表示被举报色情，6表示泄露隐私
 	private int downvote;   //评价的踩数量
 	private int upvote;     //评价的点赞数量
 	public int getId_review() {

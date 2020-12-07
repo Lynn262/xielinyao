@@ -20,7 +20,16 @@
 		</div>
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script>
-			
+			//显示举报界面
+			function dispreport(){
+				document.getElementById('reportdiv').style.display="";
+			}
+
+			//隐藏区别界面
+			function hidereport(){
+				document.getElementById('reportdiv').style.display="none";
+			}
+
 			var lis=document.getElementsByTagName("li");
 			var btm=document.getElementsByClassName("btm")[0];
 			//这个for循环是为每一个li添加一个index当作索引，为了方便下面地循环获取到是第几个li
@@ -41,20 +50,24 @@
 			
 			var PCname="";
 
+			//登陆页面跳转
 			function jumpToLogin(){
 				location.href = "/login.html";
 			}
 
+			//注册页面跳转
 			function jumpToReg(){
 				location.href = "/register2.html";
 			}
 
+			//发布页面跳转
 			function jumpToPost(){
 				location.href = "/PostReview.html";
 			}
 
+			//查询评价
 			function searchreview(){
-				PCname=document.getElementById("searchreview").value;
+				PCname=document.getElementById("searchreview").value; //教师姓名或课程名
 				var url="review/queryreview?PCname="+PCname;
 				$.ajaxSettings.async = false;
 				$.get(url, function(Review, status) {
@@ -89,16 +102,22 @@
 					alert("踩成功！");
 				});
 			}
-			function report(id_review){
-				var url1 = "review/reportRev?id_review=" + id_review;
+
+			//举报劈评价，rev_id是评价id，rtype是举报类型
+			function report(rev_id, rtype){
+				var url1 = "/review/reportRev?id_review="+rev_id+"&rtype="+rtype;
 				$.ajax({
 					type: "POST",
 					url: url1,
 					async: false,
-					success: function (response){
-						if(response == 0){
+					success: function(response){
+						if(response == 1){
+							alert("举报成功");
+						}
+						else{
 							alert("举报失败");
 						}
+						hidereport();
 					}
 				})
 			}
@@ -114,11 +133,14 @@
 				var str5 = "</div><div style=\"margin-top:40px;font-size:16px;\"> 受益程度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>";
 				var str6 = "</div></div><div class=\"Comment\">";
 				var str7 = "</div><div style=\"margin-top: 180px;\"><a class=\"pic\" onclick=\"report(";
-				var str8 = ")\"><i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\" onclick= ></i>  </ a><a class=\"pic\">";
+				var str8 = ")\"><i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\" onclick=\"dispreport()\" ></i>  </ a> <a class=\"pic\">";
+
 				var str9 = "<i class=\"fa fa-thumbs-down\" aria-hidden=\"true\" onclick=\"downvote(";
 				var str10 = ")\"></i>  </ a><a class=\"pic\">";
 				var str11 = "<i class=\"fa fa-thumbs-up\" aria-hidden=\"true\" onclick=\"upvote(";
 				var str12 = ")\"></i> </ a><a style=\" margin-right:50px;float:right;font-size:15px;\">";
+
+
 				for (var i=0;i<num;i++)
 					{
 					
@@ -131,6 +153,10 @@
 					}
 				 $('#review').html(reviewhtml);	
 			}
+
+			$(document).ready(function (){
+				document.getElementById('reportdiv').style.display="none";
+			})
 
 		</script>
 		<div class="search-box">
@@ -277,8 +303,49 @@
 			  </div>
 			  <div style="margin-top: 180px;">
 				   <a class="pic">
-			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true" onclick="dispreport()"></i>
 			      </ a>
+				  <div class="zhezhao" id='reportdiv'>
+					  <div class="tankuang">
+						  <div id="header">
+							  <span class="h1">举报评价信息</span>
+							  <span class="h2">提示：您可以从如下选项中进行选择!</span>
+							  <!-- 下面是点击×可以剪掉网页的设置 -->
+							  <div id="header-right" onclick="hidereport()">x</div> <ul>
+							  <!-- 下面是选择的举报信息的多选框按钮 -->
+							  <ul>
+								  <li class="pos1">
+									  <label>
+										  <input type="checkbox" name="">
+										  <div class="icon" onclick="report(1001, 3)">
+											  不文明用语</i></div>
+									  </label>
+								  </li>
+								  <li class="pos2">
+									  <label>
+										  <input type="checkbox" name="">
+										  <div class="icon" onclick="report(1001, 4)">
+											  广告</div>
+									  </label>
+								  </li>
+								  <li class="pos3">
+									  <label>
+										  <input type="checkbox" name="">
+										  <div class="icon" onclick="report(1001, 5)">
+											  色情低俗	</div>
+									  </label>
+								  </li>
+								  <li class="pos4">
+									  <label>
+										  <input type="checkbox" name="">
+										  <div class="icon" onclick="report(1001, 6)">
+											  泄露他人隐私</div>
+									  </label>
+								  </li>
+							  </ul>
+						  </div>
+					  </div>
+				  </div>
 			    <a class="pic">
 			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
 			      </ a>

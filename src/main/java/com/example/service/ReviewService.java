@@ -23,6 +23,11 @@ public interface ReviewService {
 	
 	List<ReviewFront> queryreview(String PCname);
 
-	boolean reportRev(int id_review);
+	boolean reportRev(int id_review, int rtype);
 
+	List<ReviewFront> getReport();
+
+	void approveRev(int id_review);
+
+	int deleRev(int id_review);
 }

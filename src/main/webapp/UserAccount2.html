@@ -54,6 +54,7 @@
 		</table>
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script>
+
 		var sno="1181002035";
 		var newname1="";
 		var spw="";
@@ -135,7 +136,7 @@
 		
 
 		$(document).ready(function(){
-			sno = "1181002035";
+			sno = "1181002035"; //默认的学号，之后要改
 			var url="review/queryByStu?Sno="+sno;
 			$.ajaxSettings.async = false;
 			$.get(url, function(Review, status) {

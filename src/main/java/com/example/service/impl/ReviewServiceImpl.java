@@ -53,7 +53,8 @@ public class ReviewServiceImpl implements ReviewService {
 		boolean cond23 = comment.contains("shit");
 		//如果符合以上条件则交给管理员审核
 		if(cond1 || cond2 || cond3 || cond4 || cond5 || cond6 || cond7 || cond8 || cond9 || cond10
-				|| cond11 || cond12 || cond13 || cond14 || cond15 || cond16 || cond17 || cond18 || cond19 || cond20 || cond21 || cond22 || cond23){
+				|| cond11 || cond12 || cond13 || cond14 || cond15 || cond16 || cond17 || cond18 || cond19 ||
+				cond20 || cond21 || cond22 || cond23){
 			reviewVo.setState(3);
 		}
 
@@ -100,15 +101,36 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDao.queryreview( PCname);
 	}
 
+	/**
+	 *
+	 * @param id_review 被举报的评价的id
+	 * @param rtype 被举报的类型
+	 * @return 是否举报成功
+	 */
 	@Override
-	public boolean reportRev(int id_review) {
+	public boolean reportRev(int id_review, int rtype) {
 		Review rev1 = reviewDao.getRev(id_review);
 		if(rev1.getState() == 1){ //如果评价处于有效状态则更改其状态为被举报
-			reviewDao.modState(id_review, 3);
+			reviewDao.modState(id_review, rtype);
 			return true;
 		}
 		else{
 			return false;
 		}
+	}
+
+	@Override
+	public List<ReviewFront> getReport() {
+		return reviewDao.getReport();
+	}
+
+	@Override
+	public void approveRev(int id_review) {
+		reviewDao.modState(id_review, 1);
+	}
+
+	@Override
+	public int deleRev(int id_review) {
+		return reviewDao.deleRev(id_review);
 	}
 }
