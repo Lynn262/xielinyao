@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,8 +39,12 @@ public class ReviewController {
 	@RequestMapping("/saveRev")//保存评价
 	@ResponseBody
 	public int saveRev(@RequestBody Review reviewVo) {
-		System.out.println(reviewVo.getComment());
-		return reviewService.saveRev(reviewVo);
+		//Calendar today = Calendar.getInstance();
+		//int month = today.get(Calendar.MONTH) + 1;
+		//if(month == 1 || month == 7){
+			System.out.println(reviewVo.getComment());
+			return reviewService.saveRev(reviewVo);
+		//return 0;
 	}
 	
 	@RequestMapping("/upvote")//给编号为id_review的评价点赞
