@@ -50,13 +50,13 @@
 			else{cno=number1;submit2();}
 		});
 	}
-	
+
 	function submit2(){
 		personality=document.getElementById("personality").innerText;
 		difficulty = document.getElementById("difficulty").innerText;
 		quality=document.getElementById("quality").innerText;
-		comment=document.getElementById("comment");	
-	var param ={
+		comment=document.getElementById("comment");
+		var param ={
 			'pno' : pno,
 			'cno' : cno,
 			'sno'  : sno,
@@ -65,26 +65,27 @@
 			'comment':comment.value,
 			'state':1,
 			'upvote':0,
-			'downvote':0		
-	}
-	var url="review/saveRev";
-	 $.ajax({
-			 type: "post",
-			 url : url,
-			 // 此处需要告知传递参数类型为JSON，不能缺少
-			 contentType : "application/json",
-			 // 将JSON转化为字符串传递
-			 data : JSON.stringify(param),
-			 async: false, // 同步
-			 // 成功后的方法
-			 success : function(result) {
-  			 if (result ==1) {
-	  			 alert("评价成功");
-	  		
-  			 }
-  			 else alert("评价失败！");
-			 }
-		 });
+			'downvote':0
+		}
+		var url="review/saveRev";
+		$.ajax({
+			type: "post",
+			url : url,
+			// 此处需要告知传递参数类型为JSON，不能缺少
+			contentType : "application/json",
+			// 将JSON转化为字符串传递
+			data : JSON.stringify(param),
+			async: false, // 同步
+			// 成功后的方法
+			success : function(result) {
+				if (result ==1) {
+					alert("评价成功");
+
+				}
+				else alert("评价失败！");
+			},
+			error: alert("评价失败")
+		});
 	
 	}
 	
