@@ -34,7 +34,9 @@
 		var url="professor/querypno?Pname="+pname;
 		$.ajaxSettings.async = false;
 		$.get(url, function(number, status) {
-			pno=number;submit1();
+			if(number=="")alert("教师名输入错误！");
+			else{pno=number;submit1();}
+			
 			
 		});
 	}
@@ -44,7 +46,8 @@
 		var url="course/querycno?Cname="+cname;
 		$.ajaxSettings.async = false;
 		$.get(url, function(number1, status) {
-			cno=number1;submit2();
+			if(number1=="")alert("课程名输入错误！");
+			else{cno=number1;submit2();}
 		});
 	}
 	

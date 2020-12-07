@@ -5,10 +5,18 @@ body{
 	border: 0;
 }
 .add{
+/* 	这是增加学生按钮的框 */
 	height:35px;
-	width:100px;
+	width:90px;
 	font-size:15px;
-	margin-left: 80px;
+	margin-left: 20px;
+}
+.change{
+/* 	这是修改学生按钮的框 */
+	height:35px;
+	width:90px;
+	font-size:15px;
+	margin-left: 10px;
 }
 .class2{
 	float: left;
@@ -49,6 +57,7 @@ body{
 	  }
 	.pic:hover{
 		  color: #d63031;
+		  cursor: pointer;
 	  }
 	 .shuipingxian{ 
 	   margin-top:0px;
@@ -113,8 +122,9 @@ body{
 					.THead
 					{
 						background-color: lightseagreen;
-						height:70px;
+						height:80px;
 						width: 1000px;
+						text-align: center;
 					}
 					.info
 					{
