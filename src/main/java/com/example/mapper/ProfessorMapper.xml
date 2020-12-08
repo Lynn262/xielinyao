@@ -26,8 +26,8 @@
   
    <insert id="savePrf"  parameterType="professor">
      INSERT 
-        INTO Student(Sno,Sname,Snickname,Spw,Syear,Sgender,Smail,Svalid,Sstate)
-        VALUES(#{Sno},#{Sname},#{Snickname},#{Spw},#{Syear},#{Sgender},#{Smail},#{Svalid},#{Sstate});
+        INTO professor (Pno,Pname,Pdept,Ppos,Pinfo)
+        VALUES(#{pno},#{pname},#{pdept},#{ppos},#{pinfo});
     </insert>
     
     <select id="getPno" parameterType="String"  resultType="String">

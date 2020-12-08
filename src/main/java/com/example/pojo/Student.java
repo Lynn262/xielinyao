@@ -133,7 +133,7 @@ public class Student{
     }
 
     //返回学生账号状态
-    public Date getState(){
+    public Date getSstate(){
         return sstate;
     }
 

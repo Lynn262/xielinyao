@@ -93,8 +93,8 @@
 				学生信息
 			</div>
 			<div class="THead">
-				<input style="width:600px;height:30px;margin-top:15px;margin-left: 80px;font-size:15px">
-					<button style="height:35px;width:50px;font-size:15px">搜索</button>
+				<input id="xuehao" style="width:600px;height:30px;margin-top:15px;margin-left: 80px;font-size:15px">
+					<button onclick="searchstu()"style="height:35px;width:50px;font-size:15px">搜索</button>
 				<button onclick="dianwo1()" class="add">
 				增加学生
 				</button>
@@ -106,12 +106,12 @@
 								<div id="header">
 									<span class="h1">修改学生信息</span>
 									<span class="h2">提示：您只能对学生的账号有效期进行修改</span>
-									<input type="text" placeholder="请输入学生的学号" style="margin-top: 110px;height: 25px;" />
+									<input type="text" id="xuehao2" placeholder="请输入学生的学号" style="margin-top: 110px;height: 25px;" />
 									<span class="h3">请选择学生账号的有效期：</span>
 									<!-- 下面是点击×可以剪掉网页的设置 -->
 									<div id="header-right" onclick="hidder()">x</div>
-									<input type="date" name="d1" id="d1" value="2020-12-1" class="date1"/>
-								    <input type="submit" name="" id="" value="提交信息" class="submit1" onclick="sub3()"/>
+									<input type="date" name="d1" id="state" value="2020-12-1" class="date1"/>
+								    <input type="submit" name="" id="" value="提交信息" class="submit1" onclick="updatestu()"/>
 								</div>
 							</div>
 						</div>
@@ -193,7 +193,6 @@
 					sno = document.getElementById("sno").value;
 					sname= document.getElementById("sname").value;
 					spw = document.getElementById("spw1").value;
-					alert(sno);
 					var params ={
 						'sno' :sno,
 						'snickname' : snickname,
@@ -227,18 +226,49 @@
 					});
 					
 				}
+				function searchstu(){
+					var sno= document.getElementById("xuehao").value;
+					var url="student/querystudent?Sno="+sno;
+					$.ajaxSettings.async = false;
+					$.get(url, function(student, status) {
+						show1(student);
+					});
+					
+				}
+				function show1(student){
+					var num=student.length;
+					var tmp="";
+					var studenthtml="<tr><td class=\"infoH\">昵称</td><td class=\"infoH\">姓名</td><td class=\"infoH\">学号</td><td class=\"infoH\">账号有效期</td><td class=\"infoH\">删除</td></tr>";
+					var str2="<td class=\"infoH\"><button onclick=\"dele("+student.sno+")\">删除</button></td></tr><tr><td>&nbsp;</td></tr>";
+					//var str1="<td class=\"info\"><button onclick=\"dianwo()\">修改</button><div class=\"zhezhao\" id='zhezhao'><div class=\"tankuang\"><div id=\"header\"><span class=\"h1\">修改学生信息</span><span class=\"h2\">提示：您只能对学生的账号有效期进行修改</span><span class=\"h3\">请选择学生账号的有效期：</span><!-- 下面是点击×可以剪掉网页的设置 --><div id=\"header-right\" onclick=\"hidder()\">x</div><input type=\"date\" name=\"d1\" id=\"d1\" value=\"2020-12-1\" class=\"date1\"/><input type=\"submit\" name=\"\" id=\"\" value=\"提交信息\" class=\"submit1\" onclick=\"sub3()\"/></div></div></div></td><td class=\"infoH\"><button onclick=\"dele()\">删除</button></td></tr><tr><td>&nbsp;</td></tr>";
+					
+					tmp= "<tr><td class=\"info\">"+student.snickname+"</td><td class=\"info\">"+student.sname+"</td><td class=\"info\">"+student.sno+"</td><td class=\"infoH\">"+student.sstate+"</td>"+str2;
+					studenthtml+=tmp;
+					
+					$('#tb').html(studenthtml);	
+				}
 				function show(student){
 					var num=student.length;
 					var tmp="";
 					var studenthtml="<tr><td class=\"infoH\">昵称</td><td class=\"infoH\">姓名</td><td class=\"infoH\">学号</td><td class=\"infoH\">账号有效期</td><td class=\"infoH\">删除</td></tr>";
-					var str2="<td class=\"infoH\"><button onclick=\"dele()\">删除</button></td></tr><tr><td>&nbsp;</td></tr>";
+					//var str2="<td class=\"infoH\"><button onclick=\"dele("+student.sno+")\">删除</button></td></tr><tr><td>&nbsp;</td></tr>";
 					//var str1="<td class=\"info\"><button onclick=\"dianwo()\">修改</button><div class=\"zhezhao\" id='zhezhao'><div class=\"tankuang\"><div id=\"header\"><span class=\"h1\">修改学生信息</span><span class=\"h2\">提示：您只能对学生的账号有效期进行修改</span><span class=\"h3\">请选择学生账号的有效期：</span><!-- 下面是点击×可以剪掉网页的设置 --><div id=\"header-right\" onclick=\"hidder()\">x</div><input type=\"date\" name=\"d1\" id=\"d1\" value=\"2020-12-1\" class=\"date1\"/><input type=\"submit\" name=\"\" id=\"\" value=\"提交信息\" class=\"submit1\" onclick=\"sub3()\"/></div></div></div></td><td class=\"infoH\"><button onclick=\"dele()\">删除</button></td></tr><tr><td>&nbsp;</td></tr>";
 					for (var i=0;i<num;i++)
 					{
-					tmp= "<tr><td class=\"info\">"+student[i].snickname+"</td><td class=\"info\">"+student[i].sname+"</td><td class=\"info\">"+student[i].sno+"</td><td class=\"infoH\">"+student[i].svalid+"</td>"+str2;
+					tmp= "<tr><td class=\"info\">"+student[i].snickname+"</td><td class=\"info\">"+student[i].sname+"</td><td class=\"info\">"+student[i].sno+"</td><td class=\"infoH\">"+student[i].sstate+"</td>"+"<td class=\"infoH\"><button onclick=\"dele("+student[i].sno+")\">删除</button></td></tr><tr><td>&nbsp;</td></tr>";
 					studenthtml+=tmp;
 					}
 					$('#tb').html(studenthtml);	
+				}
+				function updatestu(){
+					var sno= document.getElementById("xuehao2").value;
+					var state=document.getElementById("state").value;
+					var url="student/updatestate?Sno="+sno+"&Sstate="+state;
+					$.ajaxSettings.async = false;
+					$.get(url, function(student, status) {
+						alert("修改成功！");
+					});
+					
 				}
 				</script>
 				<script type="text/javascript">
@@ -270,10 +300,14 @@
 					}
 				</script>
 				<script>
-					function dele(){
+					function dele(sno){
 						if (confirm("确认删除此用户吗？")==true)
 						{
-						alert("删除成功");
+							var url="student/deleteStu?Sno="+sno;
+							$.ajaxSettings.async = false;
+							$.get(url, function(student, status) {
+								alert("删除成功！");
+							});
 						}
 						// alert("您确定要删除此用户吗？")
 					}

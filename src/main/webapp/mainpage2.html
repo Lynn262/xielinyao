@@ -5,6 +5,8 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<link rel="stylesheet" href="css/style2.css">
 		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/choose.css">
+		<link rel="stylesheet" href="css/tanchuang.css">
 		<title>Document</title>	
 	</head>
 	<body  onload="searchall()"><center>
@@ -22,12 +24,12 @@
 		<script>
 			//显示举报界面
 			function dispreport(){
-				document.getElementById('reportdiv').style.display="";
+				$(".zhezhao").show();
 			}
 
 			//隐藏区别界面
 			function hidereport(){
-				document.getElementById('reportdiv').style.display="none";
+				$(".zhezhao").hide();
 			}
 
 			var lis=document.getElementsByTagName("li");
@@ -103,8 +105,14 @@
 				});
 			}
 
-			//举报劈评价，rev_id是评价id，rtype是举报类型
-			function report(rev_id, rtype){
+			var rtype = 0 //举报评价的理由类型
+
+			function setrtype(i){
+				rtype = i;
+			}
+
+			//举报评价，rev_id是评价id，rtype是举报类型
+			function report(rev_id){
 				var url1 = "/review/reportRev?id_review="+rev_id+"&rtype="+rtype;
 				$.ajax({
 					type: "POST",
@@ -132,13 +140,12 @@
 				var str4 = "</div><div style=\"margin-top:40px;font-size:16px;\"> 课程难度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>";
 				var str5 = "</div><div style=\"margin-top:40px;font-size:16px;\"> 受益程度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>";
 				var str6 = "</div></div><div class=\"Comment\">";
-				var str7 = "</div><div style=\"margin-top: 180px;\"><a class=\"pic\" onclick=\"report(";
-				var str8 = ")\"><i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\" onclick=\"dispreport()\" ></i>  </ a> <a class=\"pic\">";
-
+				var str7 = "</div><div style=\"margin-top: 180px;\"><a class=\"pic\"><i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\" onclick=\"dispreport()\" ></i>  </a> <div class=\"zhezhao\" id=\"reportdiv\"> <div class=\"tankuang\"> <div id=\"header\"> <span class=\"h1\">举报评价信息</span> <span class=\"h2\">提示：您可以从如下选项中进行选择!</span> <div  style=\"font-size: 20px; text-align: center; background-color: red;height: 25px;width: 25px;color:white;cursor: pointer;margin-left: 535px;\" onclick=\"hidereport()\" >x </div> <ul> <li class=\"pos1\"> <label> <input type=\"checkbox\"> <div class=\"icon\" onclick=\"setrtype(3)\">不文明用语</i></div> </label> </li> <li class=\"pos2\"> <label> <input type=\"checkbox\"> <div class=\"icon\"onclick=\"setrtype(4)\">广告</div> </label> </li> <li class=\"pos3\"> <label> <input type=\"checkbox\"> <div class=\"icon\" onclick=\"setrtype(5)\">色情低俗	</div> </label> </li> <li class=\"pos4\"> <label> <input type=\"checkbox\"> <div class=\"icon\" onclick=\"setrtype(6)\">泄露他人隐私</div> </label> </li> </ul> <input  class=\"submit_pos\" type=\"submit\" value=\"提交\" onclick=\"report(";
+				var str8 = ")\"/> </div> </div> </div> <a class=\"pic\">";
 				var str9 = "<i class=\"fa fa-thumbs-down\" aria-hidden=\"true\" onclick=\"downvote(";
-				var str10 = ")\"></i>  </ a><a class=\"pic\">";
+				var str10 = ")\"></i>  </a><a class=\"pic\">";
 				var str11 = "<i class=\"fa fa-thumbs-up\" aria-hidden=\"true\" onclick=\"upvote(";
-				var str12 = ")\"></i> </ a><a style=\" margin-right:50px;float:right;font-size:15px;\">";
+				var str12 = ")\"></i> </a><a style=\" margin-right:50px;float:right;font-size:15px;\">";
 
 
 				for (var i=0;i<num;i++)
@@ -155,7 +162,13 @@
 			}
 
 			$(document).ready(function (){
-				document.getElementById('reportdiv').style.display="none";
+				hidereport();
+				setTimeout(function(){
+					hidereport();
+				}, 100);
+				hidereport();
+				//$("zhezhao").hide();
+				//document.getElementById('reportdiv').style.display="none";
 			})
 
 		</script>
@@ -304,48 +317,51 @@
 			  <div style="margin-top: 180px;">
 				   <a class="pic">
 			     <i class="fa fa-exclamation-triangle" aria-hidden="true" onclick="dispreport()"></i>
-			      </ a>
-				  <div class="zhezhao" id='reportdiv'>
-					  <div class="tankuang">
-						  <div id="header">
-							  <span class="h1">举报评价信息</span>
-							  <span class="h2">提示：您可以从如下选项中进行选择!</span>
-							  <!-- 下面是点击×可以剪掉网页的设置 -->
-							  <div id="header-right" onclick="hidereport()">x</div> <ul>
-							  <!-- 下面是选择的举报信息的多选框按钮 -->
-							  <ul>
-								  <li class="pos1">
-									  <label>
-										  <input type="checkbox" name="">
-										  <div class="icon" onclick="report(1001, 3)">
-											  不文明用语</i></div>
-									  </label>
-								  </li>
-								  <li class="pos2">
-									  <label>
-										  <input type="checkbox" name="">
-										  <div class="icon" onclick="report(1001, 4)">
-											  广告</div>
-									  </label>
-								  </li>
-								  <li class="pos3">
-									  <label>
-										  <input type="checkbox" name="">
-										  <div class="icon" onclick="report(1001, 5)">
-											  色情低俗	</div>
-									  </label>
-								  </li>
-								  <li class="pos4">
-									  <label>
-										  <input type="checkbox" name="">
-										  <div class="icon" onclick="report(1001, 6)">
-											  泄露他人隐私</div>
-									  </label>
-								  </li>
-							  </ul>
-						  </div>
-					  </div>
-				  </div>
+				   </a>
+					   <div class="zhezhao" id='reportdiv'>
+						   <div class="tankuang">
+							   <div id="header">
+								   <span class="h1">举报评价信息</span>
+								   <span class="h2">提示：您可以从如下选项中进行选择!</span>
+								   <!-- 下面是点击×可以剪掉网页的设置 -->
+								   <div  style="font-size: 20px; text-align: center; background-color: red;height: 25px;width: 25px;color:white;cursor: pointer;margin-left: 535px;" onclick="hidereport()" >x
+								   </div>
+								   <!-- 下面是选择的举报信息的多选框按钮 -->
+
+								   <ul>
+									   <li class="pos1">
+										   <label>
+											   <input type="checkbox" name="" id="hh1">
+											   <div class="icon" onclick="setrtype(3)">
+												   不文明用语</i></div>
+										   </label>
+									   </li>
+									   <li class="pos2">
+										   <label>
+											   <input type="checkbox" name="">
+											   <div class="icon" id="hh2" onclick="setrtype(4)">
+												   广告</div>
+										   </label>
+									   </li>
+									   <li class="pos3">
+										   <label>
+											   <input type="checkbox" name="">
+											   <div class="icon" id="hh3" onclick="setrtype(5)">
+												   色情低俗	</div>
+										   </label>
+									   </li>
+									   <li class="pos4">
+										   <label>
+											   <input type="checkbox" name="">
+											   <div class="icon" id="hh4" onclick="setrtype(6)">
+												   泄露他人隐私</div>
+										   </label>
+									   </li>
+								   </ul>
+								   <input  class="submit_pos" type="submit" name="" value="提交" onclick="report()"/>
+							   </div>
+						   </div>
+					   </div>
 			    <a class="pic">
 			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
 			      </ a>

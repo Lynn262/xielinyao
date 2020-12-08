@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <title>管·课程界面</title>
+        <link rel="stylesheet" href="css/AdminPage_style.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/tanchuang_tea.css">
+        <!-- CSS -->
+ 
+</head>
+<body>
+	<div class="shuipingxian">
+				<div >课程管理界面</div>
+			</div>
+			<!-- 这是一条水平线 -->
+			<div class="shuipingxian2"></div>
+	<table    class="class2" >
+	  <tr >
+	  		   <td  class="class_border1">
+	  			   <a class="pic" href="AdminPage.html">
+	  				   <i class="fa fa-home"  style="color: #000000;"></i>
+	  			   <font  color="white">首页</font></a>
+	  			   </td>
+	  		 </tr>
+	  		  <tr>
+	  		   <td  class="class_border">
+	  			   <a class="pic" href="AdminPage.html">
+	  			   	 <i class="fa fa-tasks"  style="color: #000000;"></i>
+	  			      <font color="white">管理学生信息 </font> 
+	  				  </a>
+	  			  </td>
+	  		 </tr>
+	  		  <tr>
+	  		   <td align="center" class="class_border">
+	  			   <a class="pic" href="AdminPage_tea.html">
+	  			   	<i class="fa fa-tasks"  style="color: #000000;"></i>
+	  			   <font color="white">管理教师信息</font> </a>
+	  			   </td>
+	  		 </tr>
+	  		  <tr>
+	  		   <td align="center" class="class_border">
+	  			   <a class="pic" href="AdminPage_Cur.html">
+	  			   <i class="fa fa-tasks"  style="color: #000000;"></i>
+	  			   <font  color="white">管理课程信息</font>
+	  			   </a>
+	  			   </td>
+	  		 </tr>
+	  		  <tr>
+	  		   <td align="center" class="class_border">
+	  			   <a class="pic" href="AdminPage_Review.html">
+	  			   	<i class="fa fa-tasks"  style="color: #000000;"></i>
+	  			   <font  color="white">管理评价信息</font>
+	  			    </a>
+	  			   </td>
+	  		 </tr>
+	  		 <tr>
+	  		   <td align="center" ></td>
+	  		 </tr>
+	  		 <tr>
+	  		   <td align="center" ></td>
+	  		 </tr>
+	  		 <tr>
+	  		   <td align="center" ></td>
+	  		 </tr>
+	  		 <tr>
+	  		   <td align="center" ></td>
+	  		 </tr>
+	  		 <tr>
+	  		   <td align="center" ></td>
+	  		 </tr>
+	  		 <tr>
+	  		   <td align="center" ></td>
+	  		 </tr>
+	  		 <tr>
+	  		   <td align="center" ></td>
+	  		 </tr>
+	  		 <tr>
+	  		   <td align="center" ></td>
+	  		 </tr>
+	  		 <tr>
+	  		   <td align="center" ></td>
+	  		 </tr>
+	  		 <tr>
+	  		   <td align="center" ></td>
+	  		 </tr>
+	  		 <tr>
+	  		   <td align="center" ></td>
+	  		 </tr>
+	</table>
+	<div class="box">
+			<div class="TOP">
+				课程信息
+			</div>
+			<div class="THead">
+				<input style="width:600px;height:30px;margin-top:15px;margin-left: 80px;font-size:15px">
+					<button style="height:35px;width:50px;font-size:15px;cursor: pointer;">搜索</button>
+				<button onclick="dianwo1()" class="add">
+				增加课程信息
+				</button>
+				<button type="button" class="change" onclick="dianwo()">
+					修改课程信息
+				</button>
+				<div class="zhezhao" id='zhezhao'>
+							<div class="tankuang1">
+								<div id="header">
+									<span class="h1">修改课程信息</span>
+									<span class="h5">请在需要修改信息的框里面键入新的信息</span>
+									<!-- 这里后端可不可以做成先置入信息，然后如果有需要修改的再进行修改？我就把placeholder改成value了哈
+									 就是希望这里面的value可以是数据库里面的值-->
+									<input type="text" name="d1" id="d1" value="请重置该课程号" class="switch1"/>
+									<input type="text" name="d1" id="d1" value="请重置该课程名称" class="switch2"/>
+									<input type="text" name="d1" id="d1" value="请重置该课程学期" class="switch3"/>
+									<input type="text" name="d1" id="d1" value="请重置该课程学分" class="switch4"/>
+									<input type="text" name="d1" id="d1" value="请重置该课程的所属院系" class="switch5"/>
+									<div id="header-right" onclick="hidder()">x</div>
+									 <input type="submit" name="" id="" value="提交信息" class="submit1" onclick="sub()"/>
+								</div>
+							</div>
+						</div>
+				<div class="zhezhao1" id='zhezhao1'>
+							<div class="tankuang1">
+								<div id="header">
+									<!-- 昵称学号名称密码密码 -->
+									<div style="cursor: pointer;">
+										<div class="honey" >增加课程信息</div>
+									<span class="h51">请您在下面的输入框中根据提示置入课程的信息</span>
+									</div>
+									<!-- 下面是点击×可以剪掉网页的设置 -->
+									<div id="header-right" onclick="hidder1()">x</div>
+									<input type="text" name="d1" id="d1" placeholder="请输入该课程的课程号" class="switch1"/>
+									<input type="text" name="d1" id="d1" placeholder="请输入该课程名称" class="switch2"/>
+									<input type="text" name="d1" id="d1" placeholder="请输入该课程学期" class="switch3"/>
+									<input type="password" name="d1" id="d1" placeholder="请输入该课程的学分" class="switch4"/>
+									<input type="password" name="d1" id="d1" placeholder="请输入该课程的所属院系" class="switch5"/>
+									<input type="submit" name="" id="" value="提交信息" class="submit2" onclick="sub()"/>
+								</div>
+							</div>
+						</div>
+			</div>
+			<div class="infoD">
+				<table class="infoT">
+	  		<tbody>
+	    	<tr>
+	      		<td class="infoH">
+					课程号
+				</td>
+				<td class="infoH">
+					课程名称
+				</td>
+				<td class="infoH"> 
+					课程学期
+				</td>
+				<td class="infoH">
+					课程学分（分）
+				</td>
+				<td class="infoH">
+					课程所属院系
+				</td>
+				<td class="infoH">
+					删除
+				</td>
+	    	</tr>
+	    	<tr>
+	      		<td class="info">
+					1
+				</td>
+				<td class="info">
+					高数1
+				</td>
+				<td class="info"> 
+					1
+				</td>
+				<td class="info">
+					4
+				</td>
+				<td class="info">
+					信息工程学院
+				</td>
+				<td class="infoH">
+					<button onclick="dele()" style="cursor: pointer;">
+					删除
+					</button>
+				</td>
+	    	</tr>
+	    	<tr>
+	      		<td>&nbsp;</td>
+	    	</tr>
+	  		</tbody>
+	</table>
+			</div>
+		</div>
+		<!-- 这是弹窗的js代码 -->
+		<script>
+				function sub(){
+						alert("保存成功！");
+					}
+				</script>
+				<script type="text/javascript">
+					document.getElementById('zhezhao').style.display="none";
+					function dianwo(){
+						document.getElementById('zhezhao').style.display="";
+					}
+					function hidder(){
+						document.getElementById('zhezhao').style.display="none";
+					}
+				</script>
+				</script>
+				<script type="text/javascript">
+					document.getElementById('zhezhao1').style.display="none";
+					function dianwo1(){
+						document.getElementById('zhezhao1').style.display="";
+					}
+					function hidder1(){
+						document.getElementById('zhezhao1').style.display="none";
+					}
+				</script>
+				<script>
+					function dele(){
+						if (confirm("确认删除此条课程记录吗？")==true)
+						{
+						alert("删除成功");
+						}
+						// alert("您确定要删除此用户吗？")
+					}
+				</script>
+				<!-- 这是弹窗的js代码 -->
+</body>
+</html>
+
+
