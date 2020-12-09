@@ -18,6 +18,15 @@ body{
 	font-size:15px;
 	margin-left: 10px;
 }
+.change_R{
+/* 	这是修改学生按钮的框 */
+	height:35px;
+	width:90px;
+	font-size:18px;
+	position: absolute;
+	top: 16.5%;
+	left: 81.5%;
+}
 .class2{
 	float: left;
 	   border-collapse: collapse;
@@ -112,7 +121,17 @@ body{
 					.infoH
 					{
 						height:30px;
-						width:250px;
+						width:200px;
+						font-size:15px;
+						border: solid;
+						border-width:1px;
+						border-color: /* lightseagreen */lightseagreen;
+						
+					}
+					.infoHH
+					{
+						height:30px;
+						width:400px;
 						font-size:15px;
 						border: solid;
 						border-width:1px;
@@ -125,6 +144,23 @@ body{
 						height:80px;
 						width: 1000px;
 						text-align: center;
+					}
+					.THead_R
+					{
+						background-color: lightseagreen;
+						height:40px;
+						width: 1000px;
+						text-align: center;
+					}
+					.THead_R2
+					{
+						position: relative;
+						background-color: lightseagreen;
+						height:40px;
+						width: 1000px;
+						text-align: center;
+						margin-top: 500px;
+						margin-left: 280px;
 					}
 					.info
 					{
