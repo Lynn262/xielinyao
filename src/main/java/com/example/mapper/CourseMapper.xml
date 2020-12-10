@@ -4,41 +4,55 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><!--规则 格式-->
 <mapper namespace="com.example.dao.CourseDao">
 
+    <select id="getallc" resultType="course">
+        SELECT * FROM course
+    </select>
+
+    <select id="queryCname" parameterType="String" resultType="course">
+        SELECT * FROM course WHERE Cname LIKE CONCAT('%', #{cname}, '%')
+    </select>
+
   <select id="getAdmCrs" parameterType="String" resultType="course">
-         SELECT * FROM course  where ( Cno=#{Cno}) 
+         SELECT * FROM course  where ( Cno=#{cno})
     </select>
   
    <select id="getAdmCno" parameterType="String" resultType="String">
-   		 SELECT Cno FROM course  where ( Cname=#{Cname}) 
+   		 SELECT Cno FROM course  where ( Cname=#{cname})
    </select> 
    
    <insert id="savecourse" parameterType="Course">
    INSERT 
     INTO Course(Cno,Cname,Cterm,Ccredit,Cdept)
-    VALUES(#{Cno},#{Cname},#{Cterm},#{Ccredit},#{Cdept});
+    VALUES(#{cno},#{cname},#{cterm},#{ccredit},#{cdept});
    </insert>
    
    <delete id="deletecourse" parameterType="String"> 
    DELETE
     FROM Course
-    WHERE Cno=#{Cno};
+    WHERE Cno=#{cno};
    </delete>
    
    <update id="updatecname">
    UPDATE Course
-        SET Cname=#{Cname}
-        WHERE Cno=#{Cno};
+        SET Cname=#{cname}
+        WHERE Cno=#{cno};
    </update>
    
    <update id="updatecterm">
    UPDATE Course
-        SET Cterm=#{Cterm}
-        WHERE Cno=#{Cno};
+        SET Cterm=#{cterm}
+        WHERE Cno=#{cno};
    </update>
    
    <update id="updatecredit">
    UPDATE Course
-        SET Ccredit=#{Ccredit}
-        WHERE Cno=#{Cno};
+        SET Ccredit=#{ccredit}
+        WHERE Cno=#{cno};
    </update>
+
+    <update id="updatecdept">
+        UPDATE course
+            SET cdept = #{dept}
+            WHERE cno = #{cno}
+    </update>
 </mapper>

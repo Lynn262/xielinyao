@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -11,18 +12,24 @@ import com.example.pojo.Course;
 @Mapper
 
 public interface CourseDao {
+
+	List<Course> getallc();
+
+	List<Course> queryCname(String cname);
 	
-	Course getAdmCrs( String Cno);
+	Course getAdmCrs( String cno);
 	
-	String getAdmCno(String Cname);
+	String getAdmCno(String cname);
 	
 	int savecourse(Course courseVo);
 	 
-	int deletecourse(String Cno);
+	int deletecourse(String cno);
 	
-	int updatecname(String Cno,String Cname);
+	int updatecname(String cno,String cname);
 	
-	int updatecterm(String Cno,String Cterm);
+	int updatecterm(Map m1);
 	
-	int updatecredit(String Cno,String Ccredit);
+	int updatecredit(Map m1);
+
+	int updatecdept(String cno, String dept);
 }

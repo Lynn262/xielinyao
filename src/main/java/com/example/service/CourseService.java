@@ -9,6 +9,10 @@ import com.example.pojo.Professor;
 
 
 public interface CourseService {
+
+	List<Course> getallc();
+
+	List<Course> queryCname(String cname);
 	
 	Course getAdmCrs( String Cno);
 	
@@ -20,8 +24,10 @@ public interface CourseService {
 	
 	int updatecname(String Cno,String Cname);
 	
-	int updatecterm(String Cno,String Cterm);
+	int updatecterm(String Cno,int Cterm);
 	
-	int updatecredit(String Cno,String Ccredit);
+	int updatecredit(String Cno,int Ccredit);
+
+	int updatecdept(String cno, String dept);
 	
 }

@@ -7,10 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.pojo.Course;
 import com.example.pojo.Professor;
@@ -22,6 +19,18 @@ public class CourseController {
 
 	@Autowired
 	private CourseService courseService = null;
+
+	@GetMapping("/getallc")
+	@ResponseBody
+	public List<Course> getallc(){
+		return courseService.getallc();
+	}
+
+	@GetMapping("/querybyname")
+	@ResponseBody
+	public List<Course> queryBycname(String cname){
+		return courseService.queryCname(cname);
+	}
 	
 	@RequestMapping("/querycourse")//查询课程
 	@ResponseBody
@@ -36,8 +45,31 @@ public class CourseController {
 	public int savecourse(@RequestBody Course courseVo) {
 		return courseService.savecourse(courseVo);
 	}
+
+	@PostMapping("/updatecourse")
+	@ResponseBody
+	public int updatecouse(@RequestBody Course c1){
+		Course c2 = courseService.getAdmCrs(c1.getCno());
+
+		if(c2 != null){
+			if(c2.getCname() != c1.getCname()){
+				courseService.updatecname(c2.getCno(), c1.getCname());
+			}
+			if(c2.getCcredit() != c1.getCcredit()){
+				courseService.updatecredit(c2.getCno(), c1.getCterm());
+			}
+			if(c2.getCterm() != c1.getCterm()){
+				courseService.updatecterm(c2.getCno(), c1.getCterm());
+			}
+			if(c2.getCdept() != c1.getCdept()){
+				courseService.updatecdept(c2.getCno(), c1.getCdept());
+			}
+			return 1;
+		}
+		return 0;
+	}
 	
-	@RequestMapping("/deletecourse")//删除一个课程
+	@DeleteMapping("/deletecourse")//删除一个课程
 	@ResponseBody
 	public int deletecourse(String Cno) {
 		return courseService.deletecourse(Cno);
@@ -58,14 +90,14 @@ public class CourseController {
 	
 	@RequestMapping("/updatecterm")//更改课程学期
 	@ResponseBody
-	public int updatecterm(String Cno,String Cterm) {//spring帮助获取参数
+	public int updatecterm(String Cno,int Cterm) {//spring帮助获取参数
 		
 		return courseService.updatecterm(Cno,Cterm);
 	}
 	
 	@RequestMapping("/updateccredit")//更改课程学分
 	@ResponseBody
-	public int updatecredit(String Cno,String Ccredit) {//spring帮助获取参数
+	public int updatecredit(String Cno,int Ccredit) {//spring帮助获取参数
 		
 		return courseService.updatecredit(Cno,Ccredit);
 	}

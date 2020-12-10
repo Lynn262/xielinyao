@@ -104,14 +104,13 @@ public class ReviewServiceImpl implements ReviewService {
 	/**
 	 *
 	 * @param id_review 被举报的评价的id
-	 * @param rtype 被举报的类型
 	 * @return 是否举报成功
 	 */
 	@Override
-	public boolean reportRev(int id_review, int rtype) {
+	public boolean reportRev(int id_review) {
 		Review rev1 = reviewDao.getRev(id_review);
 		if(rev1.getState() == 1){ //如果评价处于有效状态则更改其状态为被举报
-			reviewDao.modState(id_review, rtype);
+			reviewDao.modState(id_review, 3);
 			return true;
 		}
 		else{

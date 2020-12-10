@@ -86,15 +86,15 @@ public class ReviewController {
 	/**
 	 * @param request 获取session
 	 * @param id_review 被举报的评价的id
-	 * @param rtype 被举报的类型
 	 * @return 举报成功返回1，举报失败返回0
 	 */
 	@PostMapping("/reportRev") //举报评价
 	@ResponseBody
-	public int reportRev(HttpServletRequest request, int id_review, int rtype){
+	public int reportRev(HttpServletRequest request, int id_review){
+
 		Review rev1 = reviewService.getRev(id_review);
-		if(rev1 != null && rtype > 2 && rtype < 7){
-			if(reviewService.reportRev(id_review, rtype)){
+		if(rev1 != null){
+			if(reviewService.reportRev(id_review)){
 				return 1;
 			}
 		}

@@ -23,7 +23,7 @@ public interface ReviewService {
 	
 	List<ReviewFront> queryreview(String PCname);
 
-	boolean reportRev(int id_review, int rtype);
+	boolean reportRev(int id_review);
 
 	List<ReviewFront> getReport();
 
