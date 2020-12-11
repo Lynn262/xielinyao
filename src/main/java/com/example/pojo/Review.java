@@ -2,12 +2,11 @@ package com.example.pojo;
 
 import java.sql.Date;
 import org.apache.ibatis.type.Alias;
-import java.io.Serializable;
 
 @Alias("review")
 //评价类
 public class Review {
-    private  int  id;         //每个评价评价都有唯一的id
+    private  int id_review;         //每个评价评价都有唯一的id
 	private String cno;     //评价的课程号
     private  String pno;     //评价的教师号
     private  String sno;     //评价的学号
@@ -21,8 +20,8 @@ public class Review {
     private int upvote;     //评价的点赞数量
 
     //设置评论id
-    public void setId(int id) {
-        this.id = id;
+    public void setId_review(int id_review) {
+        this.id_review = id_review;
     }
 
     //设置评价的课程编号
@@ -102,8 +101,8 @@ public class Review {
     }
 
     //返回评价id
-    public int getId() {
-        return id;
+    public int getId_review() {
+        return id_review;
     }
 
     //返回评价的学生学号

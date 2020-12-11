@@ -53,6 +53,12 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.updatesnickname(Sno,Snickname);
 
 	}
+
+	/**
+	 * @param Sno 需要封禁的学生学号
+	 * @param Sstate 封禁学生到什么时候
+	 * @return 1
+	 */
 	@Override
 	public int updatestate(String Sno,java.sql.Date Sstate) {
 		Map map = new HashMap();

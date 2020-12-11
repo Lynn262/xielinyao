@@ -47,10 +47,10 @@
         ;
     </select>
 
-    <select id="getReport" resultType="reviewfront">
-        SELECT id_review,Snickname,Cname,Pname,Revt,Comment,difficulty,quality,upvote,downvote
-        FROM review,student,course,professor
-        WHERE student.Sno=review.Sno AND course.Cno=review.Cno AND professor.Pno=review.Pno AND review.state > 1;
+    <select id="getReport" resultType="review">
+        SELECT *
+        FROM review
+        WHERE state > 1;
     </select>
 
     <delete id="deleRev" parameterType="int">

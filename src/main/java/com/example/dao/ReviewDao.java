@@ -30,7 +30,7 @@ public interface ReviewDao {
 	
 	List<ReviewFront> queryreview(String PCname);
 
-	List<ReviewFront> getReport();
+	List<Review> getReport();
 
 	int deleRev(int id_review);
 }

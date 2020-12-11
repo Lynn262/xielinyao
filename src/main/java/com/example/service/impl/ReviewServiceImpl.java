@@ -119,7 +119,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewFront> getReport() {
+	public List<Review> getReport() {
 		return reviewDao.getReport();
 	}
 

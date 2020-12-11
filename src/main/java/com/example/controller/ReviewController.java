@@ -102,12 +102,11 @@ public class ReviewController {
 	}
 
 	/**
-	 *
 	 * @return 返回所有等待管理员审核的评价
 	 */
 	@GetMapping("/getreport")
 	@ResponseBody
-	public List<ReviewFront> getReport(){
+	public List<Review> getReport(){
 		return reviewService.getReport();
 	}
 

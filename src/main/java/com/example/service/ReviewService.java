@@ -25,7 +25,7 @@ public interface ReviewService {
 
 	boolean reportRev(int id_review);
 
-	List<ReviewFront> getReport();
+	List<Review> getReport();
 
 	void approveRev(int id_review);
 

@@ -9,7 +9,7 @@
 	<!-- CSS -->
 
 </head>
-<body>
+<body onload="showall()">
 <div class="shuipingxian">
 	<div >评价管理界面</div>
 </div>
@@ -132,12 +132,12 @@
 					<span class="h1">封禁学生</span>
 					<span class="h2">
 										<font  color="red">提示：请您对学生的账号有效期进行修改</font></span>
-					<input type="text" placeholder="请输入学生的学号" style="margin-top: 110px;height: 25px;" />
-					<span class="h3">请选择学生账号的有效期：</span>
+					<input type="text" placeholder="请输入学生的学号" id="sno" style="margin-top: 110px;height: 25px;" />
+					<span class="h3">请选择该学生的封禁截止日期：</span>
 					<!-- 下面是点击×可以剪掉网页的设置 -->
 					<div id="header-right" onclick="hidder()">x</div>
 					<input type="date" name="d1" id="d1" value="2020-12-1" class="date1"/>
-					<input type="submit" name="" id="" value="提交信息" class="submit1" onclick="sub()"/>
+					<input type="submit" name="" id="" value="提交信息" class="submit1" onclick="lockacc()"/>
 				</div>
 			</div>
 		</div>
@@ -159,7 +159,7 @@
 				恢复与恢复
 			</td>
 			</thead>
-			<tbody>
+			<tbody id="reviewcontent">
 			<tr>
 				<td class="info">
 					王晓红
@@ -188,8 +188,21 @@
 <!-- 这是弹窗的js代码 -->
 <script src="js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
-	function sub(){
-		alert("保存成功！");
+	function lockacc(){
+		var time1 = document.getElementById("d1").value;
+		var sno = document.getElementById("sno").value;
+		var url1 = "student/updatestate?Sno=" + sno + "&Sstate=" + time1;
+
+		$.ajax({
+			type : "POST",
+			url : url1,
+			success : function(response){
+				if(response == 1)
+					alert("封禁成功");
+				else
+					alert("封禁失败");
+			}
+		})
 	}
 
 	document.getElementById('zhezhao').style.display="none";
@@ -216,20 +229,84 @@
 		document.getElementById('zhezhao1').style.display="none";
 	}
 
-	function dele(){
+	function dele(rev_id){
 		if (confirm("确认删除此评价吗？")==true)
 		{
-			alert("删除成功");
+			var url1 = "review/deleRev?id_review=" + rev_id;
+			$.ajax({
+				url : url1,
+				type : "DELETE",
+				async : false,
+				success : function(){
+					alert("删除成功");
+					showall();
+				},
+				error : function(){
+					alert("删除失败");
+				}
+			})
+
 		}
-		// alert("您确定要删除此用户吗？")
 	}
 
-	function recover(){
-		if (confirm("确认恢复此评价吗？")==true)
-		{
-			alert("恢复成功");
+	function recover(rev_id){
+		var url1 = "review/approverev?id_review=" + rev_id;
+		$.ajax({
+			url : url1,
+			type : "POST",
+			async : false,
+			success : function(){
+				showall();
+			},
+			error : function(){
+				alert("删除失败");
+			}
+		})
+	}
+
+	function showreview(reviews){
+		var len = reviews.length;
+		var temp = "";
+		var revewdisp = "";
+		var str1 = "<tr> <td class=\"info\">";
+		var str2 = "</td> <td class=\"info\">";
+		var str3 = "</td> <td class=\"info\">";
+		var str4 = "";
+		var str5 = "</td> <td class=\"infoH\"> <button onclick=\"dele(";
+		var str6 = ")\" style=\"margin-right: 50px;\">"
+		var str7 = "</button> <button type=\"button\" onclick=\"recover(";
+		var str8 = ")\">";
+		var str9 = "</button> </td> </tr>";
+
+		for(var i = 0; i < len; i++){
+			if(reviews[i].state == 2){
+				str4 = "申请删除";
+			}
+			else if(reviews[i].state == 3){
+				str4 = "被举报";
+			}
+			else{
+				str4 = "不明原因";
+			}
+			temp = str1 + reviews[i].sno + str2 + reviews[i].comment + str3 + str4 + str5 + reviews[i].id_review +
+					str6 +"删除" + str7 + reviews[i].id_review + str8 + "恢复" + str9;
+			revewdisp += temp;
 		}
-		// alert("您确定要删除此用户吗？")
+		$("#reviewcontent").html(revewdisp);
+	}
+
+	function showall(){
+		$.ajax({
+			url : "review/getreport",
+			type : "GET",
+			async : false,
+			success : function(reviews){
+				showreview(reviews);
+			},
+			error : function(){
+				alert("连接失败");
+			}
+		})
 	}
 
 	document.getElementById('zhezhao2').style.display="none";
