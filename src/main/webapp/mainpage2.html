@@ -113,6 +113,35 @@
 				})
 			}
 
+			//拉取课程排名并填充
+			function fillcrank(ranks){
+				var num = ranks.length;
+				var temp = "";
+				var rankdisp = "";
+				var str1 = "<tr><td class=\"side_top\">Top1</td><td class=\"side_td\">";
+				var str2 = "</td></tr>";
+
+				for(var i = 0; i < num; i++){
+					temp = str1 + ranks[i].cname + str2;
+					rankdisp += temp;
+				}
+				$("#crank").html(rankdisp);
+			}
+
+			function fillprank(ranks){
+				var num = ranks.length;
+				var temp = "";
+				var rankdisp = "";
+				var str1 = "<tr><td class=\"side_top\">Top1</td><td class=\"side_td\">";
+				var str2 = "</td></tr>";
+
+				for(var i = 0; i < num; i++){
+					temp = str1 + ranks[i].pname + str2;
+					rankdisp += temp;
+				}
+				$("#prank").html(rankdisp);
+			}
+
 			function show(Review){ //展示每个评价的函数
 				var num=Review.length;
 				var tmp = "";
@@ -144,6 +173,23 @@
 				 $('#review').html(reviewhtml);	
 			}
 
+			$(document).ready(function(){
+				$.ajax({
+					url : "review/getcrank",
+					type : "GET",
+					success : function(response){
+						fillcrank(response);
+					}
+				})
+				$.ajax({
+					url : "review/getprank",
+					type : "GET",
+					success : function(response){
+						fillprank(response);
+					}
+				})
+			})
+
 		</script>
 		<div class="search-box">
 			<input class="search-txt" type="text" name="" placeholder="请输入教师/课程名称查询" id="searchreview">
@@ -157,7 +203,7 @@
 		教师风采
 	</div>
 	 <table class="side_T">
-	  <tbody>
+	  <tbody id="prank">
 	    <tr>
 	     <td class="side_top">Top1</td><td class="side_td">张海山</td>
 	    </tr>
@@ -421,7 +467,7 @@
 	  	课堂风采
 	  </div>
 	  <table class="side_T">
-		<tbody>
+		<tbody id="crank">
 		  <tr>
 		   <td class="side_top">Top1</td><td class="side_td">高等数学</td>
 		  </tr>

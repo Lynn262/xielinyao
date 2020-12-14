@@ -2,6 +2,8 @@ package com.example.service;
 
 import java.util.List;
 
+import com.example.pojo.CourseRank;
+import com.example.pojo.ProfessorRank;
 import com.example.pojo.Review;
 import com.example.pojo.ReviewFront;
 
@@ -30,4 +32,8 @@ public interface ReviewService {
 	void approveRev(int id_review);
 
 	int deleRev(int id_review);
+
+	List<CourseRank> getCourseRank();
+
+	List<ProfessorRank> getProfRank();
 }

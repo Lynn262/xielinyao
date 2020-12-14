@@ -2,6 +2,8 @@ package com.example.dao;
 
 import java.util.List;
 
+import com.example.pojo.CourseRank;
+import com.example.pojo.ProfessorRank;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.pojo.Review;
@@ -33,4 +35,8 @@ public interface ReviewDao {
 	List<Review> getReport();
 
 	int deleRev(int id_review);
+
+	List<CourseRank> getCourseRank();
+
+	List<ProfessorRank> getProfRank();
 }

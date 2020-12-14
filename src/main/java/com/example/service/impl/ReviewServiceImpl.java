@@ -2,6 +2,8 @@ package com.example.service.impl;
 
 import java.util.List;
 
+import com.example.pojo.CourseRank;
+import com.example.pojo.ProfessorRank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -131,5 +133,17 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int deleRev(int id_review) {
 		return reviewDao.deleRev(id_review);
+	}
+
+	@Override
+	public List<CourseRank> getCourseRank(){
+		List<CourseRank> rank10 = reviewDao.getCourseRank();
+		return rank10.subList(0, 10);
+	}
+
+	@Override
+	public List<ProfessorRank> getProfRank() {
+		List<ProfessorRank> rank10 = reviewDao.getProfRank();
+		return rank10.subList(0, 10);
 	}
 }

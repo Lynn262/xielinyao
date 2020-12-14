@@ -6,12 +6,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.pojo.Review;
-import com.example.pojo.ReviewFront;
 import com.example.service.ReviewService;
 
 
@@ -140,5 +139,17 @@ public class ReviewController {
 			return 1;
 		}
 		return 0;
+	}
+
+	@GetMapping("/getcrank")
+	@ResponseBody
+	public List<CourseRank> getCrank(){
+		return reviewService.getCourseRank();
+	}
+
+	@GetMapping("/getprank")
+	@ResponseBody
+	public List<ProfessorRank> getprank(){
+		return reviewService.getProfRank();
 	}
 }

@@ -57,4 +57,20 @@
         DELETE FROM review WHERE id_review = #{id_review}
     </delete>
 
+    <select id="getCourseRank" resultType="CourseRank">
+        SELECT review.Cno, course.Cname, AVG((review.personality*0.3 + review.quality*0.5 + review.difficulty*0.2))
+        FROM review, course
+        WHERE review.Cno = course.Cno
+        GROUP BY review.Cno
+        ORDER BY 3 DESC
+    </select>
+
+    <select id="getProfRank" resultType="ProfessorRank">
+        SELECT review.pno, professor.Pname, AVG((review.personality*0.3 + review.quality*0.5 + review.difficulty*0.2))
+        FROM review, professor
+        WHERE review.Pno = professor.Pno
+        GROUP BY review.Pno
+        ORDER BY 3 DESC
+    </select>
+
 </mapper>
