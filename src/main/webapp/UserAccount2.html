@@ -55,12 +55,20 @@
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script>
 
-		var sno="1181002035";
+		var sno="";
 		var newname1="";
 		var spw="";
 		
-		
+		function init(){
+			var url = "acc/myno";
+			$.ajaxSettings.async = false;
+			$.get(url, function(number, status) {
+				alert(number);
+				sno=number;//找到学生号 给sno
+			});
+		}
 		function querystudent(){
+			init();
 			var url="student/querystudent?Sno="+sno;
 			$.ajaxSettings.async = false;
 			$.get(url, function(student, status) {

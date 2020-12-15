@@ -26,6 +26,15 @@ public class AccountController {
      * @param acc1 前端传过来的存在json文件里的对象，默认为student，在类内转化为admin类
      * @return 返回登录成功或失败的信息
      */
+    @RequestMapping("/myno")
+	@ResponseBody
+	public String myno(HttpServletRequest request) {
+		String no=(String)request.getSession(true).getAttribute("sno");//得到学生号
+		if(no==null)//如果不是学生
+		no=(String)request.getSession(true).getAttribute("ano");//得到管理员账号
+		return no;
+	}
+    
     @PostMapping("/login")
     @ResponseBody
     public int login(HttpServletRequest request, @RequestBody Student acc1) {

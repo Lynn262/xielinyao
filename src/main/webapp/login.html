@@ -32,7 +32,8 @@
 							window.event.returnValue=false;
 						}
 						else if(response == 2){ //管理员登录成功
-							alert("管理员登陆成功，等待管理员主页完成")
+							location.href = "/AdminPage.html";
+							alert("管理员登陆成功，等待管理员主页完成");
 						}
 						else {
 							alert("用户名或密码错误");

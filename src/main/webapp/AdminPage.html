@@ -216,7 +216,15 @@
 							 }
 						 });
 					}
-				
+				var ano="";
+				function init(){
+					var url = "acc/myno";
+					$.ajaxSettings.async = false;
+					$.get(url, function(number, status) {
+						alert(ano);
+						ano=number;//找到管理员账号，虽然并不知道有什么用？？
+					});
+				}
 				function searchall(){
 					
 					var url="student/queryall";

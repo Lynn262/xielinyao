@@ -19,14 +19,21 @@
 	<script type="text/javascript">
 	var pno="";
 	var cno="";
-	var sno="1181002036";
+	var sno="";
 	var personality= "";
 	var difficulty = "";
 	var quality="";
 	var pname="";
 	var cname="";
 	var comment="";
-	
+	function init(){
+		var url = "acc/myno";
+		$.ajaxSettings.async = false;
+		$.get(url, function(number, status) {
+			alert(number);
+			sno=number;//找到学生号 给sno
+		});
+	}
 	
 	function submit(){
 		
@@ -62,6 +69,7 @@
 			'sno'  : sno,
 			'quality':quality,
 			'difficulty':difficulty,
+			'personality':personality,
 			'comment':comment.value,
 			'state':1,
 			'upvote':0,
@@ -80,17 +88,17 @@
 			success : function(result) {
 				if (result ==1) {
 					alert("评价成功");
-
+					location.href = "/mainpage2.html";
 				}
 				else alert("评价失败！");
 			},
-			error: alert("评价失败")
+			//error: alert("评价失败")
 		});
 	
 	}
 	
 	</script>
-	<body style="background-color: #808e9b;">
+	<body style="background-color: #808e9b;" onload="init()">
 		<form  class="box" action="javascript:submit();" >
 			<h1>发布评价</h1>
 			<div style="float: left; margin-left: 100px;" ><input type="text" name="" id="pname" placeholder="请输入您想要评价的教师姓名"></div>

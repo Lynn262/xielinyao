@@ -11,7 +11,7 @@
     </select>
   
   <insert id="saveRev" parameterType="review" >
-  		INSERT INTO review (Cno,Pno,Sno,Revt,Comment,difficulty,quality,state,upvote,downvote)VALUES (#{cno},#{pno},#{sno},sysdate(),#{comment},#{difficulty},#{quality},#{state},#{upvote},#{downvote})
+  		INSERT INTO review (Cno,Pno,Sno,Revt,Comment,difficulty,quality,personality,state,upvote,downvote)VALUES (#{cno},#{pno},#{sno},sysdate(),#{comment},#{difficulty},#{quality},#{personality},#{state},#{upvote},#{downvote})
   </insert>
   
   <update id="upvote" parameterType="int" >
