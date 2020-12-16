@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/choose.css">
 		<link rel="stylesheet" href="css/tanchuang.css">
+		<link href="css/lunbotu.css" type="text/css" rel="stylesheet" />
 		<title>Document</title>	
 	</head>
 	<body  onload="searchall()"><center>
@@ -118,11 +119,12 @@
 				var num = ranks.length;
 				var temp = "";
 				var rankdisp = "";
-				var str1 = "<tr><td class=\"side_top\">Top1</td><td class=\"side_td\">";
+				var str1 = "<tr><td class=\"side_top\">Top"
+				var str3 = "</td><td class=\"side_td\">";
 				var str2 = "</td></tr>";
 
 				for(var i = 0; i < num; i++){
-					temp = str1 + ranks[i].cname + str2;
+					temp = str1 + (i+1) + str3 + ranks[i].cname + str2;
 					rankdisp += temp;
 				}
 				$("#crank").html(rankdisp);
@@ -132,11 +134,12 @@
 				var num = ranks.length;
 				var temp = "";
 				var rankdisp = "";
-				var str1 = "<tr><td class=\"side_top\">Top1</td><td class=\"side_td\">";
+				var str1 = "<tr><td class=\"side_top\">Top"
+				var str3 = "</td><td class=\"side_td\">";
 				var str2 = "</td></tr>";
 
 				for(var i = 0; i < num; i++){
-					temp = str1 + ranks[i].pname + str2;
+					temp = str1 + (i+1) + str3 + ranks[i].pname + str2;
 					rankdisp += temp;
 				}
 				$("#prank").html(rankdisp);
@@ -191,12 +194,60 @@
 			})
 
 		</script>
+		
 		<div class="search-box">
 			<input class="search-txt" type="text" name="" placeholder="请输入教师/课程名称查询" id="searchreview">
 			<a class="search-btn" herf="#">
 				<i class="fa fa-search" onclick="searchreview()"></i>
 			</a>
 		</div>
+		
+		<!--这是轮播图的代码，但是现在还是有一些问题,图标的问题，已经解决-->
+		<ul class="slides">
+		  <input type="radio" id="control-1" name="control" checked>
+		  <input type="radio" id="control-2" name="control">
+		  <input type="radio" id="control-3" name="control">
+		  
+		  <!--  Left/Right Button  -->
+		  <div class="navigator slide-1">
+		    <label for="control-3">
+		      <i class="fa fa-chevron-left"></i>
+		    </label>
+		    <label for="control-2">
+		      <i class="fa fa-chevron-right"></i>
+		    </label>
+		  </div>
+		  
+		  <div class="navigator slide-2">
+		    <label for="control-1">
+		      <i class="fa fa-chevron-left"></i>
+		    </label>
+		    <label for="control-3">
+		      <i class="fa fa-chevron-right"></i>
+		    </label>
+		  </div>
+		  
+		  <div class="navigator slide-3">
+		    <label for="control-2">
+		      <i class="fa fa-chevron-left"></i>
+		    </label>
+		    <label for="control-1">
+		      <i class="fa fa-chevron-right"></i>
+		    </label>
+		  </div>
+		  <!--  /Left/Right Button  -->
+		  
+		  <li class="slide">为学为师，求实求新</li>
+		  <li class="slide">落红不是无情物，化作春泥更护花</li>
+		  <li class="slide">令公桃李满天下，何用堂前更种花</li>
+		  
+		  <div class="controls-visible">
+		    <label for="control-1"></label>
+		    <label for="control-2"></label>
+		    <label for="control-3"></label>
+		  </div>
+		</ul>
+		
 	 <!--白恩昊上届-->
 	<div class="side_div">
 	<div class="teacher">
@@ -281,7 +332,7 @@
 			  </div>
 			  <div style="margin-top: 180px;">
 				   <a class="pic">
-			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true" onclick="sub()"></i>  
 			      </ a>
 			    <a class="pic">
 			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
@@ -294,7 +345,6 @@
 				  </a>
 					  <!-- 点赞，踩，举报所有的图标 -->
 			  </div>
-			 
 		  </td>
 	    </tr>
 	    <tr>
@@ -335,7 +385,7 @@
 			  </div>
 			  <div style="margin-top: 180px;">
 				   <a class="pic">
-			     <i class="fa fa-exclamation-triangle" aria-hidden="true" onclick="dispreport()"></i>
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true" onclick="sub()"></i>
 				   </a>
 			    <a class="pic">
 			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
@@ -389,7 +439,7 @@
 			  </div>
 			  <div style="margin-top: 180px;">
 				   <a class="pic">
-			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true" onclick="sub()"></i>  
 			      </ a>
 			    <a class="pic">
 			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
@@ -443,7 +493,7 @@
 			  </div>
 			  <div style="margin-top: 180px;">
 				   <a class="pic">
-			     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true" onclick="sub()"></i>  
 			      </ a>
 			    <a class="pic">
 			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
@@ -503,6 +553,14 @@
 	</table>
 	 </div>
 	 <!--白恩昊下界-->
+	<script>
+	function sub(){
+		// if($("input[type=checkbox]").val()=="")
+		// alert("请重新选择");
+		// else
+		alert("您的举报已提交");
+		}
+	</script>
 	</center>
 	</body>
 </html>
