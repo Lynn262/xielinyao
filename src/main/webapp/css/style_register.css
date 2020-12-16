@@ -1,8 +1,10 @@
 /* css鏂囦欢娉ㄩ噴鐨勫揩鎹烽敭鏄痗trl+/ */
 body{
+	background-image: url(/img/bgimg.jpg);        /* 背景图片 */
+    background-repeat: no-repeat;        /* 背景图片不重复 */
 	margin: 0;
 	padding: 0;
-	background: #808e9b;
+	
 }
 .signup-form{
 	width: 300px;

@@ -1,0 +1,242 @@
+body{
+	margin:0;
+	padding: 0;
+	background-color: #f4f4f2;
+}
+/* font-size鍙互鏇存敼鍥炬爣鐨勫ぇ灏� */
+*{
+				margin: 0;
+				padding:0;
+			}
+			.outer{
+				margin: 0 auto;
+				width :600px;
+				height:50px;
+				position:relative;
+				background-color:#e8e8e8;
+			}
+			ul{
+				list-style-type: none;
+				width:100%;
+				height:100%;
+			}
+			ul::after,u1::before{
+				content:"";
+				display:block;
+				clear:both;
+			}
+			li{
+				width:180px;
+				height:100%;
+				line-height: 50px;
+				cursor:pointer;
+				float:left;
+				text-align: center;
+			}
+.search-box{
+	position: absolute;
+	top:14%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	/* 这里是动态搜索框的背景颜色 */
+	background: #bbbfca;
+	height: 40px;
+	border-radius: 40px;
+	padding: 10px;
+}
+.search-box:hover > .search-txt{
+	width:600px;
+	padding: 0 6px;
+}
+.search-box:hover > .search-btn{
+	background: white;
+}
+.search-btn{
+	color: #411F1A;
+	float: right;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #bbbfca;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	transition: 0.4s;
+}
+.search-txt{
+	border: none;
+	background: none;
+	outline: none;
+	float: left;
+	padding: 0;
+	color: white;
+	font-size: 16px;
+	transition:0.4s;
+	line-height: 40px;
+	width: 0px;
+}
+.pic{
+  font-size:20px;
+  margin-right:20px;
+  float:right;
+  }
+  .pic:hover{
+	  color: #ec524b;
+  }
+ /* 娌℃湁璧蜂綔鐢�
+ table{
+    border-collapse:separate;
+          border-spacing: 0px 10px;
+    width="200";
+    border-style: none;
+   } */
+.btm{
+				width:180px;
+				height: 5px;
+				position:absolute;
+				left: 0px;
+				background-color:#495464;
+				transition: 0.5s;
+			}
+			.side_div {
+				/* float: left;
+				margin: 5px;
+				padding: 15px; */
+				float:left;
+				position:absolute;
+				top:65%;
+				left:0%px;
+			    color: #F7F7F7;
+			   background-color: #e8e8e8;
+			    font-size:30px;
+			  width: 300px;
+			  height: 500px;
+			  }
+			  .side_div1 {
+				  float:left;
+				  position:absolute;
+				  top:65%;
+				  left:78.5%;
+			    color: #F7F7F7;
+			   background-color: #e8e8e8;
+			    font-size:30px;
+			    width: 300px;
+			    height: 500px;
+			    }
+			 .middle_div{
+				 float:left;
+				 position:absolute;
+				 top:65%;
+				 left:23%;
+			     color: #F7F7F7;
+			  /* padding:15px 10px; */
+			    font-size:30px;
+			  width:750px;
+			  height: 800px; 
+			  }
+		.middle_T{ 
+			  padding: 10px 10px;
+			  border-style: none;
+			  border-color: #535c68;
+			  border-width: 1px;
+			  width: 700px;
+			  height:60px;
+			  font-size: 20px;
+			  color: #191919;
+			  margin-left:25px;
+			  }
+			  /* .side_T{
+			      background-color: #c7ecee;
+			       border:none;
+			       width: 300px;
+			       height:100px;
+			       border-collapse: separate;
+			       border-spacing: 0px 0px;
+				   color: #34626c;
+			       } */
+			   .S_td
+			   {
+			    height:60px;
+			    width:180px;
+			    color:red;
+			    font-size:24px;
+			    text-align: center;
+			    border-bottom:solid;
+			    border-width:1px;
+			    border-color:aliceblue;
+			   }
+			   .S_top
+			   {
+			    height:50px;
+			    width:80px;
+			    color:red;
+			    font-size:24px;
+			    text-align: center;
+			    border-right:solid;
+			    border-bottom:solid;
+			    border-width:1px;
+			    border-color:aliceblue;
+			   }
+			 .side_T{
+				 color: #34626c;
+			 padding: 10px 10px;
+			  border-style: none;
+			  border-color: #535c68;
+			  border-width: 1px;
+			  width: 300px;
+			  height:40px; 
+			  }
+			td{
+				background-color: #e8e8e8;
+			}
+   .teacher{
+	   background-color: #495464;
+	   height: 50px;
+	   text-align: center;
+   }
+   .course{
+   	   background-color: #495464;
+   	   height: 50px;
+   	   text-align: center;
+   }
+   .review{
+   	   background-color: #495464;
+   	   height: 50px;
+   	   text-align: center;
+	   width: 670px;
+	   border-radius: 5px;
+	   
+   }
+
+
+	/*.userID{
+		font-size:14px;
+		font-family:Cambria;
+	}
+	.Cmtt{
+		font-size:19px;
+		font-weight: 700;
+		height:25px;
+	}
+	.CmtIn{
+		margin-top:6px;
+		margin-left:5px;
+		font-size:16px;
+		height:20px;
+	}*/
+.Cscore{
+	float:left;
+	width:200px;
+	height:150px;
+	margin-left: 30px;
+	margin-top: 10px;
+}
+.Comment{
+	float:left;
+	width:400px;
+	height:150px;
+	margin-left: 10px;
+	margin-top:10px;
+	padding:5px;
+	font-size:18px;
+}

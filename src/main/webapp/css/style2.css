@@ -15,7 +15,7 @@ body
 	width :600px;
 	height:50px;
 	position:absolute;
-	left:380px;
+	left:420px;
 	background-color:#e8e8e8;
 }
 ul{
@@ -40,24 +40,18 @@ li
 }
 .search-box{
 	position: absolute;
-	top:100px;
-	left:660px;
+	top:16%;
+	left:50%;
 	transform:translate(-50%,-50%);
-	/* 这里是动态搜索框的背景颜色 */
+	/* 杩欓噷鏄姩鎬佹悳绱㈡鐨勮儗鏅鑹?*/
 	background: #bbbfca;
 	height: 40px;
 	border-radius: 40px;
 	padding: 10px;
 }
-.search-box:hover{
-	width:700px;
-	background-color:#f4f4f2;
-}
 .search-box:hover > .search-txt{
-	width:600px;
+	width:500px;
 	padding: 0 6px;
-	background-color:#bbbfca;
-	border-radius:40px;
 }
 .search-box:hover > .search-btn{
 	background: white;
@@ -86,6 +80,7 @@ li
 	line-height: 40px;
 	width: 0px;
 }
+
 .pic{
   font-size:20px;
   margin-right:20px;
@@ -107,8 +102,8 @@ li
 {
 	float:left;
 	position:absolute;
-	top:140px;
-	left:0px;
+	top:79%;
+	left:0%px;
 	color: #F7F7F7;
 	background-color: #e8e8e8;
 	font-size:30px;
@@ -119,8 +114,8 @@ li
 {
 	float: right;
 	position:absolute;
-	top:140px;
-	left:1000px;
+	top:79%;
+	left:78.5%;
 	color: #F7F7F7;
 	background-color: #e8e8e8;
 	font-size:30px;
@@ -131,8 +126,8 @@ li
 {
 	float:left;
 	position:absolute;
-	top:140px;
-	left:270px;
+	top:79%;
+	left:23%;
 	color: #F7F7F7;
 	font-size:30px;
 	width:750px;

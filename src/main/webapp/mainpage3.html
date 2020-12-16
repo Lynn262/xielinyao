@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link rel="stylesheet" href="css/style2.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/choose.css">
+		<link rel="stylesheet" href="css/tanchuang.css">
+		<link href="css/lunbotu.css" type="text/css" rel="stylesheet" />
+		<title>Document</title>	
+	</head>
+	<body  onload="searchall()"><center>
+		<div class="box">
+			<div class="outer">
+				<ul>
+					<li onclick="jumpToLogin()">登录</li>
+					<li onclick="jumpToReg()">注册</li>
+					<li onclick="jumpToPost()">发布评价</li>
+				</ul>
+				<div class="btm"></div>
+			</div>
+		</div>
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script>
+
+			var lis=document.getElementsByTagName("li");
+			var btm=document.getElementsByClassName("btm")[0];
+			//这个for循环是为每一个li添加一个index当作索引，为了方便下面地循环获取到是第几个li
+			for(var i=0;i<lis.length;i++){
+				lis[i].index=i;
+			}
+			//这里的for循环是为了给每个li添加一个mouseenter(鼠标进入事件)和onmouseleave(鼠标离开事件)
+			for(var i=0;i<lis.length;i++){
+				lis[i].onmouseenter=function(){
+					//当鼠标进入的时候，改变class为btm的div元素位置
+					btm.style.left=180*this.index+"px";
+				}
+				lis[i].onmouseleave=function(){
+					//当鼠标离开的时候，div元素位置恢复到0，下面的placeholder是占位符
+					btm.style.left="0px";
+				}
+			}
+			
+			var PCname="";
+
+			//登陆页面跳转
+			function jumpToLogin(){
+				location.href = "/login.html";
+			}
+
+			//注册页面跳转
+			function jumpToReg(){
+				location.href = "/register2.html";
+			}
+
+			//发布页面跳转
+			function jumpToPost(){
+				location.href = "/PostReview.html";
+			}
+
+			//查询评价
+			function searchreview(){
+				PCname=document.getElementById("searchreview").value; //教师姓名或课程名
+				var url="review/queryreview?PCname="+PCname;
+				$.ajaxSettings.async = false;
+				$.get(url, function(Review, status) {
+					show(Review);
+				});
+			}
+			
+			function searchall(){
+				var url="review/queryall";
+				$.ajaxSettings.async = false;
+				$.get(url, function(Review, status) {
+					show(Review);
+				});
+			}
+
+			function upvote(id_review)
+			{
+				var url="review/upvote?id_review="+id_review;
+				$.ajaxSettings.async = false;
+				$.get(url, function(Review, status) {
+					alert("点赞成功！");
+				});
+			}
+
+			function downvote(id_review)
+			{
+				var url="review/downvote?id_review="+id_review;
+				$.ajaxSettings.async = false;
+				$.get(url, function(Review, status) {
+					alert("踩成功！");
+				});
+			}
+
+			//举报评价，rev_id是评价id
+			function report(rev_id){
+				var url1 = "/review/reportRev?id_review="+rev_id;
+				$.ajax({
+					type: "POST",
+					url: url1,
+					async: false,
+					success: function(response){
+						if(response == 1){
+							alert("举报成功");
+						}
+						else{
+							alert("举报失败");
+						}
+						hidereport();
+					}
+				})
+			}
+
+			//拉取课程排名并填充
+			function fillcrank(ranks){
+				var num = ranks.length;
+				var temp = "";
+				var rankdisp = "";
+				var str1 = "<tr><td class=\"side_top\">Top1</td><td class=\"side_td\">";
+				var str2 = "</td></tr>";
+
+				for(var i = 0; i < num; i++){
+					temp = str1 + ranks[i].cname + str2;
+					rankdisp += temp;
+				}
+				$("#crank").html(rankdisp);
+			}
+
+			function fillprank(ranks){
+				var num = ranks.length;
+				var temp = "";
+				var rankdisp = "";
+				var str1 = "<tr><td class=\"side_top\">Top1</td><td class=\"side_td\">";
+				var str2 = "</td></tr>";
+
+				for(var i = 0; i < num; i++){
+					temp = str1 + ranks[i].pname + str2;
+					rankdisp += temp;
+				}
+				$("#prank").html(rankdisp);
+			}
+
+			function show(Review){ //展示每个评价的函数
+				var num=Review.length;
+				var tmp = "";
+				var reviewhtml="";
+				var str1 = "  <tr><td style=\"border: none;border-radius:10px;height: 220px;\"><div><div  style=\"float:left; margin-left:120px;text-align: center;\">";
+				var str2 = "</div> <div style=\"float:left;margin-left: 240px;text-align: center;\">"
+				var str3 = "</div></div><div class=\"Cscore\"><div style=\"font-size:16px;\">  教师素养：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>";
+				var str4 = "</div><div style=\"margin-top:40px;font-size:16px;\"> 课程难度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>";
+				var str5 = "</div><div style=\"margin-top:40px;font-size:16px;\"> 受益程度：<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>";
+				var str6 = "</div></div><div class=\"Comment\">";
+				var str7 = "</div><div style=\"margin-top: 180px;\"><a class=\"pic\"><i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\" onclick=\"report(";
+				var str8 = ")\" ></i>  </a> <a class=\"pic\">";
+				var str9 = "<i class=\"fa fa-thumbs-down\" aria-hidden=\"true\" onclick=\"downvote(";
+				var str10 = ")\"></i>  </a><a class=\"pic\">";
+				var str11 = "<i class=\"fa fa-thumbs-up\" aria-hidden=\"true\" onclick=\"upvote(";
+				var str12 = ")\"></i> </a><a style=\" margin-right:50px;float:right;font-size:15px;\">";
+
+
+				for (var i=0;i<num;i++)
+					{
+					
+					tmp= str1 + Review[i].cname + str2 + Review[i].pname + str3 + Review[i].quality + str4 +
+							Review[i].difficulty + str5 + Review[i].quality + str6 + Review[i].snickname + ":" +
+							Review[i].comment + str7 + Review[i].id_review+ str8 + Review[i].downvote + str9 +
+							Review[i].id_review + str10 + Review[i].upvote + str11 + Review[i].id_review + str12
+							+ Review[i].revt + "</a> </div></td></tr>";
+					reviewhtml+=tmp;
+					}
+				 $('#review').html(reviewhtml);	
+			}
+
+			$(document).ready(function(){
+				$.ajax({
+					url : "review/getcrank",
+					type : "GET",
+					success : function(response){
+						fillcrank(response);
+					}
+				})
+				$.ajax({
+					url : "review/getprank",
+					type : "GET",
+					success : function(response){
+						fillprank(response);
+					}
+				})
+			})
+
+		</script>
+		
+		<div class="search-box">
+			<input class="search-txt" type="text" name="" placeholder="请输入教师/课程名称查询" id="searchreview">
+			<a class="search-btn" herf="#">
+				<i class="fa fa-search" onclick="searchreview()"></i>
+			</a>
+		</div>
+		
+		<!--这是轮播图的代码，但是现在还是有一些问题,图标的问题，已经解决-->
+		<ul class="slides">
+		  <input type="radio" id="control-1" name="control" checked>
+		  <input type="radio" id="control-2" name="control">
+		  <input type="radio" id="control-3" name="control">
+		  
+		  <!--  Left/Right Button  -->
+		  <div class="navigator slide-1">
+		    <label for="control-3">
+		      <i class="fa fa-chevron-left"></i>
+		    </label>
+		    <label for="control-2">
+		      <i class="fa fa-chevron-right"></i>
+		    </label>
+		  </div>
+		  
+		  <div class="navigator slide-2">
+		    <label for="control-1">
+		      <i class="fa fa-chevron-left"></i>
+		    </label>
+		    <label for="control-3">
+		      <i class="fa fa-chevron-right"></i>
+		    </label>
+		  </div>
+		  
+		  <div class="navigator slide-3">
+		    <label for="control-2">
+		      <i class="fa fa-chevron-left"></i>
+		    </label>
+		    <label for="control-1">
+		      <i class="fa fa-chevron-right"></i>
+		    </label>
+		  </div>
+		  <!--  /Left/Right Button  -->
+		  
+		  <li class="slide">为学为师，求实求新</li>
+		  <li class="slide">落红不是无情物，化作春泥更护花</li>
+		  <li class="slide">令公桃李满天下，何用堂前更种花</li>
+		  
+		  <div class="controls-visible">
+		    <label for="control-1"></label>
+		    <label for="control-2"></label>
+		    <label for="control-3"></label>
+		  </div>
+		</ul>
+		
+	 <!--白恩昊上届-->
+	<div class="side_div">
+	<div class="teacher">
+		教师风采
+	</div>
+	 <table class="side_T">
+	  <tbody id="prank">
+	    <tr>
+	     <td class="side_top">Top1</td><td class="side_td">张海山</td>
+	    </tr>
+	    <tr>
+			<td class="side_top">Top2</td><td class="side_td">施智平</td>
+	    </tr>
+	    <tr>
+			<td class="side_top">Top3</td><td class="side_td">关永</td>
+	    </tr>
+		<tr>
+			<td class="side_top">Top4</td><td class="side_td">吴敏华</td>
+		</tr>
+		<tr>
+			<td class="side_top">Top5</td><td class="side_td">霍其润</td>
+		</tr>
+		<tr>
+			<td class="side_top">Top6</td><td class="side_td">关桂霞</td>
+		</tr>
+		<tr>
+			<td class="side_top">Top7</td><td class="side_td">谭晓慧</td>
+		</tr>
+		<tr>
+			<td class="side_top">Top8</td><td class="side_td">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="side_top">Top9</td><td class="side_td">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="side_top">Top10</td><td class="side_td">&nbsp;</td>
+		</tr>
+	  </tbody>
+	</table>
+	 </div>
+	<div class="middle_div">
+		<div class="review">
+			最新评价
+		</div>
+	 <table class="middle_T" style="float: left" cellspacing="10">
+	  <tbody id="review">
+	    <tr>
+	      <td style="border: none;border-radius: 10px;height: 220px;">
+			  <div>
+			  <div  style="float:left; margin-left:120px;text-align: center;">
+				操作系统
+				  </div>
+			  <div style="float:left;margin-left: 240px;text-align: center;">
+				霍其润
+				  </div>
+			  </div>
+			  <div class="Cscore">
+				  <div style="font-size:16px;">
+				  教师素养：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			    <div style="margin-top:40px;font-size:16px;">
+				  课程难度：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			    <div style="margin-top:40px;font-size:16px;">
+				  受益程度：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			  </div>
+			  <div class="Comment">
+			  	Bruce·White:老师看着年轻但讲的好棒啊！
+			  </div>
+			  <div style="margin-top: 180px;">
+				   <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true" onclick="sub()"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+				  <a style=" margin-right:50px;float:right;font-size:15px;">
+					  2020-11-24
+				  </a>
+					  <!-- 点赞，踩，举报所有的图标 -->
+			  </div>
+		  </td>
+	    </tr>
+	    <tr>
+	      <td style="border: none;border-radius: 10px;height: 220px;">
+			  <div>
+			   <div  style="float:left; margin-left:120px;text-align: center;">
+				  计算机组成原理
+				  </div>
+			  <div style="float:left;margin-left: 240px;text-align: center;">
+				  关桂霞
+				  </div>
+			  </div>
+			  <div class="Cscore">
+				  <div style="font-size:16px;">
+				  教师素养：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			    <div style="margin-top:40px;font-size:16px;">
+				  课程难度：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			    <div style="margin-top:40px;font-size:16px;">
+				  受益程度：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			  </div>
+			  <div class="Comment">
+			  	鸟某人：老关天下第一！！！
+			  </div>
+			  <div style="margin-top: 180px;">
+				   <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true" onclick="sub()"></i>
+				   </a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+				  <a style=" margin-right:50px;float:right;font-size:15px;">
+					  2020-11-24
+				  </a>
+					  <!-- 点赞，踩，举报所有的图标 -->
+			  </div>
+			 
+		  </td>
+	    </tr>
+	    <tr>
+	      <td style="border: none;border-radius: 10px;height: 220px;">
+			  <div>
+			  <div  style="float:left; margin-left:120px;text-align: center;">
+				  计算机网络原理
+				  </div>
+			  <div style="float:left;margin-left: 240px;text-align: center;">
+				  陈文龙
+				  </div>
+			  </div>
+			  <div class="Cscore">
+				  <div style="font-size:16px;">
+				  教师素养：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			    <div style="margin-top:40px;font-size:16px;">
+				  课程难度：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			    <div style="margin-top:40px;font-size:16px;">
+				  受益程度：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			  </div>
+			  <div class="Comment">
+			  	日天：龙哥永远的神
+			  </div>
+			  <div style="margin-top: 180px;">
+				   <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true" onclick="sub()"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+				  <a style=" margin-right:50px;float:right;font-size:15px;">
+					  2020-11-24
+				  </a>
+					  <!-- 点赞，踩，举报所有的图标 -->
+			  </div>
+			 
+		  </td>
+	    </tr>
+		 <tr>
+	      <td style="border: none;border-radius: 10px;height: 220px;">
+			  <div>
+			   <div  style="float:left; margin-left:120px;text-align: center;">
+				  信息科学导论
+				  </div>
+			 <div style="float:left;margin-left: 240px;text-align: center;">
+				  柏玲
+				  </div>
+			  </div>
+			  <div class="Cscore">
+				  <div style="font-size:16px;">
+				  教师素养：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			    <div style="margin-top:40px;font-size:16px;">
+				  课程难度：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			    <div style="margin-top:40px;font-size:16px;">
+				  受益程度：<i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+					  <i class="fa fa-star-o" aria-hidden="true"></i>
+			    </div>
+			  </div>
+			  <div class="Comment">
+			  	***：懂得都懂。
+			  </div>
+			  <div style="margin-top: 180px;">
+				   <a class="pic">
+			     <i class="fa fa-exclamation-triangle" aria-hidden="true" onclick="sub()"></i>  
+			      </ a>
+			    <a class="pic">
+			     <i class="fa fa-thumbs-down" aria-hidden="true"></i>  
+			      </ a>
+			      <a class="pic">
+			     <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+			      </ a>
+				  <a style=" margin-right:50px;float:right;font-size:15px;">
+					  2020-11-24
+				  </a>
+					  <!-- 点赞，踩，举报所有的图标 -->
+			  </div>
+			 
+		  </td>
+	    </tr>
+	  </tbody>
+	</table>
+	 </div>
+	<div class="side_div1">
+	  <div class="course">
+	  	课堂风采
+	  </div>
+	  <table class="side_T">
+		<tbody id="crank">
+		  <tr>
+		   <td class="side_top">Top1</td><td class="side_td">高等数学</td>
+		  </tr>
+		  <tr>
+			  <td class="side_top">Top2</td><td class="side_td">C语言程序设计</td>
+		  </tr>
+		  <tr>
+			  <td class="side_top">Top3</td><td class="side_td">信息科学导论</td>
+		  </tr>
+		  <tr>
+			  <td class="side_top">Top4</td><td class="side_td">数理逻辑</td>
+		  </tr>
+		  <tr>
+			  <td class="side_top">Top5</td><td class="side_td">数据结构</td>
+		  </tr>
+		  <tr>
+			  <td class="side_top">Top6</td><td class="side_td">数据库原理</td>
+		  </tr>
+		  <tr>
+			  <td class="side_top">Top7</td><td class="side_td">&nbsp;</td>
+		  </tr>
+		  <tr>
+			  <td class="side_top">Top8</td><td class="side_td">&nbsp;</td>
+		  </tr>
+		  <tr>
+			  <td class="side_top">Top9</td><td class="side_td">&nbsp;</td>
+		  </tr>
+		  <tr>
+			  <td class="side_top">Top10</td><td class="side_td">&nbsp;</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</table>
+	 </div>
+	 <!--白恩昊下界-->
+	<script>
+	function sub(){
+		// if($("input[type=checkbox]").val()=="")
+		// alert("请重新选择");
+		// else
+		alert("您的举报已提交");
+		}
+	</script>
+	</center>
+	</body>
+</html>
