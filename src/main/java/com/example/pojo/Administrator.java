@@ -2,50 +2,60 @@ package com.example.pojo;
 import org.apache.ibatis.type.Alias;
 import java.io.Serializable;
 
-@Alias("administrator")
+/**
+ * 管理员实体类
+ * @author Zhiqi Lu
+ */
+
 //管理员类
+@Alias("administrator")
 public class Administrator{
 
-    private String ano;
-    private String apw;
-    private String amail;
-    private String anickname;   //管理员昵称
+    private String ano; //管理员id
+    private String apw; //管理员密码
     private String aprivilege;  //管理员权限
 
-
-    //设置管理员昵称
-    public void setAname(String n){
-        anickname = n;
+    public void setAno(String ano) {
+        this.ano = ano;
     }
 
-    //设置管理员权限
+    public void setApw(String apw) {
+        this.apw = apw;
+    }
+
+    /**
+     * 设置管理员权限
+     * @param p 新权限
+     */
     public void setAprvlg(String p){
         aprivilege = p;
     }
 
+    /**
+     * @return 管理员id
+     */
     public String getAno() {
         return ano;
     }
 
+    /**
+     * @return 管理员密码
+     */
     public String getApw() {
         return apw;
     }
 
-    public String getAmail() {
-        return amail;
-    }
-
-    //返回管理员昵称
-    public String getAname(){
-        return anickname;
-    }
-
-    //返回管理员权限
+    /**
+     * @return 管理员权限
+     */
     public String getAprvlg(){
         return aprivilege;
     }
 
-    //检查管理员权限
+    /**
+     * @param p 权限
+     * @return 管理员权限是否与p相等
+     */
     public boolean checkAprvlg(String p){
         return aprivilege.equals(p);
     }

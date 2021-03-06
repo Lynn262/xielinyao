@@ -7,8 +7,8 @@ import java.io.Serializable;
 public class Professor {
     private  String pno;   //教师编号
     private String pname;       //教师姓名
-    private String ppos;        //教师职位
-    private String pinfo;       //教师信息
+    private float prating;      //教授评级
+    private String pschool;     //教师学校
     private String pdept;       //教师所属院系
 
     //设置教师编号
@@ -21,14 +21,12 @@ public class Professor {
         pname = n;
     }
 
-    //设置教师职位
-    public void setPpos(String p) {
-        ppos = p;
+    public void setPrating(float prating) {
+        this.prating = prating;
     }
 
-    //设置教师信息
-    public void setPinfo(String i) {
-        pinfo = i;
+    public void setPschool(String pschool) {
+        this.pschool = pschool;
     }
 
     //设置教师所属院系
@@ -46,14 +44,12 @@ public class Professor {
         return pname;
     }
 
-    //返回教师职位
-    public String getPpos() {
-        return ppos;
+    public float getPrating() {
+        return prating;
     }
 
-    //返回教师信息
-    public String getPinfo() {
-        return pinfo;
+    public String getPschool() {
+        return pschool;
     }
 
     //返回教师所属院系
